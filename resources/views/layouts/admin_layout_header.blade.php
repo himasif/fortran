@@ -123,7 +123,7 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
           <ul id="sidebarnav" class="p-t-30">
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admin/" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admin/input_individu" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Input Nilai Individu</span></a></li>
             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admin/input_kelompok" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Input Nilai Kelompok</span></a></li>
             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admin/input_angkatan" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Input Nilai Angkatan</span></a></li>
@@ -134,62 +134,13 @@
       </div>
       <!-- End Sidebar scroll-->
     </aside>
-    <!-- ============================================================== -->
-    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
-    <div class="page-wrapper">
-
-
-
-      <!-- THIS IS THE BODY -->
-
-      <!-- ============================================================== -->
-      <!-- footer -->
-      <!-- ============================================================== -->
-      <footer class="footer text-center">
-        Created by Mediatek <a href="https://github.com/himasif">Himasif</a>
-      </footer>
-      <!-- ============================================================== -->
-      <!-- End footer -->
-      <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
   </div>
   <!-- ============================================================== -->
-  <!-- End Wrapper -->
+  <!-- End Left Sidebar - style you can find in sidebar.scss  -->
   <!-- ============================================================== -->
   <!-- ============================================================== -->
-  <!-- All Jquery -->
+  <!-- Page wrapper  -->
   <!-- ============================================================== -->
-  <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
-  <!-- Bootstrap tether Core JavaScript -->
-  <script src="{{asset('assets/libs/popper.js')}}/dist/umd/popper.min.js')}}"></script>
-  <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
-  <script src="{{asset('assets/extra-libs/sparkline/sparkline.js')}}"></script>
-  <!--Wave Effects -->
-  <script src="{{asset('dist/js/waves.js')}}"></script>
-  <!--Menu sidebar -->
-  <script src="{{asset('dist/js/sidebarmenu.js')}}"></script>
-  <!--Custom JavaScript -->
-  <script src="{{asset('dist/js/custom.min.js')}}"></script>
-  <!--This page JavaScript -->
-  <!-- <script src="{{asset('dist/js/pages/dashboards/dashboard1.js')}}"></script> -->
-  <!-- Charts js Files -->
-  <script src="{{asset('assets/libs/flot/excanvas.js')}}"></script>
-  <script src="{{asset('assets/libs/flot/jquery.flot.js')}}"></script>
-  <script src="{{asset('assets/libs/flot/jquery.flot.pie.js')}}"></script>
-  <script src="{{asset('assets/libs/flot/jquery.flot.time.js')}}"></script>
-  <script src="{{asset('assets/libs/flot/jquery.flot.stack.js')}}"></script>
-  <script src="{{asset('assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
-  <script src="{{asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
-  <script src="{{asset('dist/js/pages/chart/chart-page-init.js')}}"></script>
-
 </body>
 
 </html>

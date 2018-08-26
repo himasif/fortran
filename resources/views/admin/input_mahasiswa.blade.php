@@ -10,10 +10,15 @@
   <meta name="author" content="">
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
-  <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+  <title>Input Nilai Mahasiswa Individu</title>
   <!-- Custom CSS -->
-  <link href="{{asset('assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
-  <!-- Custom CSS -->
+  <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/select2/dist/css/select2.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/quill/dist/quill.snow.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/extra-libs/multicheck/multicheck.css')}}">
+  <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
   <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js')}} IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js')}} doesn't work if you view the page via file:// -->
@@ -142,9 +147,123 @@
     <!-- ============================================================== -->
     <div class="page-wrapper">
 
+      <div class="page-breadcrumb">
+        <div class="row">
+          <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">Input Nilai Individu</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+
+        <div class="card">
+          <form class="form-horizontal">
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Tanggal <small class="text-muted">dd/mm/yyyy</small></label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="Masukan Tanggal">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-right control-label col-form-label">NIM</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="lname" placeholder="Masukan NIM">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 text-right control-label col-form-label">Kategori</label>
+                <div class="col-md-9">
+                  <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                    <option>Select</option>
+                    @foreach($kategori as $val)
+                    <option value="$val->idKategori">{{$val->kategori}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Keterangan</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control"></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nilai</label>
+                <div class="col-sm-9">
+                  <input type="number" class="form-control" placeholder="Masukan Nilai">
+                </div>
+              </div>
+            </div>
+            <div class="border-top">
+              <div class="card-body">
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- TABLES -->
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Nilai Mahasiswa</h5>
+                <div class="table-responsive">
+                  <table id="zero_config" class="table table-striped table-bordered" style="width:100%; table-layout: fixed;">
+                    <thead>
+                      <tr>
+                        <th>Tanggal</th>
+                        <th>NIM</th>
+                        <th>Nama</th>
+                        <th>Kelompok</th>
+                        <th>Kategori</th>
+                        <th>Keterangan</th>
+                        <th>Nilai</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      @foreach($data as $value)
+                      <tr>
+                        <td>{{$value->tanggal}}</td>
+                        <td>{{$value->nim}}</td>
+                        <td>{{$value->nama}}</td>
+                        <td>{{$value->namaKelompok}}</td>
+                        <td>{{$value->kategori}}</td>
+                        <td>{{$value->keterangan}}</td>
+                        <td>{{$value->nilai}}</td>
+                        <td>
+                          <!--<form action='editNilai' method="post">-->
+                          <!--  {{ csrf_field() }}-->
+                          <!--  <input type="hidden" name="id" value="{{$value->idNilai}}"/>-->
+                          <!--  <button type="submit" class="btn btn-info">edit</button>-->
+                          <!--</form>    -->
+                          <form action='deleteNilaiIndividu' method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="id" value="{{$value->idNilai}}"/>
+                            <button type="submit" class="btn btn-danger">delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                      @endforeach
+
+                    </tbody>
+
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
 
 
-      <!-- THIS IS THE BODY -->
+      </div>
 
       <!-- ============================================================== -->
       <!-- footer -->
@@ -188,7 +307,64 @@
   <script src="{{asset('assets/libs/flot/jquery.flot.stack.js')}}"></script>
   <script src="{{asset('assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
   <script src="{{asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
-  <script src="{{asset('dist/js/pages/chart/chart-page-init.js')}}"></script>
+  <script src="{{asset('assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+  <script src="{{asset('dist/js/pages/mask/mask.init.js')}}"></script>
+  <script src="{{asset('assets/libs/select2/dist/js/select2.full.min.js')}}"></script>
+  <script src="{{asset('assets/libs/select2/dist/js/select2.min.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-asColor/dist/jquery-asColor.min.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-asGradient/dist/jquery-asGradient.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.min.js')}}"></script>
+  <script src="{{asset('assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{asset('assets/libs/quill/dist/quill.min.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/multicheck/datatable-checkbox-init.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/multicheck/jquery.multicheck.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/DataTables/datatables.min.js')}}"></script>
+  <script>
+  //***********************************//
+  // For select 2
+  //***********************************//
+  $(".select2").select2();
+
+  /*colorpicker*/
+  $('.demo').each(function() {
+    //
+    // Dear reader, it's actually very easy to initialize MiniColors. For example:
+    //
+    //  $(selector).minicolors();
+    //
+    // The way I've done it below is just for the demo, so don't get confused
+    // by it. Also, data- attributes aren't supported at this time...they're
+    // only used for this demo.
+    //
+    $(this).minicolors({
+      control: $(this).attr('data-control') || 'hue',
+      position: $(this).attr('data-position') || 'bottom left',
+
+      change: function(value, opacity) {
+        if (!value) return;
+        if (opacity) value += ', ' + opacity;
+        if (typeof console === 'object') {
+          console.log(value);
+        }
+      },
+      theme: 'bootstrap'
+    });
+
+  });
+  /*datwpicker*/
+  jQuery('.mydatepicker').datepicker();
+  jQuery('#datepicker-autoclose').datepicker({
+    autoclose: true,
+    todayHighlight: true
+  });
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+
+  $('#zero_config').DataTable();
+
+  </script>
 
 </body>
 
