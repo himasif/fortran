@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'angkatan' => (9999),
+
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
