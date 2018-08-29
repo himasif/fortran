@@ -12,6 +12,39 @@ use Config;
 
 class AdminController extends Controller
 {
+
+  public function Home()
+  {
+    $id_angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first()->idAngkatan;
+    $data_top = Mahasiswa::orderBy('nilaiAkhir', 'DESC')
+          ->join('kelompoks', 'kelompoks.idKelompok', '=', 'mahasiswas.idKelompok')
+          ->where('kelompoks.idAngkatan', '=', $id_angkatan)
+          ->get()->take(10);
+    $data_low = Mahasiswa::orderBy('nilaiAkhir', 'ASC')
+          ->join('kelompoks', 'kelompoks.idKelompok', '=', 'mahasiswas.idKelompok')
+          ->where('kelompoks.idAngkatan', '=', $id_angkatan)
+          ->get()->take(10);
+    return view('admin.index', ['data_top' => $data_top, 'data_low' => $data_low]);
+  }
+
+  public function findMahasiswa(Request $request)
+  {
+    if($request->isMethod('post')){
+      $input = $request->nama_nim;
+      if (preg_match('~[0-9]+~', $input)) {
+        // NIM
+        $mahasiswas = Mahasiswa::where('nim', 'like', '%'.$input.'%')->get();
+      }
+      else{
+        // NAMA
+        $mahasiswas = Mahasiswa::where('nama', 'like', '%'.$input.'%')->get();
+      }
+      // dd($data);
+
+      return view('admin/search', ['mahasiswas' => $mahasiswas]);
+    }
+  }
+
   public function getDataInputIndividu()
   {
     $id_angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first()->idAngkatan;
@@ -39,8 +72,8 @@ class AdminController extends Controller
       $temp = explode("/", $data->tanggal);
       $data->tanggal = implode("-", [$temp[2], $temp[1], $temp[0]]);
       $data->save();
-      return redirect()->action('AdminController@getDataInputIndividu');
     }
+    return redirect()->action('AdminController@getDataInputIndividu');
   }
 
   public function getDataInputKelompok()
@@ -80,8 +113,8 @@ class AdminController extends Controller
               $data->tanggal = implode("-", [$temp[2], $temp[1], $temp[0]]);
               $data->save();
           }
-          return redirect()->action('AdminController@getDataInputKelompok');
         }
+        return redirect()->action('AdminController@getDataInputKelompok');
     }
 
     public function getDataInputAngkatan()
@@ -99,64 +132,72 @@ class AdminController extends Controller
 
     public function setDataInputAngkatan(Request $request)
     {
-      $angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first();
-      // dd($angkatan->namaAngkatan);
-      $data = Mahasiswa::join('kelompoks','mahasiswas.idKelompok','=','kelompoks.idKelompok')->where('idAngkatan','=',$angkatan->idAngkatan)->get();
-      foreach($data as $value){
-        $mahasiswa = Mahasiswa::find($value->nim);
-        $mahasiswa->nilaiAkhir += $request->nilai;
-        $mahasiswa->save();
-        $data = new Nilai;
-        $data->nim = $value->nim;
-        $data->idKategori = $request->kategori;
-        $data->tanggal = $request->tanggal;
-        $temp = explode("/", $data->tanggal);
-        $data->tanggal = implode("-", [$temp[2], $temp[1], $temp[0]]);
-        $data->keterangan = $request->keterangan;
-        $data->nilai= $request->nilai;
-        $data->save();
+      if($request->isMethod('post')){
+        $angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first();
+        // dd($angkatan->namaAngkatan);
+        $data = Mahasiswa::join('kelompoks','mahasiswas.idKelompok','=','kelompoks.idKelompok')->where('idAngkatan','=',$angkatan->idAngkatan)->get();
+        foreach($data as $value){
+          $mahasiswa = Mahasiswa::find($value->nim);
+          $mahasiswa->nilaiAkhir += $request->nilai;
+          $mahasiswa->save();
+          $data = new Nilai;
+          $data->nim = $value->nim;
+          $data->idKategori = $request->kategori;
+          $data->tanggal = $request->tanggal;
+          $temp = explode("/", $data->tanggal);
+          $data->tanggal = implode("-", [$temp[2], $temp[1], $temp[0]]);
+          $data->keterangan = $request->keterangan;
+          $data->nilai= $request->nilai;
+          $data->save();
+        }
       }
       return redirect()->action('AdminController@getDataInputAngkatan');
     }
 
     public function deleteNilaiIndividu(Request $request)
     {
-      $nilai = Nilai::find($request->id);
-      $mahasiswa = Mahasiswa::find($nilai->nim);
-      $mahasiswa->nilaiAkhir -= $nilai->nilai;
-      $mahasiswa->save();
-      $nilai->delete();
+      if($request->isMethod('post')){
+        $nilai = Nilai::find($request->id);
+        $mahasiswa = Mahasiswa::find($nilai->nim);
+        $mahasiswa->nilaiAkhir -= $nilai->nilai;
+        $mahasiswa->save();
+        $nilai->delete();
+      }
       return redirect()->action('AdminController@getDataInputIndividu');
     }
 
     public function deleteNilaiKelompok(Request $request)
     {
-      $data = Nilai::join('mahasiswas','nilais.nim','=','mahasiswas.nim')
-                    ->where('tanggal','=',$request->tanggal)
-                    ->where('idKelompok','=',$request->idKelompok)
-                    ->where('idKategori','=',$request->idKategori)
-                    ->where('keterangan','=',$request->keterangan)->get();
-      foreach ($data as $nilai) {
-        $mahasiswa = Mahasiswa::find($nilai->nim);
-        $mahasiswa->nilaiAkhir -= $nilai->nilai;
-        $mahasiswa->save();
-        $nilai->delete();
+      if($request->isMethod('post')){
+        $data = Nilai::join('mahasiswas','nilais.nim','=','mahasiswas.nim')
+        ->where('tanggal','=',$request->tanggal)
+        ->where('idKelompok','=',$request->idKelompok)
+        ->where('idKategori','=',$request->idKategori)
+        ->where('keterangan','=',$request->keterangan)->get();
+        foreach ($data as $nilai) {
+          $mahasiswa = Mahasiswa::find($nilai->nim);
+          $mahasiswa->nilaiAkhir -= $nilai->nilai;
+          $mahasiswa->save();
+          $nilai->delete();
+        }
       }
       return redirect()->action('AdminController@getDataInputKelompok');
     }
 
     public function deleteNilaiAngkatan(Request $request)
     {
-      $data = Nilai::join('mahasiswas','nilais.nim','=','mahasiswas.nim')
-                    ->join('kelompoks','mahasiswas.idKelompok','=','kelompoks.idKelompok')
-                    ->where('tanggal','=',$request->tanggal)
-                    ->where('idAngkatan','=',$request->idAngkatan)
-                    ->where('idKategori','=',$request->idKategori)->get();
-      foreach ($data as $nilai) {
-        $mahasiswa = Mahasiswa::find($nilai->nim);
-        $mahasiswa->nilaiAkhir -= $nilai->nilai;
-        $mahasiswa->save();
-        $nilai->delete();
+      if($request->isMethod('post')){
+        $data = Nilai::join('mahasiswas','nilais.nim','=','mahasiswas.nim')
+        ->join('kelompoks','mahasiswas.idKelompok','=','kelompoks.idKelompok')
+        ->where('tanggal','=',$request->tanggal)
+        ->where('idAngkatan','=',$request->idAngkatan)
+        ->where('idKategori','=',$request->idKategori)->get();
+        foreach ($data as $nilai) {
+          $mahasiswa = Mahasiswa::find($nilai->nim);
+          $mahasiswa->nilaiAkhir -= $nilai->nilai;
+          $mahasiswa->save();
+          $nilai->delete();
+        }
       }
       return redirect()->action('AdminController@getDataInputAngkatan');
     }

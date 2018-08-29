@@ -16,12 +16,13 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('test', function(){
-  return view('admin.index');
-});
-Route::get('/admin', 'HomeController@index')->name('home');
+// METHOD GOBLOG
+Route::get('/logout', 'Auth\LoginController@logout');//AWKOAKWOKAOKWOKW GOBLOG
+// END OF METHOD GOBLOG
+
 Route::middleware('auth')->group(function (){
+  Route::get('/admin', 'AdminController@home');
+  Route::post('/admin/search', 'AdminController@findMahasiswa');
   Route::get('/admin/input_individu', 'AdminController@getDataInputIndividu');
   Route::post('/admin/input_individu', 'AdminController@setDataInputIndividu');
   Route::post('/admin/delete_individu', 'AdminController@deleteNilaiIndividu');
