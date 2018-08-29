@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $idKategori
  * @property string $kategori
+ * @property int $nilai_kategori
  */
 class Kategori extends Model
 {
@@ -20,6 +21,6 @@ class Kategori extends Model
     /**
      * @var array
      */
-    protected $fillable = ['kategori'];
+    protected $fillable = ['kategori', 'nilai_kategori'];
 
 }

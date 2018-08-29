@@ -107,7 +107,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                <a class="dropdown-item" href="/logout"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
               </div>
             </li>
             <!-- ============================================================== -->
@@ -158,6 +158,10 @@
 
       <div class="container-fluid">
 
+        @foreach($kategori as $val)
+        <input type="hidden" id="nilai_kategori_{{$val->idKategori}}" value="{{$val->nilai_kategori}}">
+        @endforeach
+
         <div class="card">
           <form class="form-horizontal" method="post">
             {{ csrf_field() }}
@@ -169,20 +173,20 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lname" class="col-sm-3 text-right control-label col-form-label">NIM</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="lname" placeholder="Masukan NIM" name="nim">
-                </div>
-              </div>
-              <div class="form-group row">
                 <label class="col-sm-3 text-right control-label col-form-label">Kategori</label>
                 <div class="col-md-9">
-                  <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="kategori">
+                  <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="kategori" onchange="nilaiValue(this)">
                     <option>Select</option>
                     @foreach($kategori as $val)
                     <option value="{{$val->idKategori}}">{{$val->kategori}}</option>
                     @endforeach
                   </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-right control-label col-form-label">NIM</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="lname" placeholder="Masukan NIM" name="nim">
                 </div>
               </div>
               <div class="form-group row">
@@ -194,7 +198,7 @@
               <div class="form-group row">
                 <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nilai</label>
                 <div class="col-sm-9">
-                  <input type="number" class="form-control" placeholder="Masukan Nilai" name="nilai">
+                  <input type="number" class="form-control" placeholder="Masukan Nilai" name="nilai" value="0" id="nilai">
                 </div>
               </div>
             </div>
@@ -245,7 +249,7 @@
                           <!--  <input type="hidden" name="id" value="{{$value->idNilai}}"/>-->
                           <!--  <button type="submit" class="btn btn-info">edit</button>-->
                           <!--</form>    -->
-                          <form action='deleteNilaiIndividu' method="post">
+                          <form action='/admin/delete_individu' method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{$value->idNilai}}"/>
                             <button type="submit" class="btn btn-danger">delete</button>
@@ -322,6 +326,7 @@
   <script src="{{asset('assets/extra-libs/multicheck/datatable-checkbox-init.js')}}"></script>
   <script src="{{asset('assets/extra-libs/multicheck/jquery.multicheck.js')}}"></script>
   <script src="{{asset('assets/extra-libs/DataTables/datatables.min.js')}}"></script>
+  <script src="{{asset('js/nilai.js')}}"></script>
   <script>
   //***********************************//
   // For select 2
