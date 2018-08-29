@@ -10,7 +10,7 @@
   <meta name="author" content="">
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
-  <title>Input Nilai Mahasiswa Individu</title>
+  <title>Input Nilai Batch</title>
   <!-- Custom CSS -->
   <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/select2/dist/css/select2.min.css')}}">
@@ -107,7 +107,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                <a class="dropdown-item" href="/logout"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                <a class="dropdown-item" href="{{ url('/logout') }}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
               </div>
             </li>
             <!-- ============================================================== -->
@@ -151,17 +151,25 @@
       <div class="page-breadcrumb">
         <div class="row">
           <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Input Nilai Individu</h4>
+            <h4 class="page-title">Input Nilai Batch</h4>
           </div>
         </div>
       </div>
 
       <div class="container-fluid">
 
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading">Jadi Gini</h4>
+          <p>Menu ini digunakan untuk menginputkan nilai se-angkatan kecuali nim tertentu yang dipisahkan oleh ',' (koma).</p>
+          <p>Menu ini sangat beresiko jika anda salah input, karena saya males membuat fitur deletenya.<br> Kalau ada kesalahan input duh males sumpah!!1!1</p>
+          <hr>
+          <p class="mb-0">Lebih baik menu ini digunakan untuk absensi kehadiran saja</p>
+        </div>
+
+
         @foreach($kategori as $val)
         <input type="hidden" id="nilai_kategori_{{$val->idKategori}}" value="{{$val->nilai_kategori}}">
         @endforeach
-
         <div class="card">
           <form class="form-horizontal" method="post">
             {{ csrf_field() }}
@@ -184,12 +192,6 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lname" class="col-sm-3 text-right control-label col-form-label">NIM</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="lname" placeholder="Masukan NIM" name="nim">
-                </div>
-              </div>
-              <div class="form-group row">
                 <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Keterangan</label>
                 <div class="col-sm-9">
                   <textarea class="form-control" name="keterangan"></textarea>
@@ -198,8 +200,14 @@
               <div class="form-group row">
                 <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nilai</label>
                 <div class="col-sm-9">
-                  <input type="number" class="form-control" placeholder="Masukan Nilai" name="nilai" value="0" id="nilai">
+                  <input type="number" class="form-control" placeholder="Masukan Nilai" name="nilai" id="nilai">
                 </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Terkecuali (NIM)</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" name="exception_nim" placeholder="Dipisahkan oleh ','"></textarea>
               </div>
             </div>
             <div class="border-top">
@@ -209,66 +217,6 @@
             </div>
           </form>
         </div>
-
-        <!-- TABLES -->
-
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Nilai Mahasiswa</h5>
-                <div class="table-responsive">
-                  <table id="zero_config" class="table table-striped table-bordered" style="width:100%; table-layout: fixed;">
-                    <thead>
-                      <tr>
-                        <th>Tanggal</th>
-                        <th>NIM</th>
-                        <th>Nama</th>
-                        <th>Kelompok</th>
-                        <th>Kategori</th>
-                        <th>Keterangan</th>
-                        <th>Nilai</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-
-                      @foreach($data as $value)
-                      <tr>
-                        <td>{{$value->tanggal}}</td>
-                        <td>{{$value->nim}}</td>
-                        <td>{{$value->nama}}</td>
-                        <td>{{$value->namaKelompok}}</td>
-                        <td>{{$value->kategori}}</td>
-                        <td>{{$value->keterangan}}</td>
-                        <td>{{$value->nilai}}</td>
-                        <td>
-                          <!--<form action='editNilai' method="post">-->
-                          <!--  {{ csrf_field() }}-->
-                          <!--  <input type="hidden" name="id" value="{{$value->idNilai}}"/>-->
-                          <!--  <button type="submit" class="btn btn-info">edit</button>-->
-                          <!--</form>    -->
-                          <form action='/admin/delete_individu' method="post">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="id" value="{{$value->idNilai}}"/>
-                            <button type="submit" class="btn btn-danger">delete</button>
-                          </form>
-                        </td>
-                      </tr>
-                      @endforeach
-
-                    </tbody>
-
-                  </table>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-
       </div>
 
       <!-- ============================================================== -->

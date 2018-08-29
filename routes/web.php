@@ -32,4 +32,6 @@ Route::middleware('auth')->group(function (){
   Route::get('/admin/input_angkatan', 'AdminController@getDataInputAngkatan');
   Route::post('/admin/input_angkatan', 'AdminController@setDataInputAngkatan');
   Route::post('/admin/delete_angkatan', 'AdminController@deleteNilaiAngkatan');
+  Route::get('/admin/input_batch', 'AdminController@getDataInputBatch');
+  Route::post('/admin/input_batch', 'AdminController@setDataInputBatch');
 });

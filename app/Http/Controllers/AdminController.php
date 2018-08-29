@@ -30,18 +30,29 @@ class AdminController extends Controller
   public function findMahasiswa(Request $request)
   {
     if($request->isMethod('post')){
+      $id_angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first()->idAngkatan;
       $input = $request->nama_nim;
       if (preg_match('~[0-9]+~', $input)) {
         // NIM
-        $mahasiswas = Mahasiswa::where('nim', 'like', '%'.$input.'%')->get();
+        $mahasiswas = Mahasiswa::where('nim', 'like', '%'.$input.'%')
+        ->join('kelompoks', 'kelompoks.idKelompok', '=', 'mahasiswas.idKelompok')
+        ->where('kelompoks.idAngkatan', '=', $id_angkatan)
+        ->get();
       }
       else{
         // NAMA
-        $mahasiswas = Mahasiswa::where('nama', 'like', '%'.$input.'%')->get();
+        $mahasiswas = Mahasiswa::where('nama', 'like', '%'.$input.'%')
+        ->join('kelompoks', 'kelompoks.idKelompok', '=', 'mahasiswas.idKelompok')
+        ->where('kelompoks.idAngkatan', '=', $id_angkatan)
+        ->get();
       }
+      $nilais = array();
+      foreach($mahasiswas as $mahasiswa){
+        $nilais[$mahasiswa->nim] = Nilai::where('nim', $mahasiswa->nim)->get();
+      }
+      // dd($nilais);
       // dd($data);
-
-      return view('admin/search', ['mahasiswas' => $mahasiswas]);
+      return view('admin/search', ['mahasiswas' => $mahasiswas, 'nilais' => $nilais]);
     }
   }
 
@@ -92,7 +103,13 @@ class AdminController extends Controller
     // ->groupBy('keterangan')
     ->where('kelompoks.idAngkatan', '=', $id_angkatan)
     ->get();
-    return view('admin.input_kelompok', ['kategori' => $kategori, 'data' => $data, 'kelompok' => $kelompok]);
+    $datas = array();
+    foreach($data as $d){ // unique algorithm
+      $datas[$d->idKelompok] = $d;
+    }
+    // dd($data);
+    // $data = array_unique($data);
+    return view('admin.input_kelompok', ['kategori' => $kategori, 'data' => $datas, 'kelompok' => $kelompok]);
   }
 
   public function setDataInputKelompok(Request $request){
@@ -127,7 +144,11 @@ class AdminController extends Controller
           ->join('angkatans','kelompoks.idAngkatan','=','angkatans.idAngkatan')
           ->join('kategoris','nilais.idKategori','=','kategoris.idKategori')
           ->get();
-      return view('admin.input_angkatan',['kategori' => $kategori, 'data' => $data]);
+      $datas = array();
+      foreach($data as $d){ // unique algorithm
+        $datas[$d->idKelompok] = $d;
+      }
+      return view('admin.input_angkatan',['kategori' => $kategori, 'data' => $datas]);
     }
 
     public function setDataInputAngkatan(Request $request)
@@ -200,5 +221,39 @@ class AdminController extends Controller
         }
       }
       return redirect()->action('AdminController@getDataInputAngkatan');
+    }
+
+    public function getDataInputBatch()
+    {
+      $kategori = Kategori::all();
+      return view('admin.input_batch', ['kategori' => $kategori]);
+    }
+
+    public function setDataInputBatch(Request $request)
+    {
+      if($request->isMethod('post')){
+        $angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first();
+        // dd($angkatan->namaAngkatan);
+        $exception_nim = explode(",", $request->exception_nim);
+        $data = Mahasiswa::join('kelompoks','mahasiswas.idKelompok','=','kelompoks.idKelompok')
+                ->where('idAngkatan','=',$angkatan->idAngkatan)
+                ->whereNotIn('nim', $exception_nim)
+                ->get();
+        foreach($data as $value){
+          $mahasiswa = Mahasiswa::find($value->nim);
+          $mahasiswa->nilaiAkhir += $request->nilai;
+          $mahasiswa->save();
+          $data = new Nilai;
+          $data->nim = $value->nim;
+          $data->idKategori = $request->kategori;
+          $data->tanggal = $request->tanggal;
+          $temp = explode("/", $data->tanggal);
+          $data->tanggal = implode("-", [$temp[2], $temp[1], $temp[0]]);
+          $data->keterangan = $request->keterangan;
+          $data->nilai= $request->nilai;
+          $data->save();
+        }
+      }
+      return redirect()->action('AdminController@getDataInputBatch');
     }
 }
