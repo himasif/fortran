@@ -14,6 +14,10 @@ return [
     */
 
     'angkatan' => (9999),
+    'NILAI_WAJIB_MAX' => (264),
+    'NILAI_OPSIONAL_MAX' => (160),
+    'PRESENTASE_WAJIB' => (80),
+    'PRESENTASE_OPSIONAL' => (20),
 
     'name' => env('APP_NAME', 'Laravel'),
 

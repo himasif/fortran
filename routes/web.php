@@ -35,3 +35,4 @@ Route::middleware('auth')->group(function (){
   Route::get('/admin/input_batch', 'AdminController@getDataInputBatch');
   Route::post('/admin/input_batch', 'AdminController@setDataInputBatch');
 });
+Route::post('/nilai', 'HomeController@checkScore');

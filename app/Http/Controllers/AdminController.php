@@ -256,4 +256,36 @@ class AdminController extends Controller
       }
       return redirect()->action('AdminController@getDataInputBatch');
     }
+
+    public function calculateFinalScore()
+    {
+      $nim = 1234;
+      $nilais = Nilai::where('nim', $nim)->get();
+      $nilai_wajib = 0;
+      $nilai_opsional = 0;
+      foreach($nilais as $nilai){
+        if(Kategori::find($nilai->idKategori)->kategori_wajib) {
+          $nilai_wajib += $nilai->nilai;
+        }
+        else {
+          $nilai_opsional += $nilai->nilai;
+        }
+      }
+      $max_wajib = Config::get('app.NILAI_WAJIB_MAX');
+      $max_opsional = Config::get('app.NILAI_OPSIONAL_MAX');
+      $presentase_wajib = Config::get('app.PRESENTASE_WAJIB');
+      $presentase_opsional = Config::get('app.PRESENTASE_OPSIONAL');
+
+      $nilai_akhir = ($nilai_wajib / $max_wajib * $presentase_wajib) + ($nilai_opsional / $max_opsional * $presentase_opsional);
+
+      if($nilai_akhir >= 80) $score = "A";
+      else if($nilai_akhir >= 70) $score = "B";
+      else $score = "C";
+
+      $result = array();
+      $result["nilai"] = $nilai_akhir;
+      $result["score"] = $score;
+
+      return $result;
+    }
 }

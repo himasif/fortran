@@ -1,96 +1,212 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <title>FORTRAN 2016</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>Laravel</title>
+  <meta property="og:title" content="">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:description" content="">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+  <link rel="stylesheet" href="{{asset('css/animate.css')}}">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+  <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('css/main.css')}}">
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+  <script src="js/modernizr-2.7.1.js"></script>
 
-            .position-ref {
-                position: relative;
-            }
+</head>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+<body>
 
-            .content {
-                text-align: center;
-            }
 
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+    <div class="navbar navbar-inverse navbar-fixed-top hidden-xs hidden-sm">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" href="index.html"><h3 class="white">FORTRAN|For the Registered Generation</h3></a>
         </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#pricing" class="scroll"><a href="#">HIMASIF|BEM|Universitas jember</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <a href="index.html"><h3 class="wow fadeIn white">FORTRAN|For the Registered Generation</h3></a>
+          </div>
+          <div class="col-xs-6 signin text-right navbar-nav">
+            <a href="#pricing" class="scroll"><a href="#">HIMASIF|BEM|Universitas jember</a>
+          </div>
+        </div>
+
+        <div class="row1 header-info">
+          <div class="col-sm-10 col-sm-offset-1 text-center">
+            <h1 class="wow fadeIn">FORTRAN 2016</h1>
+            <br />
+            <p class="lead wow fadeIn" data-wow-delay="0.5s">For the Registered Generation</p>
+            <br />
+            <p class="lead wow fadeIn" data-wow-delay="0.5s">We Can Do!!!</p>
+            <br />
+
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                  <div class="col-xs-6 text-right wow fadeInUp" data-wow-delay="1s">
+                    <a href="#be-the-first" class="btn btn-secondary btn-lg scroll">Information</a>
+                  </div>
+                  <div class="col-xs-6 text-left wow fadeInUp" data-wow-delay="1.4s">
+                    <a href="#invite" class="btn btn-primary btn-lg scroll">Check Score</a>
+                  </div>
+                <div class="row1">
+                </div><!--End Button Row-->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="mouse-icon hidden-xs">
+				<div class="scroll"></div>
+			</div>
+
+    <section id="be-the-first" class="pad-xl">
+	    <div class="container">
+		    <div class="row">
+			    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.4s">
+				    <hr class="line purple">
+				    <h3>FORTRAN adalah</h3>
+				    <p>Salah satu program kerja dari HIMASIF yang bertujuan untuk membentuk mahasiswa baru sehingga menjadi pribadi yang komunikatif, tangguh, kreatif dan inovatif</p>
+			    </div>
+			    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.8s">
+				    <hr  class="line blue">
+				    <h3>Harmony</h3>
+				    <p>Harmoni adalah pernyataan rasa, aksi, gagasan, dan minat; keselarasan; keserasian<br>--KBBI--</p>
+			    </div>
+			    <div class="col-sm-4 wow fadeIn" data-wow-delay="1.2s">
+				    <hr  class="line yellow">
+				    <h3>Diversity</h3>
+				    <p>Alam Memberikan Pelajaran yang sangat berharga tentang keindahan melalui indahnya pelangi dengan adanya warna yang beraneka ragam. Jadikan perbedaan sebagai keindahan dalam harmoni</p>
+			    </div>
+		    </div>
+	    </div>
+    </section>
+
+
+    <section id="invite" class="pad-lg light-gray-bg">
+      <div class="container">
+        <div class="row">
+          @if (count($errors) > 0)
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+          <div class="col-sm-8 col-sm-offset-2 text-center">
+            <i class="fa fa-envelope-o margin-40"></i>
+            <h2 class="black">Check your Score!</h2>
+            <br />
+            <p class="black">You can Do the Best</p>
+            <br />
+
+            <div class="row">
+              <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <form role="form" action="/nilai" method="POST">
+
+                  <div class="form-group">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input name="nim" type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter Your NIM" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-lg">Request Score</button>
+                </form>
+              </div>
+            </div><!--End Form row-->
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="press" class="pad-sm">
+      <div class="container">
+
+        <div class="row margin-30 news-container">
+          <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 wow fadeInLeft" data-wow-delay="0.8s">
+<!--             <a href="#" target="_blank">
+            <img class="news-img pull-left" src="img/press-01.jpg" alt="Tech Crunch"> -->
+            <p class="black">Perbedaan bukan memecahkan, namun dari perbedaan bisa muncul sebuah kebersamaan, keakraban, dan keharmonisan. Dan itu akan kamu wujudkan dalam FORTRAN 2016<br />
+            <small><em>-Motto Bersama-</em></small></p>
+            </a>
+          </div>
+        </div>
+
+        <div class="row margin-30 news-container">
+          <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 wow fadeInLeft" data-wow-delay="1.2s">
+<!--             <a href="#" target="_blank">
+            <img class="news-img pull-left" src="img/press-02.jpg" alt="Forbes"> -->
+            <p class="black">Kalian mewakili potensi besar yang memiliki kemampuan untuk merubah dunia menjadi Luar Biasa<br />
+            <small><em>-Anonim-</em></small></p>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <footer>
+      <div class="container">
+
+        <div class="row">
+          <div class="col-sm-8 margin-20">
+            <ul class="list-inline social">
+              <li>Connect with us on</li>
+              <li><a href="http://www.twitter.com/himasifpssi"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="http://www.facebook.com/himasif.unej"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="http://www.instagram.com/himasif"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+
+          <div class="col-sm-4 text-right">
+            <p><small>Copyright &copy; 2016. All rights reserved. <br>
+	            Created by <a href="http://www.facebook.com/himasif.unej">Mediatek|HIMASIF</a></small></p>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="{{asset('js/wow.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
+
+
     </body>
 </html>
