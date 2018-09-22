@@ -66,7 +66,8 @@
             <!-- Logo text -->
             <span class="logo-text">
               <!-- dark Logo text -->
-              <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" />
+              <h2>Fortran</h2>
+              <!-- <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" /> -->
 
             </span>
             <!-- Logo icon -->
@@ -123,23 +124,7 @@
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar" data-sidebarbg="skin5">
-      <!-- Sidebar scroll-->
-      <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav" class="p-t-30">
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_individu" aria-expanded="false"><i class="mdi fas fa-user"></i><span class="hide-menu">Input Nilai Individu</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_kelompok" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Input Nilai Kelompok</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_angkatan" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Input Nilai Angkatan</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_batch" aria-expanded="false"><i class="mdi mdi-buffer"></i><span class="hide-menu">Input Batch</span></a></li>
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
+    @include('layouts.menu_bar')
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
@@ -170,7 +155,7 @@
               <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-right control-label col-form-label">Tanggal <small class="text-muted">dd/mm/yyyy</small></label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="Masukan Tanggal" name="tanggal">
+                  <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="Masukan Tanggal" name="tanggal" required>
                 </div>
               </div>
               <div class="form-group row">
@@ -204,7 +189,7 @@
               <div class="form-group row">
                 <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nilai</label>
                 <div class="col-sm-9">
-                  <input type="number" class="form-control" placeholder="Masukan Nilai" name="nilai" id="nilai">
+                  <input type="number" class="form-control" placeholder="Masukan Nilai" name="nilai" id="nilai" required>
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8">
-  <title>FORTRAN 2016</title>
+  <title>FORTRAN {{ \Config::get('app.angkatan')}}</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -28,6 +28,8 @@
 <body>
 
 
+
+
     <div class="navbar navbar-inverse navbar-fixed-top hidden-xs hidden-sm">
       <div class="container">
         <div class="navbar-header">
@@ -40,30 +42,28 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#pricing" class="scroll"><a href="#">HIMASIF|BEM|Universitas jember</a></li>
+            <li><a href="#pricing" class="scroll"><a href="http://bem.ilkom.unej.ac.id/">BEM|Universitas jember</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
 
     <header>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-6">
-            <a href="index.html"><h3 class="wow fadeIn white">FORTRAN|For the Registered Generation</h3></a>
-          </div>
-          <div class="col-xs-6 signin text-right navbar-nav">
-            <a href="#pricing" class="scroll"><a href="#">HIMASIF|BEM|Universitas jember</a>
-          </div>
+
+      <div class="bgimg">
+        <div class="bgimg-black">
         </div>
+      </div>
+
+      <div class="container">
 
         <div class="row1 header-info">
           <div class="col-sm-10 col-sm-offset-1 text-center">
-            <h1 class="wow fadeIn">FORTRAN 2016</h1>
+            <h1 class="wow fadeIn">FORTRAN {{ \Config::get('app.angkatan')}}</h1>
             <br />
             <p class="lead wow fadeIn" data-wow-delay="0.5s">For the Registered Generation</p>
             <br />
-            <p class="lead wow fadeIn" data-wow-delay="0.5s">We Can Do!!!</p>
+            <p class="lead wow fadeIn" data-wow-delay="0.5s">Let's Become Family</p>
             <br />
 
             <div class="row">
@@ -91,20 +91,15 @@
     <section id="be-the-first" class="pad-xl">
 	    <div class="container">
 		    <div class="row">
-			    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.4s">
+			    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
 				    <hr class="line purple">
-				    <h3>FORTRAN adalah</h3>
-				    <p>Salah satu program kerja dari HIMASIF yang bertujuan untuk membentuk mahasiswa baru sehingga menjadi pribadi yang komunikatif, tangguh, kreatif dan inovatif</p>
+				    <h3 style="text-align: center;">FORTRAN</h3>
+				    <p>Salah satu kegiatan pengembangan mahasiswa baru yang bertujuan untuk membentuk karakter mahasiswa baru sehingga menjadi pribadi yang komunikatif, tangguh, kreatif dan inovatif</p>
 			    </div>
-			    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.8s">
+			    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.8s">
 				    <hr  class="line blue">
-				    <h3>Harmony</h3>
-				    <p>Harmoni adalah pernyataan rasa, aksi, gagasan, dan minat; keselarasan; keserasian<br>--KBBI--</p>
-			    </div>
-			    <div class="col-sm-4 wow fadeIn" data-wow-delay="1.2s">
-				    <hr  class="line yellow">
-				    <h3>Diversity</h3>
-				    <p>Alam Memberikan Pelajaran yang sangat berharga tentang keindahan melalui indahnya pelangi dengan adanya warna yang beraneka ragam. Jadikan perbedaan sebagai keindahan dalam harmoni</p>
+				    <h3 style="text-align: center;">Family</h3>
+				    <p>Tempat dimana kita merasa nyaman dalam segala hal, maka jadikanlah keluarga fasilkom ini menjadi tempat yang nyaman bagi kalian untuk sekedar sharing kuliah dan dalam hal lain</p>
 			    </div>
 		    </div>
 	    </div>
@@ -113,16 +108,13 @@
 
     <section id="invite" class="pad-lg light-gray-bg">
       <div class="container">
+        @if(session('message'))
+        <div class="error-nim">
+          <h2 class="error-nim-text">NIM Tidak Ditemukan</h2>
+        </div>
+        @endif
         <div class="row">
-          @if (count($errors) > 0)
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
+
           <div class="col-sm-8 col-sm-offset-2 text-center">
             <i class="fa fa-envelope-o margin-40"></i>
             <h2 class="black">Check your Score!</h2>
@@ -177,20 +169,9 @@
 
     <footer>
       <div class="container">
-
-        <div class="row">
-          <div class="col-sm-8 margin-20">
-            <ul class="list-inline social">
-              <li>Connect with us on</li>
-              <li><a href="http://www.twitter.com/himasifpssi"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="http://www.facebook.com/himasif.unej"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="http://www.instagram.com/himasif"><i class="fa fa-instagram"></i></a></li>
-            </ul>
-          </div>
-
-          <div class="col-sm-4 text-right">
-            <p><small>Copyright &copy; 2016. All rights reserved. <br>
-	            Created by <a href="http://www.facebook.com/himasif.unej">Mediatek|HIMASIF</a></small></p>
+          <div class="col-sm-12 text-center">
+            <p><small>Copyright &copy; 2018. All rights reserved. <br>
+	            Created by <a href="https://github.com/himasif/">Mediatek|HIMASIF</a></small></p>
           </div>
         </div>
 

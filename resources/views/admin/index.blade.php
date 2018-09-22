@@ -42,6 +42,7 @@
     <!-- ============================================================== -->
     <header class="topbar" data-navbarbg="skin5">
       <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+
         <div class="navbar-header" data-logobg="skin5">
           <!-- This is for the sidebar toggle which is visible on mobile only -->
           <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
@@ -59,9 +60,8 @@
             <!--End Logo icon -->
             <!-- Logo text -->
             <span class="logo-text">
-              <!-- dark Logo text -->
-              <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" />
-
+              <h2>Fortran</h2>
+              <!-- <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" /> -->
             </span>
             <!-- Logo icon -->
             <!-- <b class="logo-icon"> -->
@@ -101,7 +101,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                <a class="dropdown-item" href="/logout"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
               </div>
             </li>
             <!-- ============================================================== -->
@@ -117,23 +117,7 @@
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar" data-sidebarbg="skin5">
-      <!-- Sidebar scroll-->
-      <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav" class="p-t-30">
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_individu" aria-expanded="false"><i class="mdi fas fa-user"></i><span class="hide-menu">Input Nilai Individu</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_kelompok" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Input Nilai Kelompok</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_angkatan" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Input Nilai Angkatan</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_batch" aria-expanded="false"><i class="mdi mdi-buffer"></i><span class="hide-menu">Input Batch</span></a></li>
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
+    @include('layouts.menu_bar')
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
@@ -169,7 +153,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Top 10</h5>
+                <h5 class="card-title">Top 10 Teratas</h5>
                 @php
                 $i=1;
                 @endphp
@@ -200,7 +184,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Top 10 (Goblognya)</h5>
+                <h5 class="card-title">Top 10 Terbawah</h5>
                 @php
                 $i=1;
                 @endphp

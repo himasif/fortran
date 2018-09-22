@@ -10,16 +10,10 @@
   <meta name="author" content="">
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
-  <title>Resign Mahasiswa</title>
+  <title>Fortran 2018</title>
   <!-- Custom CSS -->
   <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/select2/dist/css/select2.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/quill/dist/quill.snow.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/extra-libs/multicheck/multicheck.css')}}">
   <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
-  <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js')}} IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js')}} doesn't work if you view the page via file:// -->
@@ -124,23 +118,7 @@
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar" data-sidebarbg="skin5">
-      <!-- Sidebar scroll-->
-      <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav" class="p-t-30">
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_individu" aria-expanded="false"><i class="mdi fas fa-user"></i><span class="hide-menu">Input Nilai Individu</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_kelompok" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Input Nilai Kelompok</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_angkatan" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Input Nilai Angkatan</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_batch" aria-expanded="false"><i class="mdi mdi-buffer"></i><span class="hide-menu">Input Batch</span></a></li>
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
+    @include('layouts.menu_bar')
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
@@ -148,3 +126,101 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+
+      <!-- THIS IS THE BODY -->
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h4>Nama : {{$mahasiswa->nama}}</h4>
+                <h4>NIM : {{$mahasiswa->nim}}</h4>
+                <h4>Kelompok : {{App\Kelompok::find($mahasiswa->idKelompok)->namaKelompok}}</h4>
+                <h4>Nilai : {{$mahasiswa->nilaiAkhir}}</h4>
+                <br>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Tanggal</th>
+                      <th scope="col">Kategori</th>
+                      <th scope="col">Keterangan</th>
+                      <th scope="col">Nilai</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($nilais as $nilai)
+                    <tr>
+                      <td>{{$nilai->tanggal}}</td>
+                      <td>{{App\Kategori::find($nilai->idKategori)->kategori}}</td>
+                      <td>{{$nilai->keterangan}}</td>
+                      <td>{{$nilai->nilai}}</td>
+                      <td>
+                        <form class="" action="/admin/mahasiswa/{{$mahasiswa->nim}}" method="post">
+                          {{csrf_field()}}
+                          <input type="hidden" name="id" value="{{$nilai->idNilai}}">
+                          <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                      </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- ============================================================== -->
+      <!-- footer -->
+      <!-- ============================================================== -->
+      <footer class="footer text-center">
+        Created by Mediatek <a href="https://github.com/himasif">Himasif</a>
+      </footer>
+      <!-- ============================================================== -->
+      <!-- End footer -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Wrapper -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- All Jquery -->
+  <!-- ============================================================== -->
+  <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="{{asset('assets/libs/popper.js')}}/dist/umd/popper.min.js')}}"></script>
+  <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/sparkline/sparkline.js')}}"></script>
+  <!--Wave Effects -->
+  <script src="{{asset('dist/js/waves.js')}}"></script>
+  <!--Menu sidebar -->
+  <script src="{{asset('dist/js/sidebarmenu.js')}}"></script>
+  <!--Custom JavaScript -->
+  <script src="{{asset('dist/js/custom.min.js')}}"></script>
+  <!--This page JavaScript -->
+  <!-- <script src="{{asset('dist/js/pages/dashboards/dashboard1.js')}}"></script> -->
+  <!-- Charts js Files -->
+  <script src="{{asset('assets/libs/flot/excanvas.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.pie.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.time.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.stack.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
+  <script src="{{asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
+  <script src="{{asset('dist/js/pages/chart/chart-page-init.js')}}"></script>
+
+</body>
+
+</html>

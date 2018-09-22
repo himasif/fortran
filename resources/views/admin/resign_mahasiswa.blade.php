@@ -124,23 +124,7 @@
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar" data-sidebarbg="skin5">
-      <!-- Sidebar scroll-->
-      <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav" class="p-t-30">
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_individu" aria-expanded="false"><i class="mdi fas fa-user"></i><span class="hide-menu">Input Nilai Individu</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_kelompok" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Input Nilai Kelompok</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_angkatan" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Input Nilai Angkatan</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_batch" aria-expanded="false"><i class="mdi mdi-buffer"></i><span class="hide-menu">Input Batch</span></a></li>
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
+    @include('layouts.menu_bar')
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
@@ -148,3 +132,171 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+
+      <div class="page-breadcrumb">
+        <div class="row">
+          <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">Input NIM Mahasiswa Resign</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="card">
+          <form class="form-vertical" method="post">
+            {{ csrf_field() }}
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Masukan NIM Mahasiswa yang resign</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="lname" placeholder="Masukan NIM" name="nim">
+                </div>
+              </div>
+            </div>
+            <div class="border-top">
+              <div class="card-body">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Mahasiswa Resign</h5>
+                <div class="table-responsive">
+                  <table id="zero_config" class="table table-striped table-bordered" style="width:100%; table-layout: fixed;">
+                    <thead>
+                      <tr>
+                        <th>NIM</th>
+                        <th>Nama</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      @foreach($data as $value)
+                      <tr>
+                        <td>{{$value->nim}}</td>
+                        <td>{{$value->nama}}</td>
+                      </tr>
+                      @endforeach
+
+                    </tbody>
+
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- footer -->
+      <!-- ============================================================== -->
+      <footer class="footer text-center">
+        Created by Mediatek <a href="https://github.com/himasif">Himasif</a>
+      </footer>
+      <!-- ============================================================== -->
+      <!-- End footer -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Wrapper -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- All Jquery -->
+  <!-- ============================================================== -->
+  <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="{{asset('assets/libs/popper.js')}}/dist/umd/popper.min.js')}}"></script>
+  <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/sparkline/sparkline.js')}}"></script>
+  <!--Wave Effects -->
+  <script src="{{asset('dist/js/waves.js')}}"></script>
+  <!--Menu sidebar -->
+  <script src="{{asset('dist/js/sidebarmenu.js')}}"></script>
+  <!--Custom JavaScript -->
+  <script src="{{asset('dist/js/custom.min.js')}}"></script>
+  <!--This page JavaScript -->
+  <!-- <script src="{{asset('dist/js/pages/dashboards/dashboard1.js')}}"></script> -->
+  <!-- Charts js Files -->
+  <script src="{{asset('assets/libs/flot/excanvas.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.pie.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.time.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.stack.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
+  <script src="{{asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
+  <script src="{{asset('assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+  <script src="{{asset('dist/js/pages/mask/mask.init.js')}}"></script>
+  <script src="{{asset('assets/libs/select2/dist/js/select2.full.min.js')}}"></script>
+  <script src="{{asset('assets/libs/select2/dist/js/select2.min.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-asColor/dist/jquery-asColor.min.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-asGradient/dist/jquery-asGradient.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.min.js')}}"></script>
+  <script src="{{asset('assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{asset('assets/libs/quill/dist/quill.min.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/multicheck/datatable-checkbox-init.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/multicheck/jquery.multicheck.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/DataTables/datatables.min.js')}}"></script>
+  <script src="{{asset('js/nilai.js')}}"></script>
+  <script>
+  //***********************************//
+  // For select 2
+  //***********************************//
+  $(".select2").select2();
+
+  /*colorpicker*/
+  $('.demo').each(function() {
+    //
+    // Dear reader, it's actually very easy to initialize MiniColors. For example:
+    //
+    //  $(selector).minicolors();
+    //
+    // The way I've done it below is just for the demo, so don't get confused
+    // by it. Also, data- attributes aren't supported at this time...they're
+    // only used for this demo.
+    //
+    $(this).minicolors({
+      control: $(this).attr('data-control') || 'hue',
+      position: $(this).attr('data-position') || 'bottom left',
+
+      change: function(value, opacity) {
+        if (!value) return;
+        if (opacity) value += ', ' + opacity;
+        if (typeof console === 'object') {
+          console.log(value);
+        }
+      },
+      theme: 'bootstrap'
+    });
+
+  });
+  /*datwpicker*/
+  jQuery('.mydatepicker').datepicker();
+  jQuery('#datepicker-autoclose').datepicker({
+    autoclose: true,
+    todayHighlight: true
+  });
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+
+  $('#zero_config').DataTable();
+
+  </script>
+
+</body>
+
+</html>

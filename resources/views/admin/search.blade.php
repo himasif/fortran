@@ -60,7 +60,8 @@
             <!-- Logo text -->
             <span class="logo-text">
               <!-- dark Logo text -->
-              <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" />
+              <h2>Fortran</h2>
+              <!-- <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" /> -->
 
             </span>
             <!-- Logo icon -->
@@ -101,7 +102,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                <a class="dropdown-item" href="/logout"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
               </div>
             </li>
             <!-- ============================================================== -->

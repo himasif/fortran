@@ -34,5 +34,10 @@ Route::middleware('auth')->group(function (){
   Route::post('/admin/delete_angkatan', 'AdminController@deleteNilaiAngkatan');
   Route::get('/admin/input_batch', 'AdminController@getDataInputBatch');
   Route::post('/admin/input_batch', 'AdminController@setDataInputBatch');
+  Route::get('/admin/resign', 'AdminController@getDataResignMahasiswa');
+  Route::post('/admin/resign', 'AdminController@setDataResignMahasiswa');
+  Route::get('/admin/list', 'AdminController@getListMahasiswa');
+  Route::get('/admin/mahasiswa/{nim}', 'AdminController@getDetailMahasiswa');
+  Route::post('/admin/mahasiswa/{nim}', 'AdminController@deleteNilaiFromDetailMahasiswa');
 });
-Route::post('/nilai', 'HomeController@checkScore');
+Route::post('nilai', 'HomeController@checkScore');

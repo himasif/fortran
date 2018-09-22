@@ -10,16 +10,10 @@
   <meta name="author" content="">
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
-  <title>Resign Mahasiswa</title>
+  <title>Fortran 2018</title>
   <!-- Custom CSS -->
   <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/select2/dist/css/select2.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/quill/dist/quill.snow.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets/extra-libs/multicheck/multicheck.css')}}">
   <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
-  <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js')}} IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js')}} doesn't work if you view the page via file:// -->
@@ -48,6 +42,7 @@
     <!-- ============================================================== -->
     <header class="topbar" data-navbarbg="skin5">
       <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+
         <div class="navbar-header" data-logobg="skin5">
           <!-- This is for the sidebar toggle which is visible on mobile only -->
           <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
@@ -65,10 +60,8 @@
             <!--End Logo icon -->
             <!-- Logo text -->
             <span class="logo-text">
-              <!-- dark Logo text -->
               <h2>Fortran</h2>
               <!-- <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" /> -->
-
             </span>
             <!-- Logo icon -->
             <!-- <b class="logo-icon"> -->
@@ -124,23 +117,7 @@
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar" data-sidebarbg="skin5">
-      <!-- Sidebar scroll-->
-      <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav" class="p-t-30">
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_individu" aria-expanded="false"><i class="mdi fas fa-user"></i><span class="hide-menu">Input Nilai Individu</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_kelompok" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Input Nilai Kelompok</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_angkatan" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Input Nilai Angkatan</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_batch" aria-expanded="false"><i class="mdi mdi-buffer"></i><span class="hide-menu">Input Batch</span></a></li>
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
+    @include('layouts.menu_bar')
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
@@ -148,3 +125,96 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+
+      <!-- THIS IS THE BODY -->
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">List Peserta Fortran {{\Config::get('app.angkatan')}}</h5>
+                @php
+                $i=1;
+                @endphp
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">NIM</th>
+                      <th scope="col">Kelompok</th>
+                      <th scope="col">Nilai</th>
+                      <th scope="col">Detail</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($data as $mahasiswa)
+                    <tr>
+                      <th scope="row">{{$i++}}</th>
+                      <td>{{$mahasiswa->nama}}</td>
+                      <td>{{$mahasiswa->nim}}</td>
+                      <td>{{App\Kelompok::find($mahasiswa->idKelompok)->namaKelompok}}</td>
+                      <td>{{$mahasiswa->nilaiAkhir}}</td>
+                      <td>
+                        <a href="/admin/mahasiswa/{{$mahasiswa->nim}}" class="btn btn-primary">Details</a>
+                          <!-- <button type="submit" class="btn btn-warning">Detail</button> -->
+                      </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- footer -->
+      <!-- ============================================================== -->
+      <footer class="footer text-center">
+        Created by Mediatek <a href="https://github.com/himasif">Himasif</a>
+      </footer>
+      <!-- ============================================================== -->
+      <!-- End footer -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Wrapper -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- All Jquery -->
+  <!-- ============================================================== -->
+  <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="{{asset('assets/libs/popper.js')}}/dist/umd/popper.min.js')}}"></script>
+  <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/sparkline/sparkline.js')}}"></script>
+  <!--Wave Effects -->
+  <script src="{{asset('dist/js/waves.js')}}"></script>
+  <!--Menu sidebar -->
+  <script src="{{asset('dist/js/sidebarmenu.js')}}"></script>
+  <!--Custom JavaScript -->
+  <script src="{{asset('dist/js/custom.min.js')}}"></script>
+  <!--This page JavaScript -->
+  <!-- <script src="{{asset('dist/js/pages/dashboards/dashboard1.js')}}"></script> -->
+  <!-- Charts js Files -->
+  <script src="{{asset('assets/libs/flot/excanvas.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.pie.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.time.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.stack.js')}}"></script>
+  <script src="{{asset('assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
+  <script src="{{asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
+  <script src="{{asset('dist/js/pages/chart/chart-page-init.js')}}"></script>
+
+</body>
+
+</html>
