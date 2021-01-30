@@ -42,7 +42,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#pricing" class="scroll"><a href="http://bem.ilkom.unej.ac.id/">BEM|Universitas jember</a></li>
+            <li><a href="#pricing" class="scroll"><a href="http://himasif.ilkom.unej.ac.id/">HIMASIF|Universitas jember</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -68,11 +68,14 @@
 
             <div class="row">
               <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                  <div class="col-xs-6 text-right wow fadeInUp" data-wow-delay="1s">
+                  <div class="col-xs-4 text-right wow fadeInUp" data-wow-delay="1s">
                     <a href="#be-the-first" class="btn btn-secondary btn-lg scroll">Information</a>
                   </div>
-                  <div class="col-xs-6 text-left wow fadeInUp" data-wow-delay="1.4s">
+                  <div class="col-xs-4 wow fadeInUp" data-wow-delay="1.4s">
                     <a href="#invite" class="btn btn-primary btn-lg scroll">Check Score</a>
+                  </div>
+                  <div class="col-xs-4 text-left wow fadeInUp" data-wow-delay="1.4s">
+                    <a href="https://linktr.ee/FORTRAN2020" target="_blank" class="btn btn-secondary btn-lg">Other Content</a>
                   </div>
                 <div class="row1">
                 </div><!--End Button Row-->
@@ -94,12 +97,12 @@
 			    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
 				    <hr class="line purple">
 				    <h3 style="text-align: center;">FORTRAN</h3>
-				    <p>Salah satu kegiatan pengembangan mahasiswa baru yang bertujuan untuk membentuk karakter mahasiswa baru sehingga menjadi pribadi yang komunikatif, tangguh, kreatif dan inovatif</p>
+				    <p>Fortran merupakan ospek jurusan yang diselengarakan oleh Program Studi Sistem Informasi Universitas Jember. Dengan diselengarakannya Fortran diharapkan mahasiswa baru dapat menjadi pribadi yang lebih kritis, inovatif, dan mengenal program studinya lebih jauh lagi.</p>
 			    </div>
-			    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.8s">
-				    <hr  class="line blue">
-				    <h3 style="text-align: center;">Family</h3>
-				    <p>Tempat dimana kita merasa nyaman dalam segala hal, maka jadikanlah keluarga fasilkom ini menjadi tempat yang nyaman bagi kalian untuk sekedar sharing kuliah dan dalam hal lain</p>
+          <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
+				    <hr class="line blue">
+				    <h3 style="text-align: center;">FAMILY</h3>
+				    <p>Fortran merupakan ospek jurusan yang diselengarakan oleh Program Studi Sistem Informasi Universitas Jember. Dengan diselengarakannya Fortran diharapkan mahasiswa baru dapat menjadi pribadi yang lebih kritis, inovatif, dan mengenal program studinya lebih jauh lagi.</p>
 			    </div>
 		    </div>
 	    </div>
@@ -147,8 +150,8 @@
           <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 wow fadeInLeft" data-wow-delay="0.8s">
 <!--             <a href="#" target="_blank">
             <img class="news-img pull-left" src="img/press-01.jpg" alt="Tech Crunch"> -->
-            <p class="black">Perbedaan bukan memecahkan, namun dari perbedaan bisa muncul sebuah kebersamaan, keakraban, dan keharmonisan. Dan itu akan kamu wujudkan dalam FORTRAN 2016<br />
-            <small><em>-Motto Bersama-</em></small></p>
+            <p class="black">“If there was one life skill everyone on the planet needed, it was the ability to think with critical objectivity.”<br />
+            <small><em>-Josh Lanyon-</em></small></p>
             </a>
           </div>
         </div>
@@ -157,8 +160,8 @@
           <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 wow fadeInLeft" data-wow-delay="1.2s">
 <!--             <a href="#" target="_blank">
             <img class="news-img pull-left" src="img/press-02.jpg" alt="Forbes"> -->
-            <p class="black">Kalian mewakili potensi besar yang memiliki kemampuan untuk merubah dunia menjadi Luar Biasa<br />
-            <small><em>-Anonim-</em></small></p>
+            <p class="black">"Ini semacam sikap mental tentang pemikiran kritis dan keingintahuan. Ini tentang pola pikir dalam melihat dunia dengan cara yang menyenangkan dan kreatif."<br />
+            <small><em>-Adam Savage-</em></small></p>
             </a>
           </div>
         </div>
@@ -170,7 +173,7 @@
     <footer>
       <div class="container">
           <div class="col-sm-12 text-center">
-            <p><small>Copyright &copy; 2018. All rights reserved. <br>
+            <p><small>Copyright &copy; {{ \Config::get('app.angkatan')}}. All rights reserved. <br>
 	            Created by <a href="https://github.com/himasif/">Mediatek|HIMASIF</a></small></p>
           </div>
         </div>
