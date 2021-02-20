@@ -8,8 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
   <title>Resign Mahasiswa</title>
   <!-- Custom CSS -->
   <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
@@ -20,6 +18,8 @@
   <link rel="stylesheet" type="text/css" href="{{asset('assets/extra-libs/multicheck/multicheck.css')}}">
   <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
   <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+
+  <link rel="icon" href="{{asset('img/logo.jpg')}}" type="image/gif" sizes="16x16">
 
   <!-- HTML5 Shim and Respond.js')}} IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js')}} doesn't work if you view the page via file:// -->

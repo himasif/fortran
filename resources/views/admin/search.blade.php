@@ -8,12 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+
   <title>Fortran {{ \Config::get('app.angkatan')}}</title>
   <!-- Custom CSS -->
   <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
   <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
+
+  <link rel="icon" href="{{asset('img/logo.jpg')}}" type="image/gif" sizes="16x16">
 
   <!-- HTML5 Shim and Respond.js')}} IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js')}} doesn't work if you view the page via file:// -->
@@ -53,12 +54,12 @@
             <b class="logo-icon p-l-10">
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
               <!-- Dark Logo icon -->
-              <img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
+              <img src="{{asset('img/logo.jpg')}}" alt="homepage" class="light-logo" width="45px"/>
 
             </b>
             <!--End Logo icon -->
             <!-- Logo text -->
-            <span class="logo-text">
+            <span class="logo-text mt-3">
               <!-- dark Logo text -->
               <h2>Fortran</h2>
               <!-- <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" /> -->
@@ -118,23 +119,7 @@
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar" data-sidebarbg="skin5">
-      <!-- Sidebar scroll-->
-      <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav" class="p-t-30">
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_individu" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Input Nilai Individu</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_kelompok" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Input Nilai Kelompok</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/input_angkatan" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Input Nilai Angkatan</span></a></li>
-
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
+    @include('layouts.menu_bar')
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->

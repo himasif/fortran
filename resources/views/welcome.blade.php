@@ -20,6 +20,7 @@
 
   <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
+  <link rel="icon" href="{{asset('img/logo.jpg')}}" type="image/gif" sizes="16x16">
 
   <script src="js/modernizr-2.7.1.js"></script>
 
