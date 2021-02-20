@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 30, 2021 at 04:55 PM
--- Server version: 5.7.26-0ubuntu0.16.04.1
--- PHP Version: 7.1.30-1+ubuntu16.04.1+deb.sury.org+1
+-- Host: 127.0.0.1
+-- Generation Time: Feb 20, 2021 at 11:06 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -27,19 +27,11 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `angkatans`
 --
--- Creation: Jun 27, 2019 at 12:52 AM
--- Last update: Jan 21, 2021 at 10:49 AM
---
 
-CREATE TABLE IF NOT EXISTS `angkatans` (
-  `idAngkatan` int(11) NOT NULL AUTO_INCREMENT,
-  `namaAngkatan` varchar(50) NOT NULL,
-  PRIMARY KEY (`idAngkatan`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `angkatans`:
---
+CREATE TABLE `angkatans` (
+  `idAngkatan` int(11) NOT NULL,
+  `namaAngkatan` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `angkatans`
@@ -57,70 +49,53 @@ INSERT INTO `angkatans` (`idAngkatan`, `namaAngkatan`) VALUES
 --
 -- Table structure for table `kategoris`
 --
--- Creation: Jun 27, 2019 at 12:52 AM
---
 
-CREATE TABLE IF NOT EXISTS `kategoris` (
-  `idKategori` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `kategoris` (
+  `idKategori` int(11) NOT NULL,
   `kategori` varchar(50) NOT NULL,
   `nilai_kategori` int(11) NOT NULL,
-  `kategori_wajib` tinyint(1) NOT NULL,
-  PRIMARY KEY (`idKategori`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `kategoris`:
---
+  `kategori_wajib` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `kategoris`
 --
 
 INSERT INTO `kategoris` (`idKategori`, `kategori`, `nilai_kategori`, `kategori_wajib`) VALUES
-(1, 'Kehadiran', 1, 1),
-(2, 'Etika', 1, 1),
-(3, 'Kedisiplinan', 1, 1),
-(4, 'Tugas (Buku)', 1, 1),
-(5, 'Keterlambatan', -20, 1),
-(6, 'Tidak Hadir Tanpa Alasan', -30, 1),
-(7, 'Tidak Hadir Dengan Surat', -25, 1),
-(8, 'Etika Buruk', -10, 1),
-(9, 'Atribut Tidak Lengkap', -10, 1),
-(10, 'Konsumsi Tidak Sesuai', -10, 1),
-(11, 'Tidak Mengerjakan Tugas', -40, 1),
-(12, 'Keaktifan Individu', 0, 0),
-(13, 'Tugas Kelompok', 1, 1),
-(14, 'Konsumsi', 1, 1),
-(15, 'Atribut Kelompok', 1, 1),
-(16, 'Yel-Yel', 1, 1),
-(17, 'Tidak mengerjakan tugas kelompok', -40, 1),
-(18, 'Game Berkelompok', 0, 0),
-(19, 'Keaktifan Angkatan', 0, 1),
-(20, 'Problem Solving', 0, 1);
+(1, 'Tugas (Buku)', 1, 1),
+(2, 'Keaktifan individu', 1, 1),
+(3, 'Keterlambatan', -10, 0),
+(4, 'Tidak hadir tanpa surat', -20, 0),
+(5, 'Tidak hadir dengan surat', -10, 0),
+(6, 'Etika', -5, 0),
+(7, 'Atribut tidak lengkap', -2, 0),
+(8, 'Tidak mengerjakan tugas', -20, 0),
+(9, 'Melakukan salah satu jenis pelanggaran berat', -20, 0),
+(10, 'Membantah panitia tanpa alasan yang jelas', -10, 0),
+(11, 'Tidur atau membuat kegaduhan selama acara berjalan', -10, 0),
+(12, 'Tugas kelompok (Video)', 1, 1),
+(13, 'Mengikuti presentasi proposal lomba', 2, 1),
+(14, '5 besar proposal lomba', 3, 1),
+(15, 'Menghubungi panitia di luar jam yang ditentukan', -10, 0),
+(16, 'Terlambat hadir', -5, 0),
+(17, 'Keaktifan angkatan', 1, 1),
+(18, 'Problem Solving', 1, 1),
+(19, '-', 0, 0),
+(20, '-', 0, 0),
+(21, '-', 0, 0),
+(22, '-', 0, 0);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `kelompoks`
 --
--- Creation: Jun 27, 2019 at 12:52 AM
--- Last update: Jan 30, 2021 at 09:39 AM
---
 
-CREATE TABLE IF NOT EXISTS `kelompoks` (
-  `idKelompok` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `kelompoks` (
+  `idKelompok` int(11) NOT NULL,
   `namaKelompok` varchar(100) NOT NULL,
-  `idAngkatan` int(11) NOT NULL,
-  PRIMARY KEY (`idKelompok`),
-  KEY `idAngkatan` (`idAngkatan`),
-  KEY `idAngkatan_2` (`idAngkatan`)
-) ENGINE=InnoDB AUTO_INCREMENT=100000 DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `kelompoks`:
---   `idAngkatan`
---       `angkatans` -> `idAngkatan`
---
+  `idAngkatan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `kelompoks`
@@ -194,25 +169,14 @@ INSERT INTO `kelompoks` (`idKelompok`, `namaKelompok`, `idAngkatan`) VALUES
 --
 -- Table structure for table `mahasiswas`
 --
--- Creation: Jun 27, 2019 at 12:52 AM
--- Last update: Jan 30, 2021 at 09:40 AM
---
 
-CREATE TABLE IF NOT EXISTS `mahasiswas` (
+CREATE TABLE `mahasiswas` (
   `nim` varchar(12) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `idKelompok` int(11) NOT NULL,
   `nilaiAkhir` int(11) NOT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`nim`),
-  KEY `idKelompok` (`idKelompok`)
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `mahasiswas`:
---   `idKelompok`
---       `kelompoks` -> `idKelompok`
---
 
 --
 -- Dumping data for table `mahasiswas`
@@ -751,170 +715,163 @@ INSERT INTO `mahasiswas` (`nim`, `nama`, `idKelompok`, `nilaiAkhir`, `updated_at
 ('182410103094', 'JEFRI MELIAN', 1822, 263, '2018-12-01 18:07:23'),
 ('182410103095', 'NOVI URFASI NURFADILAH', 1822, 274, '2018-12-01 18:07:23'),
 ('182410103096', 'MUHAMMAD ZAID ARROFI', 184, 264, '2018-12-01 18:07:17'),
-('202410101001', 'Lilik Dwi Wulandari', 2001, 0, NULL),
-('202410101002', 'Nindi Fenestiyan Rahman', 2002, 0, NULL),
-('202410101003', 'Raihan Maulana Ramadhan', 2003, 0, NULL),
-('202410101004', 'Naimatul Mutamimah', 2003, 0, NULL),
-('202410101005', 'Ferrary Ramadhan Putra Pratama', 2004, 0, NULL),
-('202410101006', 'Noraini Latifah', 2004, 0, NULL),
-('202410101007', 'Muhamad Imam Maliki', 2005, 0, NULL),
-('202410101008', 'Anawinta Kumara Dewi', 2005, 0, NULL),
-('202410101009', 'Elvira Kurlina', 2006, 0, NULL),
-('202410101010', 'A. Humaidi Hasani', 2006, 0, NULL),
-('202410101011', 'Silvia Chevita Dewi', 2007, 0, NULL),
-('202410101012', 'Atika Ummul Azizia', 2008, 0, NULL),
-('202410101013', 'Azkiya Fadiyah Ammar', 2009, 0, NULL),
-('202410101014', 'Eka Setyaningrum', 2010, 0, NULL),
-('202410101015', 'Rina Agustin', 2011, 0, NULL),
-('202410101016', 'Widya Eka Riyanti', 2012, 0, NULL),
-('202410101017', 'Elsadora Dwiyanita Rahmadhani', 2013, 0, NULL),
-('202410101018', 'Siti Nurul Laili', 2014, 0, NULL),
-('202410101019', 'Annisa Wulandari', 2015, 0, NULL),
-('202410101020', 'Aisyah Auliana', 2001, 0, NULL),
-('202410101021', 'Ardeya Windyana', 2002, 0, NULL),
-('202410101022', 'Alvina Seviandari', 2003, 0, NULL),
-('202410101023', 'Netty Eka Arianti', 2004, 0, NULL),
-('202410101024', 'Rindi Ayuningtiyas', 2005, 0, NULL),
-('202410101025', 'Gusti Ayu Chairunnisa', 2006, 0, NULL),
-('202410101026', 'Ayani', 2007, 0, NULL),
-('202410101027', 'Bima Tribuana Putra', 2007, 0, NULL),
-('202410101029', 'Yohanes Rifki Bagus Pangestu', 2008, 0, NULL),
-('202410101030', 'Tanaya Naila Astari', 2008, 0, NULL),
-('202410101031', 'Risya Mauriza', 2009, 0, NULL),
-('202410101032', 'Widyarista Nariswari', 2010, 0, NULL),
-('202410101033', 'Aurelia Nur Salsabilla', 2011, 0, NULL),
-('202410101034', 'Viknas Tegar Ramadhani', 2009, 0, NULL),
-('202410101035', 'Andini Ike Budi Pramudita', 2012, 0, NULL),
-('202410101036', 'Andiko Yoga Wardhana', 2010, 0, NULL),
-('202410101037', 'Anita Silvia Budiarti', 2013, 0, NULL),
-('202410101038', 'Ardhia Aprilia Dewi', 2014, 0, NULL),
-('202410101039', 'Siti Asna Nur Ahmadita', 2015, 0, NULL),
-('202410101040', 'Danang Setiawan', 2011, 0, NULL),
-('202410101041', 'Indra Nurcahyo', 2012, 0, NULL),
-('202410101042', 'Muhammad Ulil Albab', 2013, 0, NULL),
-('202410101043', 'BILAS FEBRI DWI ANANDA', 2014, 0, NULL),
-('202410101044', 'Stefanus Ade Setiawan', 2015, 0, NULL),
-('202410101045', 'ANNIS BALQISA', 2001, 0, NULL),
-('202410101046', 'FAJRI SAHRUL QUR\'ANI', 2001, 0, NULL),
-('202410101047', 'AKBAR PUTRA DARMAWANSYAH', 2002, 0, NULL),
-('202410101048', 'DIDANA PUTRA ARIZONA', 2003, 0, NULL),
-('202410101049', 'LINANDA SAVITRI', 2002, 0, NULL),
-('202410101050', 'MUHAMMAD YUSUF RAMADHANI', 2004, 0, NULL),
-('202410101051', 'ARDI YULIANTORO', 2005, 0, NULL),
-('202410101052', 'M. NASRUL WAHABI', 2006, 0, NULL),
-('202410101053', 'NAUFALAQIL AUSTRA DWI PUTRA', 2007, 0, NULL),
-('202410101054', 'JOHAR BAYU KURNIAWAN', 2008, 0, NULL),
-('202410101055', 'ALFIAN NUR RIZKI', 2009, 0, NULL),
-('202410101056', 'JELANG FIKRI RAMADHAN', 2010, 0, NULL),
-('202410101057', 'Muhammad Hidayatur Rahman', 2011, 0, NULL),
-('202410101058', 'DYAH AMALINA MASTUROH', 2003, 0, NULL),
-('202410101059', 'Ariza Azahra Syuviana', 2004, 0, NULL),
-('202410101060', 'SEBASTIAN GAVIN HARYAKA', 2012, 0, NULL),
-('202410101061', 'AULIA SISDWIPUTRI', 2005, 0, NULL),
-('202410101062', 'ARUM MELINDA PUTRI', 2006, 0, NULL),
-('202410101063', 'SHELSA NOVITA NA\'IMMATUL JANNAH', 2007, 0, NULL),
-('202410101064', 'FARUQ ABDUL HAKIM', 2013, 0, NULL),
-('202410101066', 'RAMADHANI WIJAYA', 2014, 0, NULL),
-('202410101067', 'TARIZA NUR FADILAH', 2008, 0, NULL),
-('202410101068', 'DAFFA ALIFFATUR AHNAF', 2015, 0, NULL),
-('202410101069', 'ADRISTA YAFRI AGRAPRANA', 2001, 0, NULL),
-('202410101070', 'Nur Muhammad Himawan', 2002, 0, NULL),
-('202410101071', 'RIESCO ALIEF FRENDNANDA EDITYA', 2003, 0, NULL),
-('202410101072', 'Pradana Febrian Murtadlo', 2004, 0, NULL),
-('202410101073', 'NOVIANDARI FARAH CAHYANINGTYAS', 2009, 0, NULL),
-('202410101074', 'EROSS RADITYA', 2005, 0, NULL),
-('202410101075', 'Sania Auliyana Diatri', 2010, 0, NULL),
-('202410101076', 'WAHYU ADI PRASETYO', 2006, 0, NULL),
-('202410101077', 'Azimatul Hanafiyah', 2011, 0, NULL),
-('202410101078', 'RIRIN TRISTANTI', 2012, 0, NULL),
-('202410101079', 'TALITHA FADIA JAUZA', 2013, 0, NULL),
-('202410101080', 'ZAIDAN NUR MUHAMMAD DAFFA', 2007, 0, NULL),
-('202410101081', 'VARREL DWITANTIO PURWADIANSYAH', 2008, 0, NULL),
-('202410101082', 'RIDAYANTI YOVIANDRI', 2014, 0, NULL),
-('202410101083', 'Nur Hanifah Rahmah', 2015, 0, NULL),
-('202410101084', 'ERLIN NURIYA SAFITRI', 2001, 0, NULL),
-('202410101085', 'NIKE ANANDA PUTRI', 2002, 0, NULL),
-('202410101086', 'FATKHAN ILA MAULIDA', 2003, 0, NULL),
-('202410101087', 'BILLY ELZAM KUSUMA', 2009, 0, NULL),
-('202410101088', 'ACHMAD MABRUR', 2010, 0, NULL),
-('202410101089', 'Bismaka Aurent Faradyan', 2011, 0, NULL),
-('202410101090', 'Azril Izha Rachman', 2012, 0, NULL),
-('202410101091', 'Mila Kurnia Aziza Prapilianti', 2004, 0, NULL),
-('202410101092', 'CAHYA ADINATA SINGGIH', 2013, 0, NULL),
-('202410101093', 'M. ARIF ABDILLAH', 2014, 0, NULL),
-('202410101094', 'Akbar Ainul Yaqien', 2015, 0, NULL),
-('202410101095', 'SELLA EKA SAFITRI', 2005, 0, NULL),
-('202410101096', 'Nada Dewata', 2001, 0, NULL),
-('202410101097', 'LAILITA NUR CARMELA', 2006, 0, NULL),
-('202410101098', 'Hilda Nurwakidah Jazimah', 2007, 0, NULL),
-('202410101099', 'SITI NADIVA SAM\'IYA', 2008, 0, NULL),
-('202410101100', 'Naadiyatushofia', 2009, 0, NULL),
-('202410101101', 'MUHAMMAD FARHAN BINASHRILLAH', 2002, 0, NULL),
-('202410101102', 'DIMAS SATRIA NUGRAHA', 2003, 0, NULL),
-('202410101103', 'ADHITYA HARI SAPUTRA', 2004, 0, NULL),
-('202410101104', 'IQBAL ALI BASYAIR', 2005, 0, NULL),
-('202410101105', 'JASTIN THEO HARIYONO', 2006, 0, NULL),
-('202410101106', 'TAHTA NIMAS PUTRI RAHAYU', 2010, 0, NULL),
-('202410101107', 'REVINA HANI RAHMADILLA', 2011, 0, NULL),
-('202410101108', 'RAHMAWATI RIZKI WARDHANI', 2012, 0, NULL),
-('202410101109', 'KIRANA MAHARDIKA', 2013, 0, NULL),
-('202410101110', 'ANGGI PUTRI FAMUNGKAS', 2014, 0, NULL),
-('202410101111', 'ASTRI AULIYA ARDINI', 2015, 0, NULL),
-('202410101112', 'Bachtiar Diaz Dzulfikar', 2007, 0, NULL),
-('202410101113', 'Jazzy Arminta Irmadella', 2001, 0, NULL),
-('202410101114', 'RENJI RIZKI MAULANA', 2008, 0, NULL),
-('202410101115', 'RIO ADISTYA SAPUTRA', 2009, 0, NULL),
-('202410101116', 'SALSABILLA RAMADHANI', 2002, 0, NULL),
-('202410101117', 'HENDRA HERMAWAN', 2010, 0, NULL),
-('202410101118', 'MUHAMMAD AMIRUL MUKMININ', 2011, 0, NULL),
-('202410101119', 'AULYA DWITYASA PUTRI', 2003, 0, NULL),
-('202410101120', 'NAUFAL REZA PAHLEVI', 2012, 0, NULL),
-('202410101121', 'ARIFAH NOLIKA STYA', 2004, 0, NULL),
-('202410101122', 'AULIA SINTA RAHMALIA PUTRI', 2005, 0, NULL),
-('202410101123', 'Achmad Azka Muaffan Sutomo Putra', 2013, 0, NULL),
-('202410101124', 'Muhammad Rashif razanah', 2014, 0, NULL),
-('202410101125', 'HANIVA NAINA ZEIN', 2006, 0, NULL),
-('202410101126', 'SHAFIRA CAHYA NANDA HERITA', 2007, 0, NULL),
-('202410101127', 'Carenina Atiyar Pangastuti', 2008, 0, NULL),
-('202410101128', 'Alifta Rafika Suhan', 2009, 0, NULL),
-('202410101129', 'Dimas Galih Argi Pangestu', 2015, 0, NULL),
-('202410101130', 'Pramudya Widi Pradipta', 2001, 0, NULL),
-('202410101131', 'Mochammad Dwi Rizky', 2002, 0, NULL),
-('202410101132', 'Tiara dwi meilinda aisa', 2010, 0, NULL),
-('202410101133', 'CHOIRUNNISA NUR DIANA', 2011, 0, NULL),
-('202410101134', 'Hesty Anggreini Tyas', 2012, 0, NULL),
-('202410101135', 'Inez Cordellia', 2013, 0, NULL),
-('202410101136', 'Dhiya Ulhaq Brilianty Mohamad', 2014, 0, NULL),
-('202410101137', 'Dewana Kretarta Lokeswara', 2003, 0, NULL),
-('202410101138', 'LUTFIA NABILA NAZMI LAIL', 2015, 0, NULL),
-('202410101139', 'Krisna Wibowo Heri Saputro', 2004, 0, NULL),
-('202410101140', 'ADINDA SALSABILA ZAHRAH', 2001, 0, NULL),
-('202410101141', 'ARREL KURNIAWAN', 2005, 0, NULL),
-('202410101142', 'Nabila Fortune Muslimah', 2002, 0, NULL),
-('202410101143', 'Mirzan Abdullah', 2006, 0, NULL),
-('202410101144', 'Ghozi Dhiya Ulhaq', 2007, 0, NULL),
-('202410101145', 'SASMITO ADI', 2008, 0, NULL),
-('202410101146', 'Mufrih Madjid', 2009, 0, NULL),
-('202410101147', 'FRANS VITO JONATHAN SIMAMORA', 2010, 0, NULL);
+('202410101001', 'Lilik Dwi Wulandari', 2001, 0, '2021-02-18 11:50:54'),
+('202410101002', 'Nindi Fenestiyan Rahman', 2002, 0, '2021-02-18 11:50:55'),
+('202410101003', 'Raihan Maulana Ramadhan', 2003, 0, '2021-02-18 11:50:55'),
+('202410101004', 'Naimatul Mutamimah', 2003, 0, '2021-02-18 11:50:56'),
+('202410101005', 'Ferrary Ramadhan Putra Pratama', 2004, 0, '2021-02-18 11:50:56'),
+('202410101006', 'Noraini Latifah', 2004, 0, '2021-02-18 11:50:56'),
+('202410101007', 'Muhamad Imam Maliki', 2005, 0, '2021-02-18 11:50:57'),
+('202410101008', 'Anawinta Kumara Dewi', 2005, 0, '2021-02-18 11:50:57'),
+('202410101009', 'Elvira Kurlina', 2006, 0, '2021-02-18 11:50:57'),
+('202410101010', 'A. Humaidi Hasani', 2006, 0, '2021-02-18 11:50:57'),
+('202410101011', 'Silvia Chevita Dewi', 2007, 0, '2021-02-18 11:50:57'),
+('202410101012', 'Atika Ummul Azizia', 2008, 0, '2021-02-18 11:50:58'),
+('202410101013', 'Azkiya Fadiyah Ammar', 2009, 0, '2021-02-18 11:50:58'),
+('202410101014', 'Eka Setyaningrum', 2010, 0, '2021-02-18 11:50:59'),
+('202410101015', 'Rina Agustin', 2011, 0, '2021-02-18 11:50:59'),
+('202410101016', 'Widya Eka Riyanti', 2012, 0, '2021-02-18 11:51:00'),
+('202410101017', 'Elsadora Dwiyanita Rahmadhani', 2013, 0, '2021-02-18 11:51:00'),
+('202410101018', 'Siti Nurul Laili', 2014, 0, '2021-02-18 11:51:00'),
+('202410101019', 'Annisa Wulandari', 2015, 0, '2021-02-18 11:51:00'),
+('202410101020', 'Aisyah Auliana', 2001, 0, '2021-02-18 11:50:55'),
+('202410101021', 'Ardeya Windyana', 2002, 0, '2021-02-18 11:50:55'),
+('202410101022', 'Alvina Seviandari', 2003, 0, '2021-02-18 11:50:56'),
+('202410101023', 'Netty Eka Arianti', 2004, 0, '2021-02-18 11:50:56'),
+('202410101024', 'Rindi Ayuningtiyas', 2005, 0, '2021-02-18 11:50:57'),
+('202410101025', 'Gusti Ayu Chairunnisa', 2006, 0, '2021-02-18 11:50:57'),
+('202410101026', 'Ayani', 2007, 0, '2021-02-18 11:50:57'),
+('202410101027', 'Bima Tribuana Putra', 2007, 0, '2021-02-18 11:50:57'),
+('202410101029', 'Yohanes Rifki Bagus Pangestu', 2008, 0, '2021-02-18 11:50:58'),
+('202410101030', 'Tanaya Naila Astari', 2008, 0, '2021-02-18 11:50:58'),
+('202410101031', 'Risya Mauriza', 2009, 0, '2021-02-18 11:50:58'),
+('202410101032', 'Widyarista Nariswari', 2010, 0, '2021-02-18 11:50:59'),
+('202410101033', 'Aurelia Nur Salsabilla', 2011, 0, '2021-02-18 11:50:59'),
+('202410101034', 'Viknas Tegar Ramadhani', 2009, 0, '2021-02-18 11:50:58'),
+('202410101035', 'Andini Ike Budi Pramudita', 2012, 0, '2021-02-18 11:51:00'),
+('202410101036', 'Andiko Yoga Wardhana', 2010, 0, '2021-02-18 11:50:59'),
+('202410101037', 'Anita Silvia Budiarti', 2013, 0, '2021-02-18 11:51:00'),
+('202410101038', 'Ardhia Aprilia Dewi', 2014, 0, '2021-02-18 11:51:00'),
+('202410101039', 'Siti Asna Nur Ahmadita', 2015, 0, '2021-02-18 11:51:01'),
+('202410101040', 'Danang Setiawan', 2011, 0, '2021-02-18 11:50:59'),
+('202410101041', 'Indra Nurcahyo', 2012, 0, '2021-02-18 11:51:00'),
+('202410101042', 'Muhammad Ulil Albab', 2013, 0, '2021-02-18 11:51:00'),
+('202410101043', 'BILAS FEBRI DWI ANANDA', 2014, 0, '2021-02-18 11:51:00'),
+('202410101044', 'Stefanus Ade Setiawan', 2015, 0, '2021-02-18 11:51:01'),
+('202410101045', 'ANNIS BALQISA', 2001, 0, '2021-02-18 11:50:55'),
+('202410101046', 'FAJRI SAHRUL QUR\'ANI', 2001, 0, '2021-02-18 11:50:55'),
+('202410101047', 'AKBAR PUTRA DARMAWANSYAH', 2002, 0, '2021-02-18 11:50:55'),
+('202410101048', 'DIDANA PUTRA ARIZONA', 2003, 0, '2021-02-18 11:50:56'),
+('202410101049', 'LINANDA SAVITRI', 2002, 0, '2021-02-18 11:50:55'),
+('202410101050', 'MUHAMMAD YUSUF RAMADHANI', 2004, 0, '2021-02-18 11:50:56'),
+('202410101051', 'ARDI YULIANTORO', 2005, 0, '2021-02-18 11:50:57'),
+('202410101052', 'M. NASRUL WAHABI', 2006, 0, '2021-02-18 11:50:57'),
+('202410101053', 'NAUFALAQIL AUSTRA DWI PUTRA', 2007, 0, '2021-02-18 11:50:57'),
+('202410101054', 'JOHAR BAYU KURNIAWAN', 2008, 0, '2021-02-18 11:50:58'),
+('202410101055', 'ALFIAN NUR RIZKI', 2009, 0, '2021-02-18 11:50:58'),
+('202410101056', 'JELANG FIKRI RAMADHAN', 2010, 0, '2021-02-18 11:50:59'),
+('202410101057', 'Muhammad Hidayatur Rahman', 2011, 0, '2021-02-18 11:50:59'),
+('202410101058', 'DYAH AMALINA MASTUROH', 2003, 0, '2021-02-18 11:50:56'),
+('202410101059', 'Ariza Azahra Syuviana', 2004, 0, '2021-02-18 11:50:56'),
+('202410101060', 'SEBASTIAN GAVIN HARYAKA', 2012, 0, '2021-02-18 11:51:00'),
+('202410101061', 'AULIA SISDWIPUTRI', 2005, 0, '2021-02-18 11:50:57'),
+('202410101062', 'ARUM MELINDA PUTRI', 2006, 0, '2021-02-18 11:50:57'),
+('202410101063', 'SHELSA NOVITA NA\'IMMATUL JANNAH', 2007, 0, '2021-02-18 11:50:57'),
+('202410101064', 'FARUQ ABDUL HAKIM', 2013, 0, '2021-02-18 11:51:00'),
+('202410101066', 'RAMADHANI WIJAYA', 2014, 0, '2021-02-18 11:51:00'),
+('202410101067', 'TARIZA NUR FADILAH', 2008, 0, '2021-02-18 11:50:58'),
+('202410101068', 'DAFFA ALIFFATUR AHNAF', 2015, 0, '2021-02-18 11:51:01'),
+('202410101069', 'ADRISTA YAFRI AGRAPRANA', 2001, 0, '2021-02-18 11:50:55'),
+('202410101070', 'Nur Muhammad Himawan', 2002, 0, '2021-02-18 11:50:55'),
+('202410101071', 'RIESCO ALIEF FRENDNANDA EDITYA', 2003, 0, '2021-02-18 11:50:56'),
+('202410101072', 'Pradana Febrian Murtadlo', 2004, 0, '2021-02-18 11:50:56'),
+('202410101073', 'NOVIANDARI FARAH CAHYANINGTYAS', 2009, 0, '2021-02-18 11:50:58'),
+('202410101074', 'EROSS RADITYA', 2005, 0, '2021-02-18 11:50:57'),
+('202410101075', 'Sania Auliyana Diatri', 2010, 0, '2021-02-18 11:50:59'),
+('202410101076', 'WAHYU ADI PRASETYO', 2006, 0, '2021-02-18 11:50:57'),
+('202410101077', 'Azimatul Hanafiyah', 2011, 0, '2021-02-18 11:50:59'),
+('202410101078', 'RIRIN TRISTANTI', 2012, 0, '2021-02-18 11:51:00'),
+('202410101079', 'TALITHA FADIA JAUZA', 2013, 0, '2021-02-18 11:51:00'),
+('202410101080', 'ZAIDAN NUR MUHAMMAD DAFFA', 2007, 0, '2021-02-18 11:50:57'),
+('202410101081', 'VARREL DWITANTIO PURWADIANSYAH', 2008, 0, '2021-02-18 11:50:58'),
+('202410101082', 'RIDAYANTI YOVIANDRI', 2014, 0, '2021-02-18 11:51:00'),
+('202410101083', 'Nur Hanifah Rahmah', 2015, 0, '2021-02-18 11:51:01'),
+('202410101084', 'ERLIN NURIYA SAFITRI', 2001, 0, '2021-02-18 11:50:55'),
+('202410101085', 'NIKE ANANDA PUTRI', 2002, 0, '2021-02-18 11:50:55'),
+('202410101086', 'FATKHAN ILA MAULIDA', 2003, 0, '2021-02-18 11:50:56'),
+('202410101087', 'BILLY ELZAM KUSUMA', 2009, 0, '2021-02-18 11:50:58'),
+('202410101088', 'ACHMAD MABRUR', 2010, 0, '2021-02-18 11:50:59'),
+('202410101089', 'Bismaka Aurent Faradyan', 2011, 0, '2021-02-18 11:51:00'),
+('202410101090', 'Azril Izha Rachman', 2012, 0, '2021-02-18 11:51:00'),
+('202410101091', 'Mila Kurnia Aziza Prapilianti', 2004, 0, '2021-02-18 11:50:56'),
+('202410101092', 'CAHYA ADINATA SINGGIH', 2013, 0, '2021-02-18 11:51:00'),
+('202410101093', 'M. ARIF ABDILLAH', 2014, 0, '2021-02-18 11:51:00'),
+('202410101094', 'Akbar Ainul Yaqien', 2015, 0, '2021-02-18 11:51:01'),
+('202410101095', 'SELLA EKA SAFITRI', 2005, 0, '2021-02-18 11:50:57'),
+('202410101096', 'Nada Dewata', 2001, 0, '2021-02-18 11:50:55'),
+('202410101097', 'LAILITA NUR CARMELA', 2006, 0, '2021-02-18 11:50:57'),
+('202410101098', 'Hilda Nurwakidah Jazimah', 2007, 0, '2021-02-18 11:50:57'),
+('202410101099', 'SITI NADIVA SAM\'IYA', 2008, 0, '2021-02-18 11:50:58'),
+('202410101100', 'Naadiyatushofia', 2009, 0, '2021-02-18 11:50:58'),
+('202410101101', 'MUHAMMAD FARHAN BINASHRILLAH', 2002, 0, '2021-02-18 11:50:55'),
+('202410101102', 'DIMAS SATRIA NUGRAHA', 2003, 0, '2021-02-18 11:50:56'),
+('202410101103', 'ADHITYA HARI SAPUTRA', 2004, 0, '2021-02-18 11:50:56'),
+('202410101104', 'IQBAL ALI BASYAIR', 2005, 0, '2021-02-18 11:50:57'),
+('202410101105', 'JASTIN THEO HARIYONO', 2006, 0, '2021-02-18 11:50:57'),
+('202410101106', 'TAHTA NIMAS PUTRI RAHAYU', 2010, 0, '2021-02-18 11:50:59'),
+('202410101107', 'REVINA HANI RAHMADILLA', 2011, 0, '2021-02-18 11:51:00'),
+('202410101108', 'RAHMAWATI RIZKI WARDHANI', 2012, 0, '2021-02-18 11:51:00'),
+('202410101109', 'KIRANA MAHARDIKA', 2013, 0, '2021-02-18 11:51:00'),
+('202410101110', 'ANGGI PUTRI FAMUNGKAS', 2014, 0, '2021-02-18 11:51:00'),
+('202410101111', 'ASTRI AULIYA ARDINI', 2015, 0, '2021-02-18 11:51:01'),
+('202410101112', 'Bachtiar Diaz Dzulfikar', 2007, 0, '2021-02-18 11:50:58'),
+('202410101113', 'Jazzy Arminta Irmadella', 2001, 0, '2021-02-18 11:50:55'),
+('202410101114', 'RENJI RIZKI MAULANA', 2008, 0, '2021-02-18 11:50:58'),
+('202410101115', 'RIO ADISTYA SAPUTRA', 2009, 0, '2021-02-18 11:50:58'),
+('202410101116', 'SALSABILLA RAMADHANI', 2002, 0, '2021-02-18 11:50:55'),
+('202410101117', 'HENDRA HERMAWAN', 2010, 0, '2021-02-18 11:50:59'),
+('202410101118', 'MUHAMMAD AMIRUL MUKMININ', 2011, 0, '2021-02-18 11:51:00'),
+('202410101119', 'AULYA DWITYASA PUTRI', 2003, 0, '2021-02-18 11:50:56'),
+('202410101120', 'NAUFAL REZA PAHLEVI', 2012, 0, '2021-02-18 11:51:00'),
+('202410101121', 'ARIFAH NOLIKA STYA', 2004, 0, '2021-02-18 11:50:56'),
+('202410101122', 'AULIA SINTA RAHMALIA PUTRI', 2005, 0, '2021-02-18 11:50:57'),
+('202410101123', 'Achmad Azka Muaffan Sutomo Putra', 2013, 0, '2021-02-18 11:51:00'),
+('202410101124', 'Muhammad Rashif razanah', 2014, 0, '2021-02-18 11:51:00'),
+('202410101125', 'HANIVA NAINA ZEIN', 2006, 0, '2021-02-18 11:50:57'),
+('202410101126', 'SHAFIRA CAHYA NANDA HERITA', 2007, 0, '2021-02-18 11:50:58'),
+('202410101127', 'Carenina Atiyar Pangastuti', 2008, 0, '2021-02-18 11:50:58'),
+('202410101128', 'Alifta Rafika Suhan', 2009, 0, '2021-02-18 11:50:58'),
+('202410101129', 'Dimas Galih Argi Pangestu', 2015, 0, '2021-02-18 11:51:01'),
+('202410101130', 'Pramudya Widi Pradipta', 2001, 0, '2021-02-18 11:50:55'),
+('202410101131', 'Mochammad Dwi Rizky', 2002, 0, '2021-02-18 11:50:55'),
+('202410101132', 'Tiara dwi meilinda aisa', 2010, 0, '2021-02-18 11:50:59'),
+('202410101133', 'CHOIRUNNISA NUR DIANA', 2011, 0, '2021-02-18 11:51:00'),
+('202410101134', 'Hesty Anggreini Tyas', 2012, 0, '2021-02-18 11:51:00'),
+('202410101135', 'Inez Cordellia', 2013, 0, '2021-02-18 11:51:00'),
+('202410101136', 'Dhiya Ulhaq Brilianty Mohamad', 2014, 0, '2021-02-18 11:51:00'),
+('202410101137', 'Dewana Kretarta Lokeswara', 2003, 0, '2021-02-18 11:50:56'),
+('202410101138', 'LUTFIA NABILA NAZMI LAIL', 2015, 0, '2021-02-18 11:51:01'),
+('202410101139', 'Krisna Wibowo Heri Saputro', 2004, 0, '2021-02-18 11:50:56'),
+('202410101140', 'ADINDA SALSABILA ZAHRAH', 2001, 0, '2021-02-18 11:50:55'),
+('202410101141', 'ARREL KURNIAWAN', 2005, 0, '2021-02-18 11:50:57'),
+('202410101142', 'Nabila Fortune Muslimah', 2002, 0, '2021-02-18 11:50:55'),
+('202410101143', 'Mirzan Abdullah', 2006, 0, '2021-02-18 11:50:57'),
+('202410101144', 'Ghozi Dhiya Ulhaq', 2007, 0, '2021-02-18 11:50:58'),
+('202410101145', 'SASMITO ADI', 2008, 0, '2021-02-18 11:50:58'),
+('202410101146', 'Mufrih Madjid', 2009, 0, '2021-02-18 11:50:59'),
+('202410101147', 'FRANS VITO JONATHAN SIMAMORA', 2010, 0, '2021-02-18 11:50:59');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `migrations`
 --
--- Creation: Jun 27, 2019 at 12:52 AM
---
 
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- RELATIONSHIPS FOR TABLE `migrations`:
---
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -929,28 +886,17 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 -- Table structure for table `nilais`
 --
--- Creation: Jun 27, 2019 at 12:52 AM
---
 
-CREATE TABLE IF NOT EXISTS `nilais` (
-  `idNilai` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `nilais` (
+  `idNilai` int(11) NOT NULL,
   `nim` varchar(12) NOT NULL,
   `idKategori` int(11) NOT NULL,
   `tanggal` date DEFAULT NULL,
   `keterangan` varchar(160) DEFAULT NULL,
   `nilai` int(11) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`idNilai`),
-  KEY `idKategori` (`idKategori`),
-  KEY `nim` (`nim`)
-) ENGINE=InnoDB AUTO_INCREMENT=31908 DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `nilais`:
---   `nim`
---       `mahasiswas` -> `nim`
---
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nilais`
@@ -22256,44 +22202,28 @@ INSERT INTO `nilais` (`idNilai`, `nim`, `idKategori`, `tanggal`, `keterangan`, `
 --
 -- Table structure for table `password_resets`
 --
--- Creation: Jun 27, 2019 at 12:52 AM
---
 
-CREATE TABLE IF NOT EXISTS `password_resets` (
+CREATE TABLE `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- RELATIONSHIPS FOR TABLE `password_resets`:
---
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
--- Creation: Jun 27, 2019 at 12:52 AM
--- Last update: Jan 21, 2021 at 12:13 PM
---
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- RELATIONSHIPS FOR TABLE `users`:
---
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -22302,6 +22232,104 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Ngadimin', 'miqdad.farcha@gmail.com', '$2y$10$CVmJsPtCFycZ5n1m1uWxQuVdVvICSmB0XQBpQ4Qm/E0TPnnJ31uAW', '0LuBt11RZgLJeDMlwIVwW5CGCbvQZSnt4nPqIfucOv9kHQ5H5dck7SjgCoGP', '2018-08-26 08:14:31', '2018-08-26 08:14:31'),
 (2, 'Komdis Mik', 'komdis@ilkomunej.com', '$2y$12$Ftzdv96/vPwKK5krDhCs.ujD7tUVsWrHi2roWCLl4vIR7uOjL/JwO', 'DiEtRvRcZZXXQuwpcTjupwKtllB4oVt5zvVJ2eYAbfXAAab3Ic9OPz8OAgN5', '2018-08-30 19:45:48', '2018-08-30 19:45:48');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `angkatans`
+--
+ALTER TABLE `angkatans`
+  ADD PRIMARY KEY (`idAngkatan`);
+
+--
+-- Indexes for table `kategoris`
+--
+ALTER TABLE `kategoris`
+  ADD PRIMARY KEY (`idKategori`);
+
+--
+-- Indexes for table `kelompoks`
+--
+ALTER TABLE `kelompoks`
+  ADD PRIMARY KEY (`idKelompok`),
+  ADD KEY `idAngkatan` (`idAngkatan`),
+  ADD KEY `idAngkatan_2` (`idAngkatan`);
+
+--
+-- Indexes for table `mahasiswas`
+--
+ALTER TABLE `mahasiswas`
+  ADD PRIMARY KEY (`nim`),
+  ADD KEY `idKelompok` (`idKelompok`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nilais`
+--
+ALTER TABLE `nilais`
+  ADD PRIMARY KEY (`idNilai`),
+  ADD KEY `idKategori` (`idKategori`),
+  ADD KEY `nim` (`nim`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `angkatans`
+--
+ALTER TABLE `angkatans`
+  MODIFY `idAngkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+
+--
+-- AUTO_INCREMENT for table `kategoris`
+--
+ALTER TABLE `kategoris`
+  MODIFY `idKategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `kelompoks`
+--
+ALTER TABLE `kelompoks`
+  MODIFY `idKelompok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100000;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `nilais`
+--
+ALTER TABLE `nilais`
+  MODIFY `idNilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32209;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

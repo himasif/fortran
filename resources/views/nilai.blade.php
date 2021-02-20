@@ -88,11 +88,11 @@
                 <td>{{$i++}}</td>
                 <td>{{$value->tanggal}}</td>
                 <td>{{App\Kategori::find($value->idKategori)->kategori}}</td>
-                @if($value->idKategori <= 12)
+                @if($value->idKategori <= 11)
                 <td>Individu</td>
-                @elseIf($value->idKategori <= 20)
+                @elseIf($value->idKategori <= 16)
                 <td>Kelompok</td>
-                @else
+                @elseIf($value->idKategori <= 18)
                 <td>Angkatan</td>
                 @endIf
                 <td>{{$value->keterangan}}</td>
@@ -102,7 +102,7 @@
             </tbody>
           </table>
           <div class="col-md-12 text-center bg-faded">
-            <h1 style="color:black;">SCORE ANDA : {{$final["score"]}}</h1>
+            <h1 style="color:black;">{{$final["lulus"]}}</h1>
             <div class="row">
               Dengan nilai akhir {{$final["nilai"]}}
             </div>

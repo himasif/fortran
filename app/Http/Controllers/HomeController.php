@@ -55,9 +55,9 @@ class HomeController extends Controller
       }
       $result['nilai_kategori'] = $nilai_kategori;
 
-      $result['kategori_individu'] = Kategori::where('idKategori', '<', 13)->get();
-      $result['kategori_kelompok'] = Kategori::whereBetween('idKategori', [13, 20])->get();
-      $result['kategori_angkatan'] = Kategori::where('idKategori', '>', 20)->get();
+      $result['kategori_individu'] = Kategori::where('idKategori', '<=', 11)->get();
+      $result['kategori_kelompok'] = Kategori::whereBetween('idKategori', [12, 16])->get();
+      $result['kategori_angkatan'] = Kategori::whereBetween('idKategori', [17, 18])->get();
       $result['final'] = $this->calculateFinalScore($nim);
       return view('nilai', $result);
     }
@@ -82,13 +82,12 @@ class HomeController extends Controller
 
     $nilai_akhir = ($nilai_wajib / $max_wajib * $presentase_wajib) + ($nilai_opsional / $max_opsional * $presentase_opsional);
 
-    if ($nilai_akhir >= 80) $score = "A";
-    else if ($nilai_akhir >= 70) $score = "B";
-    else $score = "C";
+    if ($nilai_akhir >= 75) $lulus = "Nilai Mencukupi, Anda Lulus!";
+    else $lulus = "Nilai Belum Mencukupi, Anda Tidak Lulus!";
 
     $result = array();
     $result["nilai"] = round($nilai_akhir, 2);
-    $result["score"] = $score;
+    $result["lulus"] = $lulus;
 
     return $result;
   }

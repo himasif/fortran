@@ -38,7 +38,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="logo" href="index.html"><h3 class="white">FORTRAN|For the Registered Generation</h3></a>
+          <a class="logo" href="#"><h3 class="white">FORTRAN 2020 | Be a critical thinker, for one step better</h3></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -61,25 +61,19 @@
           <div class="col-sm-10 col-sm-offset-1 text-center">
             <h1 class="wow fadeIn">FORTRAN {{ \Config::get('app.angkatan')}}</h1>
             <br />
-            <p class="lead wow fadeIn" data-wow-delay="0.5s">For the Registered Generation</p>
-            <br />
-            <p class="lead wow fadeIn" data-wow-delay="0.5s">Let's Become Family</p>
+            <p class="lead wow fadeIn" data-wow-delay="0.5s">Be a critical thinker, for one step better</p>
             <br />
 
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                  <div class="col-xs-4 text-right wow fadeInUp" data-wow-delay="1s">
+            <div class="row d-flex justify-content-center">
+                  <div class="col-lg-4 my-5 wow fadeInUp" data-wow-delay="1s">
                     <a href="#be-the-first" class="btn btn-secondary btn-lg scroll">Information</a>
                   </div>
-                  <div class="col-xs-4 wow fadeInUp" data-wow-delay="1.4s">
+                  <div class="col-lg-4 my-5 wow fadeInUp" data-wow-delay="1.2s">
                     <a href="#invite" class="btn btn-primary btn-lg scroll">Check Score</a>
                   </div>
-                  <div class="col-xs-4 text-left wow fadeInUp" data-wow-delay="1.4s">
+                  <div class="col-lg-4 my-5 wow fadeInUp" data-wow-delay="1.4s">
                     <a href="https://linktr.ee/FORTRAN2020" target="_blank" class="btn btn-secondary btn-lg">Other Content</a>
                   </div>
-                <div class="row1">
-                </div><!--End Button Row-->
-              </div>
             </div>
 
           </div>
@@ -101,8 +95,8 @@
 			    </div>
           <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
 				    <hr class="line blue">
-				    <h3 style="text-align: center;">FAMILY</h3>
-				    <p>Fortran merupakan ospek jurusan yang diselengarakan oleh Program Studi Sistem Informasi Universitas Jember. Dengan diselengarakannya Fortran diharapkan mahasiswa baru dapat menjadi pribadi yang lebih kritis, inovatif, dan mengenal program studinya lebih jauh lagi.</p>
+				    <h3 style="text-align: center;">Kritis dan Aktif</h3>
+				    <p>Fortran 2020 dilaksanakan berlandaskan sifat kritis dan aktif. Maka dari itu slogan yang diangkat adalah "Be A Critical Thinker for One Step Better," yang memiliki makna dengan berjalannya Fortran 2020, diharapkan mahasiswa Sistem Informasi dapat secara aktif bersama-sama membangun jiwa kekeluargaan yang erat dan melatih diri menjadi mahasiswa yang kritis.</p>
 			    </div>
 		    </div>
 	    </div>
