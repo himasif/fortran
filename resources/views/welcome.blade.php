@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <header>
+    <header">
 
       <div class="bgimg">
         <div class="bgimg-black">
@@ -65,16 +65,16 @@
             <p class="lead wow fadeIn" data-wow-delay="0.5s">Be a critical thinker, for one step better</p>
             <br />
 
-            <div class="row d-flex justify-content-center">
-                  <div class="col-lg-4 my-5 wow fadeInUp" data-wow-delay="1s">
-                    <a href="#be-the-first" class="btn btn-secondary btn-lg scroll">Information</a>
-                  </div>
-                  <div class="col-lg-4 my-5 wow fadeInUp" data-wow-delay="1.2s">
-                    <a href="#invite" class="btn btn-primary btn-lg scroll">Check Score</a>
-                  </div>
-                  <div class="col-lg-4 my-5 wow fadeInUp" data-wow-delay="1.4s">
-                    <a href="https://linktr.ee/FORTRAN2020" target="_blank" class="btn btn-secondary btn-lg">Other Content</a>
-                  </div>
+            <div class="row" style="display: flex; flex-flow: row wrap; justify-content: center;">
+              <div class="col-lg-2 wow fadeInUp" data-wow-delay="1s">
+                <a href="#be-the-first" class="btn btn-secondary btn-lg scroll">Information</a>
+              </div>
+              <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.2s">
+                <a href="#invite" class="btn btn-primary btn-lg scroll">Check Score</a>
+              </div>
+              <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.4s">
+                <a href="https://linktr.ee/FORTRAN2020" target="_blank" class="btn btn-secondary btn-lg">Other Content</a>
+              </div>
             </div>
 
           </div>

@@ -288,7 +288,7 @@ class AdminController extends Controller
 
   public function getDataInputBatch()
   {
-    $kategori = Kategori::all();
+    $kategori = Kategori::whereBetween('idKategori', [1, 18])->get();
     return view('admin.input_batch', ['kategori' => $kategori]);
   }
 
@@ -320,33 +320,23 @@ class AdminController extends Controller
     return redirect()->action('AdminController@getDataInputBatch');
   }
 
-  public function calculateFinalScore()
+  public function calculateFinalScore($nim)
   {
-    $nim = 1234;
     $nilais = Nilai::where('nim', $nim)->get();
-    $nilai_wajib = 0;
-    $nilai_opsional = 0;
+    $nilai_total = 0;
+
     foreach ($nilais as $nilai) {
       if (Kategori::find($nilai->idKategori)->kategori_wajib) {
-        $nilai_wajib += $nilai->nilai;
-      } else {
-        $nilai_opsional += $nilai->nilai;
+        $nilai_total += $nilai->nilai;
       }
     }
-    $max_wajib = Config::get('app.NILAI_WAJIB_MAX');
-    $max_opsional = Config::get('app.NILAI_OPSIONAL_MAX');
-    $presentase_wajib = Config::get('app.PRESENTASE_WAJIB');
-    $presentase_opsional = Config::get('app.PRESENTASE_OPSIONAL');
 
-    $nilai_akhir = round(($nilai_wajib / $max_wajib * $presentase_wajib) + ($nilai_opsional / $max_opsional * $presentase_opsional), 2);
-
-    if ($nilai_akhir >= 80) $score = "A";
-    else if ($nilai_akhir >= 70) $score = "B";
-    else $score = "C";
+    if ($nilai_total >= 75) $lulus = "Nilai Mencukupi, Pertahankan Terus!";
+    else $lulus = "Nilai Belum Mencukupi, Tingkatkan Lagi!";
 
     $result = array();
-    $result["nilai"] = $nilai_akhir;
-    $result["score"] = $score;
+    $result["nilai"] = round($nilai_total, 2);
+    $result["lulus"] = $lulus;
 
     return $result;
   }

@@ -10,7 +10,7 @@
   </head>
   <body>
     <section id="home">
-      <div class="home">
+      <div class="home" style="top: -5%;">
         <div class="home-bg-black">
           <!-- JUST BACKGROUND -->
         </div>
@@ -105,7 +105,7 @@
           <div class="col-md-12 text-center bg-faded">
             <h1 style="color:black;">{{$final["lulus"]}}</h1>
             <div class="row">
-              Dengan nilai akhir {{$final["nilai"]}}
+              Dengan nilai total {{$final["nilai"]}}
             </div>
           </div>
         </div>
