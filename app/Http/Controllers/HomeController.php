@@ -67,18 +67,15 @@ class HomeController extends Controller
   {
     $nilais = Nilai::where('nim', $nim)->get();
     $nilai_total = 0;
-
     foreach ($nilais as $nilai) {
-      if (Kategori::find($nilai->idKategori)->kategori_wajib) {
-        $nilai_total += $nilai->nilai;
-      }
+      $nilai_total += $nilai->nilai;
     }
 
     if ($nilai_total >= 75) $lulus = "Nilai Mencukupi, Pertahankan Terus!";
     else $lulus = "Nilai Belum Mencukupi, Tingkatkan Lagi!";
 
     $result = array();
-    $result["nilai"] = round($nilai_total, 2);
+    $result["nilai"] = $nilai_total;
     $result["lulus"] = $lulus;
 
     return $result;

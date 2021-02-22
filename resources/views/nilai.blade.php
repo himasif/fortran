@@ -95,6 +95,8 @@
                 <td>Kelompok</td>
                 @elseIf($value->idKategori <= 18)
                 <td>Angkatan</td>
+                @else
+                <td>Nyawa Awal</td>
                 @endIf
                 <td>{{$value->keterangan}}</td>
                 <td>{{$value->nilai}}</td>
