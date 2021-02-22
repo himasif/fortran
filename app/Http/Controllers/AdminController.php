@@ -58,8 +58,8 @@ class AdminController extends Controller
   public function getDataInputIndividu()
   {
     $id_angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first()->idAngkatan;
-    $kategori = Kategori::where('idKategori', '<=', 11)->orWhere('idKategori', '=', 19)->get();
-    $data = Nilai::where('nilais.idKategori', '<=', 11)->orWhere('idKategori', '=', 19)
+    $kategori = Kategori::where('idKategori', '<=', 11)->get();
+    $data = Nilai::where('nilais.idKategori', '<=', 11)
       ->join('kategoris', 'nilais.idKategori', '=', 'kategoris.idKategori')
       ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'kelompoks.idKelompok', '=', 'mahasiswas.idKelompok')
