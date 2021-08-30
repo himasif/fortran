@@ -8,6 +8,7 @@ use App\Nilai;
 use App\Angkatan;
 use App\Kelompok;
 use App\Mahasiswa;
+use App\Link;
 use Illuminate\Support\Facades\Redirect;
 use Config;
 
@@ -30,6 +31,12 @@ class HomeController extends Controller
   public function index()
   {
     return view('home');
+  }
+  
+  public function welcome()
+  {
+    $data = Link::all();
+    return view('welcome', ['data' => $data]);
   }
 
   public function checkScore(Request $request)

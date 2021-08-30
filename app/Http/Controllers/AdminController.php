@@ -8,6 +8,7 @@ use App\Nilai;
 use App\Angkatan;
 use App\Kelompok;
 use App\Mahasiswa;
+use App\Link;
 use Config;
 
 class AdminController extends Controller
@@ -379,5 +380,40 @@ class AdminController extends Controller
       $nilai->delete();
     }
     return redirect('admin/mahasiswa/' . $nim);
+  }
+
+
+  // Link
+
+  public function getDataLink()
+  {
+    $data = Link::all();
+    return view('admin.create_link', ['data' => $data]);
+  }
+
+  public function setDataLink(Request $request)
+  {
+    if ($request->isMethod('post')) {
+      $data = new Link;
+      $data->name = $request->name;
+      $data->url= $request->url;
+      $data->color = $request->color;
+      $is_success = true;
+      if ($is_success) {
+        $data->save();
+      } else {
+        return redirect()->action('AdminController@getDataLink');
+      }
+    }
+    return redirect()->action('AdminController@getDataLink');
+  }
+
+  public function deleteLink(Request $request)
+  {
+    if ($request->isMethod('post')) {
+      $link = Link::find($request->id);
+      $link->delete();
+    }
+    return redirect()->action('AdminController@getDatalink');
   }
 }

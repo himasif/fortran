@@ -73,7 +73,32 @@
                 <a href="#invite" class="btn btn-primary btn-lg scroll">Check Score</a>
               </div>
               <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.4s">
-                <a href="https://linktr.ee/FORTRAN2020" target="_blank" class="btn btn-secondary btn-lg">Other Content</a>
+                <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#exampleModalScrollable">Contents</button>
+
+                <!-- Modal -->
+                  <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalScrollableTitle">Contents</h5>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          @forelse($data as $d)
+                          <div class="row" style="margin: 10px;">
+                              <a href="{{ $d->url }}" target="_blank" class="btn btn-lg btn-block" style="background-color: {{ $d->color }}; border-radius: 50px;">{{ $d->name }}</a>
+                          </div>
+                          @empty
+                            <p class="text-center">Belum ada content.</p>
+                          @endforelse
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
 

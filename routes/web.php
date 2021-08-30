@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome');
 
 Auth::routes();
 // METHOD GOBLOG
@@ -39,5 +37,8 @@ Route::middleware('auth')->group(function (){
   Route::get('/admin/list', 'AdminController@getListMahasiswa');
   Route::get('/admin/mahasiswa/{nim}', 'AdminController@getDetailMahasiswa');
   Route::post('/admin/mahasiswa/{nim}', 'AdminController@deleteNilaiFromDetailMahasiswa');
+  Route::get('/admin/create_link', 'AdminController@getDataLink');
+  Route::post('/admin/create_link', 'AdminController@setDataLink');
+  Route::post('/admin/delete_link', 'AdminController@deleteLink');
 });
 Route::post('nilai', 'HomeController@checkScore');

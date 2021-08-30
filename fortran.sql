@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Feb 22, 2021 at 04:35 AM
--- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
--- PHP Version: 7.2.34-13+ubuntu20.04.1+deb.sury.org+1
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 30 Agu 2021 pada 19.40
+-- Versi server: 10.4.6-MariaDB
+-- Versi PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `himasif_fortran`
+-- Database: `9_db_fortran`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `angkatans`
+-- Struktur dari tabel `angkatans`
 --
 
 CREATE TABLE `angkatans` (
@@ -34,7 +34,7 @@ CREATE TABLE `angkatans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `angkatans`
+-- Dumping data untuk tabel `angkatans`
 --
 
 INSERT INTO `angkatans` (`idAngkatan`, `namaAngkatan`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `angkatans` (`idAngkatan`, `namaAngkatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategoris`
+-- Struktur dari tabel `kategoris`
 --
 
 CREATE TABLE `kategoris` (
@@ -58,7 +58,7 @@ CREATE TABLE `kategoris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `kategoris`
+-- Dumping data untuk tabel `kategoris`
 --
 
 INSERT INTO `kategoris` (`idKategori`, `kategori`, `nilai_kategori`, `kategori_wajib`) VALUES
@@ -88,7 +88,7 @@ INSERT INTO `kategoris` (`idKategori`, `kategori`, `nilai_kategori`, `kategori_w
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelompoks`
+-- Struktur dari tabel `kelompoks`
 --
 
 CREATE TABLE `kelompoks` (
@@ -98,7 +98,7 @@ CREATE TABLE `kelompoks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `kelompoks`
+-- Dumping data untuk tabel `kelompoks`
 --
 
 INSERT INTO `kelompoks` (`idKelompok`, `namaKelompok`, `idAngkatan`) VALUES
@@ -167,7 +167,31 @@ INSERT INTO `kelompoks` (`idKelompok`, `namaKelompok`, `idAngkatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mahasiswas`
+-- Struktur dari tabel `links`
+--
+
+CREATE TABLE `links` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `color` varchar(10) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `links`
+--
+
+INSERT INTO `links` (`id`, `name`, `url`, `color`, `created_at`, `updated_at`) VALUES
+(1, 'asd', 'http://himasif.id', '#f9f21a', '2021-08-30 08:54:26', '2021-08-30 08:54:26'),
+(2, 'link ku linkmu', 'https://boardgamearena.com/?h=1i2032', '#e70d0d', '2021-08-30 09:54:32', '2021-08-30 09:54:32'),
+(3, 'manamas', 'https://web.whatsapp.com/', '#33e651', '2021-08-30 09:57:50', '2021-08-30 09:57:50');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mahasiswas`
 --
 
 CREATE TABLE `mahasiswas` (
@@ -179,7 +203,7 @@ CREATE TABLE `mahasiswas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `mahasiswas`
+-- Dumping data untuk tabel `mahasiswas`
 --
 
 INSERT INTO `mahasiswas` (`nim`, `nama`, `idKelompok`, `nilaiAkhir`, `updated_at`) VALUES
@@ -724,7 +748,7 @@ INSERT INTO `mahasiswas` (`nim`, `nama`, `idKelompok`, `nilaiAkhir`, `updated_at
 ('202410101007', 'Muhamad Imam Maliki', 2005, 75, '2021-02-21 13:57:23'),
 ('202410101008', 'Anawinta Kumara Dewi', 2005, 75, '2021-02-21 13:57:23'),
 ('202410101009', 'Elvira Kurlina', 2006, 75, '2021-02-21 13:57:23'),
-('202410101010', 'A. Humaidi Hasani', 2006, 75, '2021-02-21 13:57:23'),
+('202410101010', 'A. Humaidi Hasani', 2006, 76, '2021-02-22 06:18:34'),
 ('202410101011', 'Silvia Chevita Dewi', 2007, 75, '2021-02-21 13:57:23'),
 ('202410101012', 'Atika Ummul Azizia', 2008, 75, '2021-02-21 13:57:23'),
 ('202410101013', 'Azkiya Fadiyah Ammar', 2009, 75, '2021-02-21 13:57:23'),
@@ -864,7 +888,7 @@ INSERT INTO `mahasiswas` (`nim`, `nama`, `idKelompok`, `nilaiAkhir`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -874,7 +898,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -884,7 +908,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nilais`
+-- Struktur dari tabel `nilais`
 --
 
 CREATE TABLE `nilais` (
@@ -899,7 +923,7 @@ CREATE TABLE `nilais` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `nilais`
+-- Dumping data untuk tabel `nilais`
 --
 
 INSERT INTO `nilais` (`idNilai`, `nim`, `idKategori`, `tanggal`, `keterangan`, `nilai`, `updated_at`, `created_at`) VALUES
@@ -22341,12 +22365,15 @@ INSERT INTO `nilais` (`idNilai`, `nim`, `idKategori`, `tanggal`, `keterangan`, `
 (32350, '202410101094', 19, '2021-02-21', 'Nyawa Awal', 75, '2021-02-21 13:57:24', '2021-02-21 13:57:24'),
 (32351, '202410101111', 19, '2021-02-21', 'Nyawa Awal', 75, '2021-02-21 13:57:24', '2021-02-21 13:57:24'),
 (32352, '202410101129', 19, '2021-02-21', 'Nyawa Awal', 75, '2021-02-21 13:57:24', '2021-02-21 13:57:24'),
-(32353, '202410101138', 19, '2021-02-21', 'Nyawa Awal', 75, '2021-02-21 13:57:24', '2021-02-21 13:57:24');
+(32353, '202410101138', 19, '2021-02-21', 'Nyawa Awal', 75, '2021-02-21 13:57:24', '2021-02-21 13:57:24'),
+(32354, '182410101010', 19, '2021-12-12', 'aa', 0, '2021-02-21 23:16:24', '2021-02-21 23:16:24'),
+(32355, '202410101010', 19, '2021-01-12', 'aa', 0, '2021-02-21 23:18:05', '2021-02-21 23:18:05'),
+(32356, '202410101010', 19, '2021-01-12', '11', 1, '2021-02-21 23:18:35', '2021-02-21 23:18:35');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Struktur dari tabel `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -22358,7 +22385,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -22372,7 +22399,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -22384,19 +22411,19 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 --
 
 --
--- Indexes for table `angkatans`
+-- Indeks untuk tabel `angkatans`
 --
 ALTER TABLE `angkatans`
   ADD PRIMARY KEY (`idAngkatan`);
 
 --
--- Indexes for table `kategoris`
+-- Indeks untuk tabel `kategoris`
 --
 ALTER TABLE `kategoris`
   ADD PRIMARY KEY (`idKategori`);
 
 --
--- Indexes for table `kelompoks`
+-- Indeks untuk tabel `kelompoks`
 --
 ALTER TABLE `kelompoks`
   ADD PRIMARY KEY (`idKelompok`),
@@ -22404,20 +22431,26 @@ ALTER TABLE `kelompoks`
   ADD KEY `idAngkatan_2` (`idAngkatan`);
 
 --
--- Indexes for table `mahasiswas`
+-- Indeks untuk tabel `links`
+--
+ALTER TABLE `links`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mahasiswas`
 --
 ALTER TABLE `mahasiswas`
   ADD PRIMARY KEY (`nim`),
   ADD KEY `idKelompok` (`idKelompok`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `nilais`
+-- Indeks untuk tabel `nilais`
 --
 ALTER TABLE `nilais`
   ADD PRIMARY KEY (`idNilai`),
@@ -22425,76 +22458,82 @@ ALTER TABLE `nilais`
   ADD KEY `nim` (`nim`);
 
 --
--- Indexes for table `password_resets`
+-- Indeks untuk tabel `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `angkatans`
+-- AUTO_INCREMENT untuk tabel `angkatans`
 --
 ALTER TABLE `angkatans`
   MODIFY `idAngkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
--- AUTO_INCREMENT for table `kategoris`
+-- AUTO_INCREMENT untuk tabel `kategoris`
 --
 ALTER TABLE `kategoris`
   MODIFY `idKategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `kelompoks`
+-- AUTO_INCREMENT untuk tabel `kelompoks`
 --
 ALTER TABLE `kelompoks`
   MODIFY `idKelompok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100000;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `links`
+--
+ALTER TABLE `links`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `nilais`
+-- AUTO_INCREMENT untuk tabel `nilais`
 --
 ALTER TABLE `nilais`
-  MODIFY `idNilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32354;
+  MODIFY `idNilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32357;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `kelompoks`
+-- Ketidakleluasaan untuk tabel `kelompoks`
 --
 ALTER TABLE `kelompoks`
   ADD CONSTRAINT `kelompoks_ibfk_1` FOREIGN KEY (`idAngkatan`) REFERENCES `angkatans` (`idAngkatan`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `mahasiswas`
+-- Ketidakleluasaan untuk tabel `mahasiswas`
 --
 ALTER TABLE `mahasiswas`
   ADD CONSTRAINT `mahasiswas_ibfk_1` FOREIGN KEY (`idKelompok`) REFERENCES `kelompoks` (`idKelompok`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `nilais`
+-- Ketidakleluasaan untuk tabel `nilais`
 --
 ALTER TABLE `nilais`
   ADD CONSTRAINT `nilais_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `mahasiswas` (`nim`) ON DELETE NO ACTION ON UPDATE CASCADE;

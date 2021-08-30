@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Input Nilai Kelompok</title>
+  <title>Buat Link</title>
   <!-- Custom CSS -->
   <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/select2/dist/css/select2.min.css')}}">
@@ -108,7 +108,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                <a class="dropdown-item" href="{{ url('/logout') }}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                <a class="dropdown-item" href="/logout"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
               </div>
             </li>
             <!-- ============================================================== -->
@@ -136,60 +136,33 @@
       <div class="page-breadcrumb">
         <div class="row">
           <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Input Nilai Kelompok</h4>
+            <h4 class="page-title">Buat Link</h4>
           </div>
         </div>
       </div>
 
       <div class="container-fluid">
 
-        @foreach($kategori as $val)
-        <input type="hidden" id="nilai_kategori_{{$val->idKategori}}" value="{{$val->nilai_kategori}}">
-        @endforeach
-
-
         <div class="card">
           <form class="form-horizontal" method="post">
             {{ csrf_field() }}
             <div class="card-body">
               <div class="form-group row">
-                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Tanggal <small class="text-muted">dd/mm/yyyy</small></label>
+                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Judul</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="Masukan Tanggal" name="tanggal" required>
+                  <input type="text" class="form-control" id="lname" placeholder="Masukan Judul" name="name" required>
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-3 text-right control-label col-form-label">Nama Kelompok</label>
-                <div class="col-md-9">
-                  <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="kelompok">
-                    <option>Select</option>
-                    @foreach($kelompok as $value)
-                    <option value="{{$value->idKelompok}}">{{$value->namaKelompok}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 text-right control-label col-form-label">Kategori</label>
-                <div class="col-md-9">
-                  <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="kategori" onchange="nilaiValue(this)">
-                    <option>Select</option>
-                    @foreach($kategori as $val)
-                    <option value="{{$val->idKategori}}">{{$val->kategori}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Keterangan</label>
+                <label for="lname" class="col-sm-3 text-right control-label col-form-label">Url</label>
                 <div class="col-sm-9">
-                  <textarea class="form-control" name="keterangan"></textarea>
+                  <input type="text" class="form-control" id="lname" placeholder="Masukan Url" name="url" required>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nilai</label>
-                <div class="col-sm-9">
-                  <input type="number" class="form-control" placeholder="Masukan Nilai" name="nilai" id="nilai" required>
+                <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Warna</label>
+                <div class="col-lg-1">
+                  <input type="color" class="form-control" name="color" required style="width: 50px;">
                 </div>
               </div>
             </div>
@@ -202,23 +175,20 @@
         </div>
 
         <!-- TABLES -->
-        <input type="hidden" name="nothing" value="{{$i=1}}">
 
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Nilai Kelompok</h5>
+                <h5 class="card-title">Data Link</h5>
                 <div class="table-responsive">
                   <table id="zero_config" class="table table-striped table-bordered" style="width:100%; table-layout: fixed;">
                     <thead>
                       <tr>
-                        <th>No</th>
                         <th>Tanggal</th>
-                        <th>Kelompok</th>
-                        <th>Kategori</th>
-                        <th>Keterangan</th>
-                        <th>Nilai</th>
+                        <th>Judul</th>
+                        <th>Url</th>
+                        <th>Warna</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -227,19 +197,19 @@
 
                       @foreach($data as $value)
                       <tr>
-                        <td>{{$i++}}</td>
-                        <td>{{$value->tanggal}}</td>
-                        <td>{{$value->namaKelompok}}</td>
-                        <td>{{$value->kategori}}</td>
-                        <td>{{$value->keterangan}}</td>
-                        <td>{{$value->nilai}}</td>
+                        <td>{{$value->created_at}}</td>
+                        <td>{{$value->name}}</td>
+                        <td>{{$value->url}}</td>
+                        <td>{{$value->color}}</td>
                         <td>
-                          <form action='/admin/delete_kelompok' method="post">
+                          <!--<form action='editNilai' method="post">-->
+                          <!--  {{ csrf_field() }}-->
+                          <!--  <input type="hidden" name="id" value="{{$value->idNilai}}"/>-->
+                          <!--  <button type="submit" class="btn btn-info">edit</button>-->
+                          <!--</form>    -->
+                          <form action='/admin/delete_link' method="post">
                             {{ csrf_field() }}
-                            <input type="hidden" name="tanggal" value="{{$value->tanggal}}"/>
-                            <input type="hidden" name="idKelompok" value="{{$value->idKelompok}}"/>
-                            <input type="hidden" name="idKategori" value="{{$value->idKategori}}"/>
-                            <input type="hidden" name="keterangan" value="{{$value->keterangan}}"/>
+                            <input type="hidden" name="id" value="{{$value->id}}"/>
                             <button type="submit" class="btn btn-danger">delete</button>
                           </form>
                         </td>
