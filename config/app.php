@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'angkatan' => (2020),
+    'angkatan' => (2021),
     'NILAI_WAJIB_MAX' => (264),
     'NILAI_OPSIONAL_MAX' => (160),
     'PRESENTASE_WAJIB' => (80),

@@ -62,7 +62,7 @@
           <div class="col-sm-10 col-sm-offset-1 text-center">
             <h1 class="wow fadeIn">FORTRAN {{ \Config::get('app.angkatan')}}</h1>
             <br />
-            <p class="lead wow fadeIn" data-wow-delay="0.5s">Be a critical thinker, for one step better</p>
+            <p class="lead wow fadeIn" data-wow-delay="0.5s">Be a Confident and Competitive generation</p>
             <br />
 
             <div class="row" style="display: flex; flex-flow: row wrap; justify-content: center;">
@@ -122,7 +122,7 @@
           <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
 				    <hr class="line blue">
 				    <h3 style="text-align: center;">Kritis dan Aktif</h3>
-				    <p>Fortran 2020 dilaksanakan berlandaskan sifat kritis dan aktif. Maka dari itu slogan yang diangkat adalah "Be A Critical Thinker for One Step Better," yang memiliki makna dengan berjalannya Fortran 2020, diharapkan mahasiswa Sistem Informasi dapat secara aktif bersama-sama membangun jiwa kekeluargaan yang erat dan melatih diri menjadi mahasiswa yang kritis.</p>
+				    <p>Fortran 2021 dilaksanakan berlandaskan sifat kritis dan aktif. Maka dari itu slogan yang diangkat adalah "Be A Critical Thinker for One Step Better," yang memiliki makna dengan berjalannya Fortran 2020, diharapkan mahasiswa Sistem Informasi dapat secara aktif bersama-sama membangun jiwa kekeluargaan yang erat dan melatih diri menjadi mahasiswa yang kritis.</p>
 			    </div>
 		    </div>
 	    </div>
