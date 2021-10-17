@@ -59,8 +59,8 @@ class AdminController extends Controller
   public function getDataInputIndividu()
   {
     $id_angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first()->idAngkatan;
-    $kategori = Kategori::where('idKategori', '<=', 11)->get();
-    $data = Nilai::where('nilais.idKategori', '<=', 11)
+    $kategori = Kategori::where('idKategori', '<=', 18)->get();
+    $data = Nilai::where('nilais.idKategori', '<=', 18)
       ->join('kategoris', 'nilais.idKategori', '=', 'kategoris.idKategori')
       ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'kelompoks.idKelompok', '=', 'mahasiswas.idKelompok')
@@ -99,11 +99,11 @@ class AdminController extends Controller
 
   public function getDataInputKelompok()
   {
-    $kategori = Kategori::whereBetween('idKategori', [12, 16])->get();
+    $kategori = Kategori::whereBetween('idKategori', [19, 27])->get();
     $id_angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first()->idAngkatan;
     $kelompok = Kelompok::where('idAngkatan', $id_angkatan)->get();
     // $data = DB::select("select nilai, namaKelompok, tanggal,idKategori from nilais join mahasiswas on nilais.nim = mahasiswas.nim join kelompoks on mahasiswas.idKelompok = kelompoks.idKelompok group by tanggal,idKategori");
-    $data = Nilai::whereBetween('nilais.idKategori', [12, 16])
+    $data = Nilai::whereBetween('nilais.idKategori', [19, 27])
       ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       ->join('kategoris', 'nilais.idKategori', '=', 'kategoris.idKategori')
@@ -174,9 +174,9 @@ class AdminController extends Controller
 
   public function getDataInputAngkatan()
   {
-    $kategori = Kategori::whereBetween('idKategori', [17, 18])->get();
+    $kategori = Kategori::whereBetween('idKategori', [28, 29])->get();
     // $data = DB::select("select nilai, namaKelompok, tanggal,idKategori from nilais join mahasiswas on nilais.nim = mahasiswas.nim join kelompoks on mahasiswas.idKelompok = kelompoks.idKelompok group by tanggal,idKategori");
-    $data = Nilai::whereBetween('nilais.idKategori', [17, 18])
+    $data = Nilai::whereBetween('nilais.idKategori', [28, 29])
       ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       ->join('angkatans', 'kelompoks.idAngkatan', '=', 'angkatans.idAngkatan')
