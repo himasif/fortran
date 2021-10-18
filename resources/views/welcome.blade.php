@@ -117,12 +117,12 @@
 			    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
 				    <hr class="line purple">
 				    <h3 style="text-align: center;">FORTRAN</h3>
-				    <p>Fortran merupakan ospek jurusan yang diselengarakan oleh Program Studi Sistem Informasi Universitas Jember. Dengan diselengarakannya Fortran diharapkan mahasiswa baru dapat menjadi pribadi yang lebih kritis, inovatif, dan mengenal program studinya lebih jauh lagi.</p>
+				    <p>Fortran merupakan ospek jurusan yang diselenggarakan oleh Program Studi Sistem Informasi Universitas Jember. Dengan diselenggarakannya Fortran diharapkan mahasiswa Sistem Informasi dapat menjadi generasi unggul, percaya diri, dan optimis dalam membangun jiwa kompetitif yang tinggi.</p>
 			    </div>
           <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
 				    <hr class="line blue">
-				    <h3 style="text-align: center;">Kritis dan Aktif</h3>
-				    <p>Fortran 2021 dilaksanakan berlandaskan sifat kritis dan aktif. Maka dari itu slogan yang diangkat adalah "Be A Critical Thinker for One Step Better," yang memiliki makna dengan berjalannya Fortran 2020, diharapkan mahasiswa Sistem Informasi dapat secara aktif bersama-sama membangun jiwa kekeluargaan yang erat dan melatih diri menjadi mahasiswa yang kritis.</p>
+				    <h3 style="text-align: center;">Percaya diri dan Kompetitif </h3>
+				    <p>Fortran 2021 dilaksanakan berlandaskan sifat Optimis dan Kompetitif. Maka dari itu slogan yang diangkat adalah "Be a Confident and Competitive generation", yang memiliki makna dengan berjalannya Fortran 2021 diharapkan mahasiswa Sistem Informasi dapat menjadi generasi yang unggul, percaya diri, dan optimis dalam membangun jiwa kopetitif yang tinggi.</p>
 			    </div>
 		    </div>
 	    </div>
@@ -170,8 +170,8 @@
           <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 wow fadeInLeft" data-wow-delay="0.8s">
 <!--             <a href="#" target="_blank">
             <img class="news-img pull-left" src="img/press-01.jpg" alt="Tech Crunch"> -->
-            <p class="black">“If there was one life skill everyone on the planet needed, it was the ability to think with critical objectivity.”<br />
-            <small><em>-Josh Lanyon-</em></small></p>
+            <p class="black">“Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence.” <br />
+            <small><em>-Helen Keller-</em></small></p>
             </a>
           </div>
         </div>
@@ -180,8 +180,8 @@
           <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 wow fadeInLeft" data-wow-delay="1.2s">
 <!--             <a href="#" target="_blank">
             <img class="news-img pull-left" src="img/press-02.jpg" alt="Forbes"> -->
-            <p class="black">"Ini semacam sikap mental tentang pemikiran kritis dan keingintahuan. Ini tentang pola pikir dalam melihat dunia dengan cara yang menyenangkan dan kreatif."<br />
-            <small><em>-Adam Savage-</em></small></p>
+            <p class="black">"If you're not making mistakes, you're not taking risks, and that means you're not going anywhere. The key is to make mistakes faster than the competition, so you have more changes to learn and win." <br />
+            <small><em>-John W. Holt, Jr., Xochi manufacturing-</em></small></p>
             </a>
           </div>
         </div>
