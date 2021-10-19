@@ -99,11 +99,11 @@ class AdminController extends Controller
 
   public function getDataInputKelompok()
   {
-    $kategori = Kategori::whereBetween('idKategori', [19, 27])->get();
+    $kategori = Kategori::whereBetween('idKategori', [19, 31])->get();
     $id_angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first()->idAngkatan;
     $kelompok = Kelompok::where('idAngkatan', $id_angkatan)->get();
     // $data = DB::select("select nilai, namaKelompok, tanggal,idKategori from nilais join mahasiswas on nilais.nim = mahasiswas.nim join kelompoks on mahasiswas.idKelompok = kelompoks.idKelompok group by tanggal,idKategori");
-    $data = Nilai::whereBetween('nilais.idKategori', [19, 27])
+    $data = Nilai::whereBetween('nilais.idKategori', [19, 31])
       ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       ->join('kategoris', 'nilais.idKategori', '=', 'kategoris.idKategori')
@@ -174,9 +174,9 @@ class AdminController extends Controller
 
   public function getDataInputAngkatan()
   {
-    $kategori = Kategori::whereBetween('idKategori', [28, 29])->get();
+    $kategori = Kategori::whereBetween('idKategori', [32, 33])->get();
     // $data = DB::select("select nilai, namaKelompok, tanggal,idKategori from nilais join mahasiswas on nilais.nim = mahasiswas.nim join kelompoks on mahasiswas.idKelompok = kelompoks.idKelompok group by tanggal,idKategori");
-    $data = Nilai::whereBetween('nilais.idKategori', [28, 29])
+    $data = Nilai::whereBetween('nilais.idKategori', [32, 33])
       ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       ->join('angkatans', 'kelompoks.idAngkatan', '=', 'angkatans.idAngkatan')
