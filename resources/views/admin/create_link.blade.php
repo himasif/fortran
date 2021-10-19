@@ -164,9 +164,9 @@
                 <div class="col-sm-9">
                   <!-- <input type="color" class="form-control" name="color" required style="width: 50px;"> -->
                   <select name="color" style="width: 100%; height:36px;">
-                    <option value="#0F044C" style="color: white; background: #0F044C;">Blue</option>
-                    <option value="#2C2E43" style="color: white; background: #2C2E43;">Black</option>
-                    <option value="#7952B3" style="color: white; background: #7952B3;">Purple</option>
+                    <option value="#700c6c" style="color: white; background: #700c6c;">Dark</option>
+                    <option value="#cb3cc6" style="color: white; background: #cb3cc6;">Medium</option>
+                    <option value="#eba1ea" style="color: white; background: #eba1ea;">Light</option>
                   </select>
                 </div>
               </div>
