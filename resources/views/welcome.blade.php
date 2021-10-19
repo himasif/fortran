@@ -39,7 +39,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="logo" href="#"><h3 class="white">FORTRAN 2020 | Be a critical thinker, for one step better</h3></a>
+          <a class="logo" href="#"><h3 class="white">FORTRAN {{ \Config::get('app.angkatan')}} | Be a Confident and Competitive generation</h3></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -80,7 +80,7 @@
                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalScrollableTitle">Fortran 2021 Links</h5>
+                          <h5 class="modal-title" id="exampleModalScrollableTitle">Fortran {{ \Config::get('app.angkatan')}} Links</h5>
                           </button>
                         </div>
                         <div class="modal-body">
