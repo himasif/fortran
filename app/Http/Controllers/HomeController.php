@@ -56,15 +56,15 @@ class HomeController extends Controller
         return Redirect::to('/#invite')->with('message', 'NIM Tidak Ditemukan');
       }
 
-      $nilai_kategori = array_fill(1, 22, 0);
+      $nilai_kategori = array_fill(1, 33, 0);
       foreach ($result['data'] as $nilai) {
         $nilai_kategori[$nilai->idKategori]++;
       }
       $result['nilai_kategori'] = $nilai_kategori;
 
-      $result['kategori_individu'] = Kategori::where('idKategori', '<=', 11)->get();
-      $result['kategori_kelompok'] = Kategori::whereBetween('idKategori', [12, 16])->get();
-      $result['kategori_angkatan'] = Kategori::whereBetween('idKategori', [17, 18])->get();
+      $result['kategori_individu'] = Kategori::where('idKategori', '<=', 18)->get();
+      $result['kategori_kelompok'] = Kategori::whereBetween('idKategori', [19, 31])->get();
+      $result['kategori_angkatan'] = Kategori::whereBetween('idKategori', [32, 33])->get();
       $result['final'] = $this->calculateFinalScore($nim);
       return view('nilai', $result);
     }
