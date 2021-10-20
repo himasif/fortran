@@ -414,6 +414,6 @@ class AdminController extends Controller
       $link = Link::find($request->id);
       $link->delete();
     }
-    return redirect()->action('AdminController@getDatalink');
+    return redirect('admin/create_link');
   }
 }
