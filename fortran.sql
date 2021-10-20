@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Agu 2021 pada 19.40
+-- Waktu pembuatan: 19 Okt 2021 pada 09.29
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -42,6 +42,7 @@ INSERT INTO `angkatans` (`idAngkatan`, `namaAngkatan`) VALUES
 (2, '2017'),
 (4, '2018'),
 (5, '2020'),
+(6, '2021'),
 (999, '9999');
 
 -- --------------------------------------------------------
@@ -52,7 +53,7 @@ INSERT INTO `angkatans` (`idAngkatan`, `namaAngkatan`) VALUES
 
 CREATE TABLE `kategoris` (
   `idKategori` int(11) NOT NULL,
-  `kategori` varchar(50) NOT NULL,
+  `kategori` varchar(255) NOT NULL,
   `nilai_kategori` int(11) NOT NULL,
   `kategori_wajib` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -62,28 +63,39 @@ CREATE TABLE `kategoris` (
 --
 
 INSERT INTO `kategoris` (`idKategori`, `kategori`, `nilai_kategori`, `kategori_wajib`) VALUES
-(1, 'Tugas (Buku)', 1, 1),
-(2, 'Keaktifan individu', 1, 1),
-(3, 'Keterlambatan', -10, 0),
-(4, 'Tidak hadir tanpa surat', -20, 0),
-(5, 'Tidak hadir dengan surat', -10, 0),
-(6, 'Etika', -5, 0),
-(7, 'Atribut tidak lengkap', -2, 0),
-(8, 'Tidak mengerjakan tugas', -20, 0),
-(9, 'Melakukan salah satu jenis pelanggaran berat', -20, 0),
-(10, 'Membantah panitia tanpa alasan yang jelas', -10, 0),
-(11, 'Tidur atau membuat kegaduhan selama acara berjalan', -10, 0),
-(12, 'Tugas kelompok (Video)', 1, 1),
-(13, 'Mengikuti presentasi proposal lomba', 2, 1),
-(14, '5 besar proposal lomba', 3, 1),
-(15, 'Menghubungi panitia di luar jam yang ditentukan', -10, 0),
-(16, 'Terlambat hadir', -5, 0),
-(17, 'Keaktifan angkatan', 1, 1),
-(18, 'Problem Solving', 1, 1),
-(19, '-', 0, 0),
-(20, '-', 0, 0),
-(21, '-', 0, 0),
-(22, '-', 0, 0);
+(1, 'Mengumpulkan tugas individu, namun tidak sesuai ketentuan', 1, 1),
+(2, 'Mengumpulkan tugas individu dan sesuai ketentuan', 2, 1),
+(3, 'Mengumpulkan tugas individu, sesuai ketentuan dan dengan kreatifitas', 3, 1),
+(4, 'Tidak atau terlambat mengumpulkan tugas individu ', -10, 0),
+(5, 'Menggunakan atribut sesuai yang ditentukan ', 1, 1),
+(6, 'Mendapatkan atribut terbaik pada minggu ke 3 ', 2, 1),
+(7, 'Tidak Menggunakan atribut sesuai ketentuan ', -10, 0),
+(8, 'Logbook Mingguan ', 2, 1),
+(9, 'Keaktifan individu ', 1, 1),
+(10, 'Kehadiran FORTRAN ', 1, 1),
+(11, 'Melakukan salah satu jenis pelanggaran berat ', -20, 0),
+(12, 'Keterlambatan individu ', -10, 0),
+(13, 'Tidak hadir dengan surat ', -10, 0),
+(14, 'Etika ', -10, 0),
+(15, 'Tidak mengerjakan tugas Logbook ', -20, 0),
+(16, 'Tidak menyelesaikan tugas Logbook ', -10, 0),
+(17, 'Tidur atau membuat kegaduhan selama acara berlangsung', -15, 0),
+(18, 'Memakai filter, aksesoris atau make up berlebihan ', -10, 0),
+(19, 'Mengumpulkan tugas kelompok, namun tidak sesuai ketentuan', 1, 1),
+(20, 'Mengumpulkan tugas kelompok dan sesuai ketentuan ', 2, 1),
+(21, 'Mengumpulkan tugas kelompok, sesuai ketentuan dan dengan kreatifitas', 3, 1),
+(22, 'Tidak atau terlambat mengumpulkan tugas kelompok ', -15, 0),
+(23, 'Mengumpulkan tugas proposal atau video presentasi ', 3, 1),
+(24, '3 besar Gemastik/PKM ', 2, 1),
+(25, 'Pemenang ', 2, 1),
+(26, 'Mendapatkan atribut terbaik pada minggu ke 4 ', 2, 1),
+(27, 'E-Book Mingguan ', 3, 1),
+(28, 'Menghubungi panitia di luar jam yang sudah ditentu', -10, 0),
+(29, 'Keterlambatan kelompok ', -5, 0),
+(30, 'Tidak mengerjakan tugas E-Book ', -20, 0),
+(31, 'Tidak menyelesaikan tugas E-Book ', -10, 0),
+(32, 'Keaktifan angkatan ', 1, 1),
+(33, 'Problem Solving ', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -102,20 +114,20 @@ CREATE TABLE `kelompoks` (
 --
 
 INSERT INTO `kelompoks` (`idKelompok`, `namaKelompok`, `idAngkatan`) VALUES
-(1, 'Debian', 1),
-(2, 'Opensuse', 1),
-(3, 'Xandros', 1),
-(4, 'Centos', 1),
-(5, 'Kali Linux', 1),
-(6, 'Red Hat', 1),
-(7, 'Mint', 1),
-(8, 'Knoppix', 1),
-(9, 'Freespire', 1),
-(10, 'Kuliax', 1),
-(11, 'Ubuntu', 1),
-(12, 'Lindows', 1),
-(13, 'Slaxware', 1),
-(14, 'Gentoo', 1),
+(1, 'Visual studio code (VSC)', 6),
+(2, 'Atom', 6),
+(3, 'Bluefish\r\n', 6),
+(4, 'Vim\r\n', 6),
+(5, 'Emacs\r\n', 6),
+(6, 'Brackets\r\n', 6),
+(7, 'Geany\r\n', 6),
+(8, 'Froala\r\n', 6),
+(9, 'Kite\r\n', 6),
+(10, 'Intype\r\n', 6),
+(11, 'Gedit\r\n', 6),
+(12, 'IntelliJ\r\n', 6),
+(13, 'Pycharm\r\n', 6),
+(14, 'Netbeans\r\n', 6),
 (15, 'Sabayon', 1),
 (16, 'PuppyLinux', 1),
 (17, 'Fedora', 1),
@@ -178,15 +190,6 @@ CREATE TABLE `links` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `links`
---
-
-INSERT INTO `links` (`id`, `name`, `url`, `color`, `created_at`, `updated_at`) VALUES
-(1, 'asd', 'http://himasif.id', '#f9f21a', '2021-08-30 08:54:26', '2021-08-30 08:54:26'),
-(2, 'link ku linkmu', 'https://boardgamearena.com/?h=1i2032', '#e70d0d', '2021-08-30 09:54:32', '2021-08-30 09:54:32'),
-(3, 'manamas', 'https://web.whatsapp.com/', '#33e651', '2021-08-30 09:57:50', '2021-08-30 09:57:50');
 
 -- --------------------------------------------------------
 
@@ -883,7 +886,104 @@ INSERT INTO `mahasiswas` (`nim`, `nama`, `idKelompok`, `nilaiAkhir`, `updated_at
 ('202410101144', 'Ghozi Dhiya Ulhaq', 2007, 75, '2021-02-21 13:57:23'),
 ('202410101145', 'SASMITO ADI', 2008, 75, '2021-02-21 13:57:23'),
 ('202410101146', 'Mufrih Madjid', 2009, 75, '2021-02-21 13:57:23'),
-('202410101147', 'FRANS VITO JONATHAN SIMAMORA', 2010, 75, '2021-02-21 13:57:23');
+('202410101147', 'FRANS VITO JONATHAN SIMAMORA', 2010, 75, '2021-02-21 13:57:23'),
+('212410101001', 'AULIA DAYU RIZKHA', 12, 75, NULL),
+('212410101002', 'LINTANG AURA SYUFEE', 13, 75, NULL),
+('212410101003', 'MUHAMMAD REYHAN FAIZ MAHENDRA', 10, 75, NULL),
+('212410101004', 'SHAFIRA NURIN QOLBI', 14, 75, NULL),
+('212410101005', 'Christianus Yoga Wibisono', 8, 75, NULL),
+('212410101006', 'LINTANG RAHADHINI KUSUMASTUTI', 5, 75, NULL),
+('212410101007', 'Isnaini Robitoh', 4, 75, NULL),
+('212410101008', 'ISNAENI', 3, 75, NULL),
+('212410101009', 'DWI RIA LATIFA', 2, 75, NULL),
+('212410101010', 'ALFAN FADILLAH FIRMANSYAH', 9, 75, NULL),
+('212410101011', 'Rozika Fildzainur Afifah', 1, 75, NULL),
+('212410101012', 'ANISA NURLAILIA', 10, 75, NULL),
+('212410101013', 'Riyatnandar Wahyu Wasono Aji', 6, 75, NULL),
+('212410101014', 'Adelia Wulan Widiyanti', 9, 75, NULL),
+('212410101015', 'FARDA SALSABILLA', 8, 75, NULL),
+('212410101016', 'MUHAMAD IQBAL ALAN FAWAID', 7, 75, NULL),
+('212410101017', 'CHINTYA DEWI PUSPITA SARI', 7, 75, NULL),
+('212410101018', 'SUFIYYA MAHDANIA', 6, 75, NULL),
+('212410101019', 'Cesar Mutiara Ridhani', 11, 75, NULL);
+INSERT INTO `mahasiswas` (`nim`, `nama`, `idKelompok`, `nilaiAkhir`, `updated_at`) VALUES
+('212410101020', 'VIORETTA JOCELINDA', 12, 75, NULL),
+('212410101021', 'ASYAM RAZAQ ARDISYAHPUTRA', 11, 75, NULL),
+('212410101022', 'ARDHI ZAKHIRUL QOLBY', 12, 75, NULL),
+('212410101023', 'Medita Triwarsa Sapta Pratiwi', 13, 75, NULL),
+('212410101024', 'Nur Azizah Wahyunia Putri', 14, 75, NULL),
+('212410101025', 'Amelia Puspita Wardani', 5, 75, NULL),
+('212410101026', 'AISHAA SAFFANAH ZAHRA', 4, 75, NULL),
+('212410101027', 'ANINDYA RENITA FIRSTANTI', 3, 75, NULL),
+('212410101028', 'ALIFARGA KRESNAYOGA SUSANTO', 13, 75, NULL),
+('212410101029', 'RIZKY AMALIA FITRIANI', 2, 75, NULL),
+('212410101030', 'IDRIS MUHAMMAD', 14, 75, NULL),
+('212410101031', 'Naufal Eka Pramudita', 5, 75, NULL),
+('212410101032', 'Niko Muhamad Fajar', 4, 75, NULL),
+('212410101033', 'Muhammad Ilham Yahya', 3, 75, NULL),
+('212410101034', 'MONICA NOVELIA PUSPITA', 1, 75, NULL),
+('212410101035', 'Bima Satria Nugraha', 2, 75, NULL),
+('212410101036', 'HAFIZ AS\'AD', 1, 75, NULL),
+('212410101037', 'AHMAD RIAN FEBRIANTO', 10, 75, NULL),
+('212410101038', 'SHOLIHA NABITA', 10, 75, NULL),
+('212410101039', 'JESSICA RATU AGHNIA', 9, 75, NULL),
+('212410101040', 'Raihan Badruz Zaman', 9, 75, NULL),
+('212410101041', 'CIKO TEGAR SAPUTRA', 8, 75, NULL),
+('212410101042', 'VENI HERAWATI', 8, 75, NULL),
+('212410101044', 'STEFANY AMANDA KURNIAWAN', 7, 75, NULL),
+('212410101045', 'Alexander Dwi Putra Gultom', 7, 75, NULL),
+('212410101046', 'HANA SYARIFAH KHOIRUNNISA', 6, 75, NULL),
+('212410101047', 'FERLI FITROTUS SAFI\'AH', 11, 75, NULL),
+('212410101048', 'SALMA SALSABILA', 12, 75, NULL),
+('212410101049', 'VINA MAULINA RAHMAWATI', 13, 75, NULL),
+('212410101050', 'Qonita Adna Mavaza', 14, 75, NULL),
+('212410101051', 'Intan Larasati Anisa Rahma', 5, 75, NULL),
+('212410101052', 'Wiwoho Kusumo Nugroho Kadarman', 6, 75, NULL),
+('212410101053', 'FERNAND ANDREAN RIVA\'I', 11, 75, NULL),
+('212410101054', 'MUHADZDZIB DZAKY ZAIDAN', 12, 75, NULL),
+('212410101055', 'Anggito Karta Wijaya', 13, 75, NULL),
+('212410101056', 'ANDIKA RYAN NURSHODIQ', 14, 75, NULL),
+('212410101057', 'RENATA SAYIDATUL ARIKHA', 4, 75, NULL),
+('212410101058', 'RIZKY AMALIA', 3, 75, NULL),
+('212410101059', 'ISABEL APRILIA ARASYAH RAHMAYATI', 2, 75, NULL),
+('212410101060', 'ANANDA EKA ALYA YUNIAR', 1, 75, NULL),
+('212410101061', 'Mohammad Irfan Maulana', 5, 75, NULL),
+('212410101062', 'Nilna Fadhilah', 10, 75, NULL),
+('212410101064', 'Hermawan Sutanto', 3, 75, NULL),
+('212410101065', 'MOCHAMAD BRILIANTA ARDINDAYUDA PUTRA', 2, 75, NULL),
+('212410101066', 'Yosephine Hasianna', 9, 75, NULL),
+('212410101067', 'DEWANATA HAMMADA', 1, 75, NULL),
+('212410101068', 'ZAHILLA NIKEN FIRDAUSYAH', 8, 75, NULL),
+('212410101069', 'REIHAN ALI ZIDAN', 10, 75, NULL),
+('212410101070', 'Ivansyah Zuriel Putra Agata', 9, 75, NULL),
+('212410101071', 'APRODHITA NANDA EKA WIJAYA', 7, 75, NULL),
+('212410101073', 'ACHMAD FARIS FADHAIL', 7, 75, NULL),
+('212410101074', 'ALIYA SHOFIATUN NISA`', 6, 75, NULL),
+('212410101075', 'DERA EKA ARDITA', 11, 75, NULL),
+('212410101076', 'NURINA KURNIA DEWI', 12, 75, NULL),
+('212410101077', 'Hilga Yowinfa Zamharir', 6, 75, NULL),
+('212410101078', 'DIMAS BAGUS IRAWAN', 11, 75, NULL),
+('212410101079', 'ZIDAN ZAKARIA', 12, 75, NULL),
+('212410101080', 'AFITA GANDA RIZKA', 11, 75, NULL),
+('212410101082', 'M. RAFI THUFAIL', 14, 75, NULL),
+('212410101083', 'NAUFAL DANENDRA', 5, 75, NULL),
+('212410101084', 'Alvania Tiara Zulfa', 13, 75, NULL),
+('212410101085', 'Rafi Tri Tanaya', 4, 75, NULL),
+('212410101086', 'NAUFEL KINANDANA LOVYSANDHIKA', 3, 75, NULL),
+('212410101087', 'Varenza Gibran Denato Kesowo', 2, 75, NULL),
+('212410101088', 'ESTI DWI NURAINI', 14, 75, NULL),
+('212410101089', 'IFFAT NABIL WIRIDANA', 1, 75, NULL),
+('212410101090', 'EVAN PASHA ALBERTA RAFI', 10, 75, NULL),
+('212410101091', 'INTAN AULIA WAHYU IKE RIZQI SEKAR KINANTI', 5, 75, NULL),
+('212410101092', 'Julyetta Saraswati', 4, 75, NULL),
+('212410101093', 'Muhamad Farhan', 9, 75, NULL),
+('212410101094', 'WINURSITA DEVI PRAMESTHI', 3, 75, NULL),
+('212410101097', 'FAHREL AHMAD AL RAZAK', 8, 75, NULL),
+('212410101098', 'SELVI AULIA NILASARI', 2, 75, NULL),
+('212410101099', 'Ester Charenina Yoga Saputri', 1, 75, NULL),
+('212410101100', 'ARDIAN PRIMINGGADI', 7, 75, NULL),
+('212410101101', 'ANDO ZAMHARIRO ROYAN', 6, 75, NULL),
+('212410101102', 'Yonatan Setiawan', 13, 75, NULL);
 
 -- --------------------------------------------------------
 
@@ -22385,6 +22485,50 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `sheet1`
+--
+
+CREATE TABLE `sheet1` (
+  `namaKelompok` varchar(24) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `sheet1`
+--
+
+INSERT INTO `sheet1` (`namaKelompok`) VALUES
+('Visual studio code (VSC)'),
+('Atom'),
+('Bluefish'),
+('Vim'),
+('Emacs'),
+('Brackets'),
+('Geany'),
+('Froala'),
+('Kite'),
+('Intype'),
+('Gedit'),
+('IntelliJ'),
+('Pycharm'),
+('Netbeans'),
+('Visual studio code (VSC)'),
+('Atom'),
+('Bluefish'),
+('Vim'),
+('Emacs'),
+('Brackets'),
+('Geany'),
+('Froala'),
+('Kite'),
+('Intype'),
+('Gedit'),
+('IntelliJ'),
+('Pycharm'),
+('Netbeans');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
@@ -22484,19 +22628,19 @@ ALTER TABLE `angkatans`
 -- AUTO_INCREMENT untuk tabel `kategoris`
 --
 ALTER TABLE `kategoris`
-  MODIFY `idKategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idKategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelompoks`
 --
 ALTER TABLE `kelompoks`
-  MODIFY `idKelompok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100000;
+  MODIFY `idKelompok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100015;
 
 --
 -- AUTO_INCREMENT untuk tabel `links`
 --
 ALTER TABLE `links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
