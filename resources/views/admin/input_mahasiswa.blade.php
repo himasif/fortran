@@ -54,7 +54,7 @@
           <!-- ============================================================== -->
           <!-- Logo -->
           <!-- ============================================================== -->
-          <a class="navbar-brand" href="/">
+          <a class="navbar-brand" href="{{ \Config::get('app.prefix') }}">
             <!-- Logo icon -->
             <b class="logo-icon p-l-10">
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -234,7 +234,7 @@
                           <!--  <input type="hidden" name="id" value="{{$value->idNilai}}"/>-->
                           <!--  <button type="submit" class="btn btn-info">edit</button>-->
                           <!--</form>    -->
-                          <form action='/admin/delete_individu' method="post">
+                          <form action="{{ \Config::get('app.prefix') }}/admin/delete_individu" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{$value->idNilai}}"/>
                             <button type="submit" class="btn btn-danger">delete</button>

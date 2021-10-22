@@ -147,7 +147,7 @@
 
             <div class="row">
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                <form role="form" action="/nilai" method="POST">
+                <form role="form" action="{{ \Config::get('app.prefix') }}/nilai" method="POST">
 
                   <div class="form-group">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

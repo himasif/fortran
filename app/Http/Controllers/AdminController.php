@@ -379,7 +379,8 @@ class AdminController extends Controller
       $mahasiswa->save();
       $nilai->delete();
     }
-    return redirect('admin/mahasiswa/' . $nim);
+    $prefix = \Config::get('app.prefix');
+    return redirect($prefix.'/admin/mahasiswa/' . $nim);
   }
 
 
@@ -414,6 +415,7 @@ class AdminController extends Controller
       $link = Link::find($request->id);
       $link->delete();
     }
-    return redirect('admin/create_link');
+    $prefix = \Config::get('app.prefix');
+    return redirect($prefix.'/admin/create_link');
   }
 }
