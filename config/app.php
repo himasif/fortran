@@ -58,7 +58,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://fortran.himasif.id/fortran'),
+    'url' => env('APP_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
