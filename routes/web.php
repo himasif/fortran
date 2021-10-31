@@ -12,36 +12,36 @@
 */
 
 // subdomain
-Route::domain('fortran.himasif.id/fortran')->group(function () {
-  Route::get('/', 'HomeController@welcome');
+Route::prefix('fortran')->group(function () {
+  Route::get('/', 'HomeController@welcome')->name('main');
 
   Auth::routes();
   // METHOD GOBLOG
-  Route::get('/logout', 'Auth\LoginController@logout');//AWKOAKWOKAOKWOKW GOBLOG
+  Route::get('/logout', 'Auth\LoginController@logout')->name('logout');//AWKOAKWOKAOKWOKW GOBLOG
   // END OF METHOD GOBLOG
 
   Route::middleware('auth')->group(function (){
-    Route::get('/admin', 'AdminController@home');
-    Route::post('/admin/search', 'AdminController@findMahasiswa');
-    Route::get('/admin/input_individu', 'AdminController@getDataInputIndividu');
-    Route::post('/admin/input_individu', 'AdminController@setDataInputIndividu');
-    Route::post('/admin/delete_individu', 'AdminController@deleteNilaiIndividu');
-    Route::get('/admin/input_kelompok', 'AdminController@getDataInputKelompok');
-    Route::post('/admin/input_kelompok', 'AdminController@setDataInputKelompok');
-    Route::post('/admin/delete_kelompok', 'AdminController@deleteNilaiKelompok');
-    Route::get('/admin/input_angkatan', 'AdminController@getDataInputAngkatan');
-    Route::post('/admin/input_angkatan', 'AdminController@setDataInputAngkatan');
-    Route::post('/admin/delete_angkatan', 'AdminController@deleteNilaiAngkatan');
-    Route::get('/admin/input_batch', 'AdminController@getDataInputBatch');
-    Route::post('/admin/input_batch', 'AdminController@setDataInputBatch');
-    Route::get('/admin/resign', 'AdminController@getDataResignMahasiswa');
-    Route::post('/admin/resign', 'AdminController@setDataResignMahasiswa');
-    Route::get('/admin/list', 'AdminController@getListMahasiswa');
-    Route::get('/admin/mahasiswa/{nim}', 'AdminController@getDetailMahasiswa');
-    Route::post('/admin/mahasiswa/{nim}', 'AdminController@deleteNilaiFromDetailMahasiswa');
-    Route::get('/admin/create_link', 'AdminController@getDataLink');
-    Route::post('/admin/create_link', 'AdminController@setDataLink');
-    Route::post('/admin/delete_link', 'AdminController@deleteLink');
+    Route::get('/admin', 'AdminController@home')->name('admin');
+    Route::post('/admin/search', 'AdminController@findMahasiswa')->name('search');
+    Route::get('/admin/input_individu', 'AdminController@getDataInputIndividu')->name('get_input_individu');
+    Route::post('/admin/input_individu', 'AdminController@setDataInputIndividu')->name('set_input_individu');
+    Route::post('/admin/delete_individu', 'AdminController@deleteNilaiIndividu')->name('delete_individu');
+    Route::get('/admin/input_kelompok', 'AdminController@getDataInputKelompok')->name('get_input_kelompok');
+    Route::post('/admin/input_kelompok', 'AdminController@setDataInputKelompok')->name('set_input_kelompok');
+    Route::post('/admin/delete_kelompok', 'AdminController@deleteNilaiKelompok')->name('delete_kelompok');
+    Route::get('/admin/input_angkatan', 'AdminController@getDataInputAngkatan')->name('get_input_angkatan');
+    Route::post('/admin/input_angkatan', 'AdminController@setDataInputAngkatan')->name('set_input_angkatan');
+    Route::post('/admin/delete_angkatan', 'AdminController@deleteNilaiAngkatan')->name('delete_angkatan');
+    Route::get('/admin/input_batch', 'AdminController@getDataInputBatch')->name('get_input_batch');
+    Route::post('/admin/input_batch', 'AdminController@setDataInputBatch')->name('set_input_batch');
+    Route::get('/admin/resign', 'AdminController@getDataResignMahasiswa')->name('get_resign');
+    Route::post('/admin/resign', 'AdminController@setDataResignMahasiswa')->name('set_resign');
+    Route::get('/admin/list', 'AdminController@getListMahasiswa')->name('list_mahasiswa');
+    Route::get('/admin/mahasiswa/{nim}', 'AdminController@getDetailMahasiswa')->name('get_mahasiswa');
+    Route::post('/admin/mahasiswa/{nim}', 'AdminController@deleteNilaiFromDetailMahasiswa')->name('delete_mahasiswa');
+    Route::get('/admin/create_link', 'AdminController@getDataLink')->name('get_link');
+    Route::post('/admin/create_link', 'AdminController@setDataLink')->name('set_link');
+    Route::post('/admin/delete_link', 'AdminController@deleteLink')->name('delete_link');
   });
-  Route::post('nilai', 'HomeController@checkScore');
+  Route::post('nilai', 'HomeController@checkScore')->name('nilai');
 });

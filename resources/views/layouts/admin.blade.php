@@ -8,19 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  
-  <title>Matrix Template - The Ultimate Multipurpose admin template</title>
-  <!-- Custom CSS -->
-  <link href="{{asset('assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
+  <title>@yield('title')</title>
   <!-- Custom CSS -->
   <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/select2/dist/css/select2.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/quill/dist/quill.snow.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/extra-libs/multicheck/multicheck.css')}}">
+  <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
+  <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+
+  <link rel="icon" href="{{asset('img/logo.jpg')}}" type="image/gif" sizes="16x16">
+
   <!-- HTML5 Shim and Respond.js')}} IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js')}} doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')}}"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js')}}/1.4.2/respond.min.js')}}"></script>
   <![endif]-->
-
 </head>
 
 <body>
@@ -48,19 +54,20 @@
           <!-- ============================================================== -->
           <!-- Logo -->
           <!-- ============================================================== -->
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="/">
             <!-- Logo icon -->
             <b class="logo-icon p-l-10">
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
               <!-- Dark Logo icon -->
-              <img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
+              <img src="{{asset('img/logo.jpg')}}" alt="homepage" class="light-logo" width="45px"/>
 
             </b>
             <!--End Logo icon -->
             <!-- Logo text -->
-            <span class="logo-text">
+            <span class="logo-text mt-3">
               <!-- dark Logo text -->
-              <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" />
+              <h2>Fortran</h2>
+              <!-- <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" /> -->
 
             </span>
             <!-- Logo icon -->
@@ -101,7 +108,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                <a class="dropdown-item" href="{{ route('logout') }}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
               </div>
             </li>
             <!-- ============================================================== -->
@@ -111,42 +118,24 @@
         </div>
       </nav>
     </header>
+    
     <!-- ============================================================== -->
     <!-- End Topbar header -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar" data-sidebarbg="skin5">
-      <!-- Sidebar scroll-->
-      <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav" class="p-t-30">
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/input_individu" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Input Nilai Individu</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/input_kelompok" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Input Nilai Kelompok</span></a></li>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/input_angkatan" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Input Nilai Angkatan</span></a></li>
-
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
+    @include('layouts.menu_bar')
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
-    <div class="page-wrapper">
 
+    @yield('content')
 
-
-      <!-- THIS IS THE BODY -->
-
-      <!-- ============================================================== -->
+<!-- ============================================================== -->
       <!-- footer -->
       <!-- ============================================================== -->
       <footer class="footer text-center">
@@ -188,7 +177,67 @@
   <script src="{{asset('assets/libs/flot/jquery.flot.stack.js')}}"></script>
   <script src="{{asset('assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
   <script src="{{asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
-  <script src="{{asset('dist/js/pages/chart/chart-page-init.js')}}"></script>
+  <script src="{{asset('assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+  <script src="{{asset('dist/js/pages/mask/mask.init.js')}}"></script>
+  <script src="{{asset('assets/libs/select2/dist/js/select2.full.min.js')}}"></script>
+  <script src="{{asset('assets/libs/select2/dist/js/select2.min.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-asColor/dist/jquery-asColor.min.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-asGradient/dist/jquery-asGradient.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js')}}"></script>
+  <script src="{{asset('assets/libs/jquery-minicolors/jquery.minicolors.min.js')}}"></script>
+  <script src="{{asset('assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{asset('assets/libs/quill/dist/quill.min.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/multicheck/datatable-checkbox-init.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/multicheck/jquery.multicheck.js')}}"></script>
+  <script src="{{asset('assets/extra-libs/DataTables/datatables.min.js')}}"></script>
+  <script src="{{asset('js/nilai.js')}}"></script>
+  <script>
+  //***********************************//
+  // For select 2
+  //***********************************//
+  $(".select2").select2();
+
+  /*colorpicker*/
+  $('.demo').each(function() {
+    //
+    // Dear reader, it's actually very easy to initialize MiniColors. For example:
+    //
+    //  $(selector).minicolors();
+    //
+    // The way I've done it below is just for the demo, so don't get confused
+    // by it. Also, data- attributes aren't supported at this time...they're
+    // only used for this demo.
+    //
+    $(this).minicolors({
+      control: $(this).attr('data-control') || 'hue',
+      position: $(this).attr('data-position') || 'bottom left',
+
+      change: function(value, opacity) {
+        if (!value) return;
+        if (opacity) value += ', ' + opacity;
+        if (typeof console === 'object') {
+          console.log(value);
+        }
+      },
+      theme: 'bootstrap'
+    });
+    
+
+  });
+  /*datwpicker*/
+  jQuery('.mydatepicker').datepicker();
+  jQuery('#datepicker-autoclose').datepicker({
+    autoclose: true,
+    todayHighlight: true
+  });
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+
+  $('#zero_config').DataTable();
+
+  </script>
+
 </body>
 
 </html>

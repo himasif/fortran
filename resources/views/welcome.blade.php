@@ -27,10 +27,6 @@
 </head>
 
 <body>
-
-
-
-
     <div class="navbar navbar-inverse navbar-fixed-top hidden-xs hidden-sm">
       <div class="container">
         <div class="navbar-header">
@@ -39,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="logo" href="#"><h3 class="white">FORTRAN {{ \Config::get('app.angkatan')}} | Be a Confident and Competitive generation</h3></a>
+          <a class="logo" href="{{ route('main') }}"><h3 class="white">FORTRAN {{ \Config::get('app.angkatan')}} | Be a Confident and Competitive generation</h3></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -89,7 +85,7 @@
                               <a href="{{ $d->url }}" target="_blank" class="btn btn-lg btn-block" style="background-color: {{ $d->color }}; color: white; border-radius: 50px;">{{ $d->name }}</a>
                           </div>
                           @empty
-                            <p class="text-center">Belum ada content.</p>
+                            <p class="text-center">Belum ada link.</p>
                           @endforelse
 
                         </div>
@@ -147,7 +143,7 @@
 
             <div class="row">
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                <form role="form" action="/nilai" method="POST">
+                <form role="form" action="{{ route('nilai') }}" method="POST">
 
                   <div class="form-group">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

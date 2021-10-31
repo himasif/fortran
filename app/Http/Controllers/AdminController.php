@@ -91,10 +91,10 @@ class AdminController extends Controller
         $mahasiswa->save();
         $data->save();
       } else {
-        return redirect()->action('AdminController@getDataInputIndividu');
+        return redirect()->back();
       }
     }
-    return redirect()->action('AdminController@getDataInputIndividu');
+    return redirect()->back();
   }
 
   public function getDataInputKelompok()
@@ -165,11 +165,11 @@ class AdminController extends Controller
             $data->save();
           }
         } else {
-          return redirect()->action('AdminController@getDataInputKelompok');
+          return redirect()->back();
         }
       }
     }
-    return redirect()->action('AdminController@getDataInputKelompok');
+    return redirect()->back();
   }
 
   public function getDataInputAngkatan()
@@ -232,11 +232,11 @@ class AdminController extends Controller
             $data->save();
           }
         } else {
-          return redirect()->action('AdminController@getDataInputAngkatan');
+          return redirect()->back();
         }
       }
     }
-    return redirect()->action('AdminController@getDataInputAngkatan');
+    return redirect()->back();
   }
 
   public function deleteNilaiIndividu(Request $request)
@@ -248,7 +248,7 @@ class AdminController extends Controller
       $mahasiswa->save();
       $nilai->delete();
     }
-    return redirect()->action('AdminController@getDataInputIndividu');
+    return redirect()->back();
   }
 
   public function deleteNilaiKelompok(Request $request)
@@ -266,7 +266,7 @@ class AdminController extends Controller
         $nilai->delete();
       }
     }
-    return redirect()->action('AdminController@getDataInputKelompok');
+    return redirect()->back();
   }
 
   public function deleteNilaiAngkatan(Request $request)
@@ -284,7 +284,7 @@ class AdminController extends Controller
         $nilai->delete();
       }
     }
-    return redirect()->action('AdminController@getDataInputAngkatan');
+    return redirect()->back();
   }
 
   public function getDataInputBatch()
@@ -318,7 +318,7 @@ class AdminController extends Controller
         $data->save();
       }
     }
-    return redirect()->action('AdminController@getDataInputBatch');
+    return redirect()->back();
   }
 
   public function calculateFinalScore($nim)
@@ -352,7 +352,7 @@ class AdminController extends Controller
     $mahasiswa->idKelompok = Kelompok::where('namaKelompok', 'RESIGN')->get()->first()->idKelompok;
     $mahasiswa->save();
 
-    return redirect()->action('AdminController@getDataResignMahasiswa');
+    return redirect()->back();
   }
 
   public function getListMahasiswa()
@@ -379,7 +379,7 @@ class AdminController extends Controller
       $mahasiswa->save();
       $nilai->delete();
     }
-    return redirect('admin/mahasiswa/' . $nim);
+    return redirect()->back();
   }
 
 
@@ -402,10 +402,10 @@ class AdminController extends Controller
       if ($is_success) {
         $data->save();
       } else {
-        return redirect()->action('AdminController@getDataLink');
+        return redirect()->back();
       }
     }
-    return redirect()->action('AdminController@getDataLink');
+    return redirect()->back();
   }
 
   public function deleteLink(Request $request)
@@ -414,6 +414,6 @@ class AdminController extends Controller
       $link = Link::find($request->id);
       $link->delete();
     }
-    return redirect('admin/create_link');
+    return redirect()->back();
   }
 }

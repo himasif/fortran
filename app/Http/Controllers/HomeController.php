@@ -53,7 +53,7 @@ class HomeController extends Controller
         ->get();
 
       if (!Mahasiswa::find($nim)) {
-        return Redirect::to('/#invite')->with('message', 'NIM Tidak Ditemukan');
+        return redirect()->to('#invite')->with('message', 'NIM Tidak Ditemukan');
       }
 
       $nilai_kategori = array_fill(1, 33, 0);
