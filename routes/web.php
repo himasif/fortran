@@ -12,7 +12,7 @@
 */
 
 // prefix subdomain
-Route::prefix('fortran')->group(function () {
+Route::group(['prefix' => 'fortran'], function () {
   Route::get('/', 'HomeController@welcome');
 
   Auth::routes();
