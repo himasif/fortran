@@ -48,7 +48,7 @@
           <!-- ============================================================== -->
           <!-- Logo -->
           <!-- ============================================================== -->
-          <a class="navbar-brand" href="{{ \Config::get('app.prefix') }}">
+          <a class="navbar-brand" href="/">
             <!-- Logo icon -->
             <b class="logo-icon p-l-10">
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -158,7 +158,7 @@
                       <td>{{$nilai->keterangan}}</td>
                       <td>{{$nilai->nilai}}</td>
                       <td>
-                        <form class="" action="{{ \Config::get('app.prefix') }}/admin/mahasiswa/{{$mahasiswa->nim}}" method="post">
+                        <form class="" action="/admin/mahasiswa/{{$mahasiswa->nim}}" method="post">
                           {{csrf_field()}}
                           <input type="hidden" name="id" value="{{$nilai->idNilai}}">
                           <button type="submit" class="btn btn-danger">Delete</button>

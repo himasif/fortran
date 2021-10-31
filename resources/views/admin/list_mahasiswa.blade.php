@@ -50,7 +50,7 @@
           <!-- ============================================================== -->
           <!-- Logo -->
           <!-- ============================================================== -->
-          <a class="navbar-brand" href="{{ \Config::get('app.prefix') }}">
+          <a class="navbar-brand" href="/">
             <!-- Logo icon -->
             <b class="logo-icon p-l-10">
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -158,7 +158,7 @@
                       <td>{{App\Kelompok::find($mahasiswa->idKelompok)->namaKelompok}}</td>
                       <td>{{$mahasiswa->nilaiAkhir}}</td>
                       <td>
-                        <a href="{{ \Config::get('app.prefix') }}/admin/mahasiswa/{{$mahasiswa->nim}}" class="btn btn-primary">Details</a>
+                        <a href="/admin/mahasiswa/{{$mahasiswa->nim}}" class="btn btn-primary">Details</a>
                           <!-- <button type="submit" class="btn btn-warning">Detail</button> -->
                       </td>
                     </tr>

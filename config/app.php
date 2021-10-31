@@ -14,7 +14,6 @@ return [
     */
 
     'angkatan' => (2021),
-    'prefix' => ('/fortran'),
     'NILAI_WAJIB_MAX' => (264),
     'NILAI_OPSIONAL_MAX' => (160),
     'PRESENTASE_WAJIB' => (80),

@@ -49,7 +49,7 @@
           <!-- ============================================================== -->
           <!-- Logo -->
           <!-- ============================================================== -->
-          <a class="navbar-brand" href="{{ \Config::get('app.prefix') }}">
+          <a class="navbar-brand" href="/">
             <!-- Logo icon -->
             <b class="logo-icon p-l-10">
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -133,7 +133,7 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Cari Detail Mahasiswa</h5>
-                <form class="form-horizontal" action="{{ \Config::get('app.prefix') }}/admin/search" method="post">
+                <form class="form-horizontal" action="/admin/search" method="post">
                   {{ csrf_field() }}
                   <div class="form-group row">
                     <label for="fname" class="col-sm-3 text-left control-label col-form-label">Nama / NIM</label>

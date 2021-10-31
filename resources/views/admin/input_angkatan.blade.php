@@ -54,7 +54,7 @@
           <!-- ============================================================== -->
           <!-- Logo -->
           <!-- ============================================================== -->
-          <a class="navbar-brand" href="{{ \Config::get('app.prefix') }}">
+          <a class="navbar-brand" href="/">
             <!-- Logo icon -->
             <b class="logo-icon p-l-10">
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -219,7 +219,7 @@
                         <td>{{$value->nilai}}</td>
                         <td>{{$value->keterangan}}</td>
                         <td>
-                          <form action="{{ \Config::get('app.prefix') }}/admin/delete_angkatan" method="post">
+                          <form action='/admin/delete_angkatan' method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="tanggal" value="{{$value->tanggal}}"/>
                             <input type="hidden" name="idAngkatan" value="{{$value->idAngkatan}}"/>
