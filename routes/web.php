@@ -11,8 +11,8 @@
 |
 */
 
-// subdomain
-Route::domain('fortran.himasif.id/fortran')->group(function () {
+// prefix
+Route::group(['prefix' => 'fortran'], function () {
   Route::get('/', 'HomeController@welcome');
 
   Auth::routes();
