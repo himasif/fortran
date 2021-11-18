@@ -79,7 +79,7 @@
               <th>No</th>
               <th>Tanggal</th>
               <th>Kategori</th>
-              <th>Asal Nilai</th>
+              <th>Jenis Kategori</th>
               <th>Keterangan</th>
               <th>Nilai</th>
             </thead>
@@ -89,7 +89,7 @@
                 <td>{{$i++}}</td>
                 <td>{{$value->tanggal}}</td>
                 <td>{{App\Kategori::find($value->idKategori)->kategori}}</td>
-                <td>{{$value->kategori->jenis_kategori}}</td>
+                <td>{{App\Kategori::find($value->idKategori)->jenis_kategori}}</td>
                 <td>{{$value->keterangan}}</td>
                 <td>{{$value->nilai}}</td>
               </tr>
