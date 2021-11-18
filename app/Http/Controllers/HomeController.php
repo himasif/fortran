@@ -62,9 +62,9 @@ class HomeController extends Controller
       }
       $result['nilai_kategori'] = $nilai_kategori;
 
-      $result['kategori_individu'] = Kategori::where('idKategori', '<=', 18)->get();
-      $result['kategori_kelompok'] = Kategori::whereBetween('idKategori', [19, 31])->get();
-      $result['kategori_angkatan'] = Kategori::whereBetween('idKategori', [32, 33])->get();
+      $result['kategori_individu'] = Kategori::where('jenis_kategori', '=', 'individu')->get();
+      $result['kategori_kelompok'] = Kategori::where('jenis_kategori', '=', 'kelompok')->get();
+      $result['kategori_angkatan'] = Kategori::where('jenis_kategori', '=', 'angkatan')->get();
       $result['final'] = $this->calculateFinalScore($nim);
       return view('nilai', $result);
     }

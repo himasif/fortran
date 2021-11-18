@@ -89,11 +89,11 @@
                 <td>{{$i++}}</td>
                 <td>{{$value->tanggal}}</td>
                 <td>{{App\Kategori::find($value->idKategori)->kategori}}</td>
-                @if($value->idKategori <= 18)
+                @if($value->jenis_kategori == 'individu')
                 <td>Individu</td>
-                @elseIf($value->idKategori <= 31)
+                @elseIf($value->jenis_kategori == 'kelompok')
                 <td>Kelompok</td>
-                @elseIf($value->idKategori <= 33)
+                @elseIf($value->jenis_kategori == 'angkatan')
                 <td>Angkatan</td>
                 @else
                 <td>Nyawa Awal</td>
