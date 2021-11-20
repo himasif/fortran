@@ -103,10 +103,10 @@ class AdminController extends Controller
     $id_angkatan = Angkatan::where('namaAngkatan', Config::get('app.angkatan'))->get()->first()->idAngkatan;
     $kelompok = Kelompok::where('idAngkatan', $id_angkatan)->get();
     // $data = DB::select("select nilai, namaKelompok, tanggal,idKategori from nilais join mahasiswas on nilais.nim = mahasiswas.nim join kelompoks on mahasiswas.idKelompok = kelompoks.idKelompok group by tanggal,idKategori");
-    $data = Nilai::join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
-    ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
-    ->join('kategoris', 'nilais.idKategori', '=', 'kategoris.idKategori')
+    $data = Nilai::join('kategoris', 'nilais.idKategori', '=', 'kategoris.idKategori')
+    ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
     ->where('kategoris.jenis_kategori', '=', 'kelompok')
+    ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       // ->groupBy('tanggal')
       // ->groupBy('mahasiswas.idKelompok')
       // ->groupBy('nilais.idKategori')
@@ -176,11 +176,11 @@ class AdminController extends Controller
   {
     $kategori = Kategori::where('jenis_kategori', '=', 'angkatan')->get();
     // $data = DB::select("select nilai, namaKelompok, tanggal,idKategori from nilais join mahasiswas on nilais.nim = mahasiswas.nim join kelompoks on mahasiswas.idKelompok = kelompoks.idKelompok group by tanggal,idKategori");
-    $data = Nilai::join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
+    $data = Nilai::join('kategoris', 'nilais.idKategori', '=', 'kategoris.idKategori')
+      ->where('kategoris.jenis_kategori', '=', 'angkatan')
+      ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       ->join('angkatans', 'kelompoks.idAngkatan', '=', 'angkatans.idAngkatan')
-      ->join('kategoris', 'nilais.idKategori', '=', 'kategoris.idKategori')
-      ->where('kategoris.jenis_kategori', '=', 'angkatan')
       ->get();
     $datas = array();
     foreach ($data as $d) { // unique algorithm
