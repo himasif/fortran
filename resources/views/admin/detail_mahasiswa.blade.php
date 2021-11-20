@@ -35,7 +35,7 @@
                 <td>{{$nilai->keterangan}}</td>
                 <td>{{$nilai->nilai}}</td>
                 <td>
-                  <form class="" action="{{ route('delete_mahasiswa') }}" method="post">
+                  <form class="" action="{{ route('delete_mahasiswa', $nilai->nim) }}" method="post">
                     {{csrf_field()}}
                     <input type="hidden" name="id" value="{{$nilai->idNilai}}">
                     <button type="submit" class="btn btn-danger">Delete</button>

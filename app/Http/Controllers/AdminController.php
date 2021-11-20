@@ -104,22 +104,13 @@ class AdminController extends Controller
     $kelompok = Kelompok::where('idAngkatan', $id_angkatan)->get();
     // $data = DB::select("select nilai, namaKelompok, tanggal,idKategori from nilais join mahasiswas on nilais.nim = mahasiswas.nim join kelompoks on mahasiswas.idKelompok = kelompoks.idKelompok group by tanggal,idKategori");
     $data = Nilai::join('kategoris', 'nilais.idKategori', '=', 'kategoris.idKategori')
-    ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
-    ->where('kategoris.jenis_kategori', '=', 'kelompok')
-    ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
-      // ->groupBy('tanggal')
-      // ->groupBy('mahasiswas.idKelompok')
-      // ->groupBy('nilais.idKategori')
-      // ->groupBy('keterangan')
+      ->where('kategoris.jenis_kategori', '=', 'kelompok')
+      ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
+      ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       ->where('kelompoks.idAngkatan', '=', $id_angkatan)
+      ->groupBy(['tanggal','kategoris.idKategori','kelompoks.idKelompok'])
       ->get();
-    $datas = array();
-    foreach ($data as $d) { // unique algorithm
-      $datas[$d->idKelompok] = $d;
-    }
-    // dd($data);
-    // $data = array_unique($data);
-    return view('admin.input_kelompok', ['kategori' => $kategori, 'data' => $datas, 'kelompok' => $kelompok]);
+    return view('admin.input_kelompok', ['kategori' => $kategori, 'data' => $data, 'kelompok' => $kelompok]);
   }
 
   public function setDataInputKelompok(Request $request)
@@ -181,12 +172,9 @@ class AdminController extends Controller
       ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       ->join('angkatans', 'kelompoks.idAngkatan', '=', 'angkatans.idAngkatan')
+      ->groupBy(['tanggal','kategoris.idKategori'])
       ->get();
-    $datas = array();
-    foreach ($data as $d) { // unique algorithm
-      $datas[$d->idKelompok] = $d;
-    }
-    return view('admin.input_angkatan', ['kategori' => $kategori, 'data' => $datas]);
+    return view('admin.input_angkatan', ['kategori' => $kategori, 'data' => $data]);
   }
 
   public function setDataInputAngkatan(Request $request)
