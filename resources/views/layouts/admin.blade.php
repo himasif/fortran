@@ -66,7 +66,7 @@
             <!-- Logo text -->
             <span class="logo-text mt-3">
               <!-- dark Logo text -->
-              <h2>Fortran</h2>
+              <h2>Fortran {{ \Config::get('app.versi')}}</h2>
               <!-- <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="light-logo" /> -->
 
             </span>

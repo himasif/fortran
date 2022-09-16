@@ -35,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="logo" href="{{ route('main') }}"><h3 class="white">FORTRAN {{ \Config::get('app.angkatan')}} | Be a Confident and Competitive generation</h3></a>
+          <a class="logo" href="{{ route('main') }}"><h3 class="white">FORTRAN {{ \Config::get('app.versi')}} | Be a Confident and Competitive generation</h3></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -56,7 +56,7 @@
 
         <div class="row1 header-info">
           <div class="col-sm-10 col-sm-offset-1 text-center">
-            <h1 class="wow fadeIn">FORTRAN {{ \Config::get('app.angkatan')}}</h1>
+            <h1 class="wow fadeIn">FORTRAN {{ \Config::get('app.versi')}}</h1>
             <br />
             <p class="lead wow fadeIn" data-wow-delay="0.5s">Be a Confident and Competitive generation</p>
             <br />
@@ -76,7 +76,7 @@
                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalScrollableTitle">Fortran {{ \Config::get('app.angkatan')}} Links</h5>
+                          <h5 class="modal-title" id="exampleModalScrollableTitle">Fortran {{ \Config::get('app.versi')}} Links</h5>
                           </button>
                         </div>
                         <div class="modal-body">
@@ -189,7 +189,7 @@
     <footer>
       <div class="container">
           <div class="col-sm-12 text-center">
-            <p><small>Copyright &copy; {{ \Config::get('app.angkatan')}}. All rights reserved. <br>
+            <p><small>Copyright &copy; {{ \Config::get('app.angkatan') }}. All rights reserved. <br>
 	            Created by <a href="https://github.com/himasif/">Mediatek|HIMASIF</a></small></p>
           </div>
         </div>
