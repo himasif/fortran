@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8">
-  <title>FORTRAN {{ \Config::get('app.angkatan')}}</title>
+  <title>FORTRAN {{ \Config::get('app.versi')}}</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -35,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="logo" href="{{ route('main') }}"><h3 class="white">FORTRAN {{ \Config::get('app.versi')}} | Be a Confident and Competitive generation</h3></a>
+          <a class="logo" href="{{ route('main') }}"><h3 class="white">FORTRAN {{ \Config::get('app.versi')}} | Dare to be critical dare to be innovative</h3></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <header">
+    <header>
 
       <div class="bgimg">
         <div class="bgimg-black">
@@ -58,7 +58,7 @@
           <div class="col-sm-10 col-sm-offset-1 text-center">
             <h1 class="wow fadeIn">FORTRAN {{ \Config::get('app.versi')}}</h1>
             <br />
-            <p class="lead wow fadeIn" data-wow-delay="0.5s">Be a Confident and Competitive generation</p>
+            <p class="lead wow fadeIn" data-wow-delay="0.5s">Dare to be critical dare to be innovative</p>
             <br />
 
             <div class="row" style="display: flex; flex-flow: row wrap; justify-content: center;">
