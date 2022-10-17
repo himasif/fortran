@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LombaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,5 +42,8 @@ Route::middleware('auth')->group(function () {
   Route::get('/admin/create_link', 'AdminController@getDataLink')->name('get_link');
   Route::post('/admin/create_link', 'AdminController@setDataLink')->name('set_link');
   Route::post('/admin/delete_link', 'AdminController@deleteLink')->name('delete_link');
+  Route::get('/admin/lomba', 'AdminController@lomba')->name('lomba');
+  Route::get('/admin/edit-jumlah/{id}', 'AdminController@editLomba')->name('editlomba');
+  Route::put('/admin/edit-jumlah/update-jumlah/{id}', 'AdminController@updateLomba')->name('updatelomba');
 });
 Route::post('nilai', 'HomeController@checkScore')->name('nilai');

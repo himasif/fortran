@@ -9,6 +9,7 @@ use App\Angkatan;
 use App\Kelompok;
 use App\Mahasiswa;
 use App\Link;
+use App\Lomba;
 use Config;
 
 class AdminController extends Controller
@@ -403,5 +404,30 @@ class AdminController extends Controller
       $link->delete();
     }
     return redirect()->back();
+  }
+  
+  //lomba
+  public function lomba()
+  {
+    $lomba = Lomba::all();
+    return view("admin.jumlah_pendaftar", compact('lomba'),[
+        'title'=>'home',
+
+    ]);
+  }
+
+  public function editLomba($id)
+  {
+    $lomba = Lomba::find($id);
+        return view('admin.edit_jumlah', compact('lomba'),[
+        ]);
+  }
+
+  public function updateLomba(Request $request, $id)
+  {
+        $lomba = Lomba::find($id);
+        $lomba->jumlah = $request->input('jumlah'); 
+        $lomba->update();
+        return redirect()->action('AdminController@lomba')->with('alert_message', 'jumlah Updated Successfully');
   }
 }

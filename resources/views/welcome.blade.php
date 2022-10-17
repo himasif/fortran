@@ -117,8 +117,8 @@
 			    </div>
           <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
 				    <hr class="line blue">
-				    <h3 style="text-align: center;">Percaya diri dan Kompetitif </h3>
-				    <p>Fortran 2021 dilaksanakan berlandaskan sifat Optimis dan Kompetitif. Maka dari itu slogan yang diangkat adalah "Be a Confident and Competitive generation", yang memiliki makna dengan berjalannya Fortran 2021 diharapkan mahasiswa Sistem Informasi dapat menjadi generasi yang unggul, percaya diri, dan optimis dalam membangun jiwa kopetitif yang tinggi.</p>
+				    <h3 style="text-align: center;">Kritis dan Inovatif</h3>
+				    <p>Fortran 3.0 dilaksanakan dengan berlandaskan sifat kritis dan inovatif. Maka dari itu slogan yang diangkat adalah "Dare to be Critical, Dare to be Inovatif". Slogan tersebut memiliki makna dengan berjalannya Fortran 3.0 diharapkan mahasiswa Sistem Informasi dapat menjadi mahasiswa yang memiliki sifat kritis dan inovatif untuk memecahkan masalah yang berkaitan dengan dunia perkuliahan sehingga menjadi generasi yang unggul.</p>
 			    </div>
 		    </div>
 	    </div>
@@ -156,6 +156,55 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="lomba" class="">
+      
+
+   
+    <div class="lomba container text-center">
+        <div class="row justify-content-md-center">
+          <h2 style="color: black">GEMASTIK</h2>
+          @foreach ($lomba as $item)
+        <div class="card col col-lg-3">
+            <div class="card-header">
+              <h4> <b> {{ $item->nama }}</b></h4>
+            </div>
+            <div class="card-body">
+              <h5><b> {{ $item->jumlah }}/7</b></h5>
+            </div>
+            <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+             
+            </div>
+          </div>
+          @endforeach 
+        </div>
+    </div>  
+    <br>
+   
+    <style>
+      .card{
+        padding: 0px;
+        
+      }
+      .card-header{
+        
+    
+      }
+      .card-header h4{
+        font-size: 25px;
+        font-family: poppins;
+      
+      }
+      .card-body{
+        /* background-color: blue; */
+      }
+      .card-body h5{
+        font-size: 35px;
+        font-family: poppins;
+        color: darkorchid;
+      }
+    </style>
     </section>
 
 

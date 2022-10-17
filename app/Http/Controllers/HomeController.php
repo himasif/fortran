@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Kategori;
 use App\Nilai;
+use App\Lomba;
 use App\Angkatan;
 use App\Kelompok;
 use App\Mahasiswa;
@@ -36,7 +37,9 @@ class HomeController extends Controller
   public function welcome()
   {
     $data = Link::all();
-    return view('welcome', ['data' => $data]);
+    $lomba = Lomba::all();
+    return view('welcome', ['data' => $data, 'lomba'=> $lomba]);
+
   }
 
   public function checkScore(Request $request)
