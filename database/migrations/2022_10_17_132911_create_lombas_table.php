@@ -14,9 +14,10 @@ class CreateLombasTable extends Migration
     public function up()
     {
         Schema::create('lombas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nama');
             $table->integer('jumlah');
+            $table->integer('max');
             $table->timestamps();
         });
     }

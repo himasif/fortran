@@ -68,6 +68,9 @@
               <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.2s">
                 <a href="#invite" class="btn btn-primary btn-lg scroll">Check Score</a>
               </div>
+              <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.2s">
+                <a href="#lomba" class="btn btn-primary btn-lg scroll">Check Lomba</a>
+              </div>
               <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.4s">
                 <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#exampleModalScrollable">Links</button>
 
@@ -158,43 +161,76 @@
       </div>
     </section>
 
-    <section id="lomba" class="">
+    <section id="lomba" class="lomba">
       
-
-   
+      <div class="page-wrapper"></div>
+   <div class="container-fluid">
     <div class="lomba container text-center">
-        <div class="row justify-content-md-center">
-          <h2 style="color: black">GEMASTIK</h2>
+      <h2 style="color: #231f20">Gemastik</h2>
+        <div class="row justify-content-center" style="justify-content: center">
           @foreach ($lomba as $item)
-        <div class="card col col-lg-3">
-            <div class="card-header">
-              <h4> <b> {{ $item->nama }}</b></h4>
-            </div>
-            <div class="card-body">
-              <h5><b> {{ $item->jumlah }}/7</b></h5>
-            </div>
-            <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
-             
-            </div>
-          </div>
+            <div class="card col col-sm-3">
+                <div class="card-header">
+                  <h4 style="color: #231f20"> <b>{{ $item->nama }}</b></h4>
+                </div>
+                <div class="card-body">
+                  <h5 style="color: #231f20">{{ $item->jumlah }}<b style="color: #7b18ca">/{{ $item->max }}</b></h5>
+                </div>
+                <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+                
+                </div>
+              </div>
+              
           @endforeach 
         </div>
-    </div>  
+    </div> 
+  </div> 
+</div>
     <br>
+    <hr>
+    <div class="lomba container text-center">
+      <div class="row justify-content-md-center">
+    <div class="card col col-lg-auto">
+      <div class="card-header">
+        <h4 style="color: #231f20"> <b>Total Pendaftar</b></h4>
+      </div>
+      <div class="card-body" id="total">
+        <h5 style="color: #231f20"><b> {{ $total}}</b></h5>
+      </div>
+      <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+       
+      </div>
+      </div>
+      </div>
+    </div>
    
     <style>
+      .row{
+        /* padding-top: 50px; */
+      }
       .card{
         padding: 0px;
-        
+        margin: 0 auto;
+        border-color: black;
       }
       .card-header{
         
-    
       }
       .card-header h4{
+        /* padding-top: -20px; */
         font-size: 25px;
         font-family: poppins;
-      
+      }
+      #total {
+        padding-bottom: 50px;
+      }
+      .lomba h2{
+        padding-bottom: 50px;
+      }
+      .lomba{
+        padding-top: 50px;
+        /* padding-bottom: 50px; */
+        background: #fff;
       }
       .card-body{
         /* background-color: blue; */
@@ -230,7 +266,11 @@
             </a>
           </div>
         </div>
-
+<style>
+  #press{
+    background: #f2f2f2;
+  }
+</style>
       </div>
     </section>
 

@@ -4,7 +4,9 @@
 @section('content')
 <div class="page-wrapper">
 
-<div class="page-breadcrumb">
+<div class="page-breadcrumb"
+
+>
   <div class="row">
     <div class="col-12 d-flex no-block align-items-center">
       <h4 class="page-title">Jumlah Pendaftar Lomba GEMASTIK</h4>
@@ -12,11 +14,15 @@
   </div>
 </div>
 
-{{-- <div class="container-fluid"> --}}
+<div class="container-fluid">
     <section id="lomba" class="">
       
-
-   
+      <div class="card">
+      <div class="border-top">
+      <div class="card-body">
+        <a href="/admin/add-jumlah"> <button type="submit" class="btn btn-success">Tambah</button></a>
+      </div>
+    </div>
         <div class="lomba container text-center">
             <div class="row justify-content-md-center">
               <br>
@@ -26,15 +32,17 @@
                   <h4> <b> {{ $item->nama }}</b></h4>
                 </div>
                 <div class="card-body">
-                  <h5><b> {{ $item->jumlah }}/7</b></h5>
+                  <h5><b> {{ $item->jumlah }}/{{ $item->max }}</b></h5>
                 </div>
                 <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
                   <a href="edit-jumlah/{{ $item->id }}"><button type="button" class="btn btn-outline-dark">Edit</button></a>
+                  <a href="/admin/hapus-jumlah/{{ $item->id }}"><button type="button" class="btn btn-outline-danger">Hapus</button></a>
                 </div>
               </div>
               @endforeach 
             </div>
         </div>
+      </div>
         <br>
        
         <style>

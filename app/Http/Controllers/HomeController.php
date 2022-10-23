@@ -33,13 +33,16 @@ class HomeController extends Controller
   {
     return view('home');
   }
-  
+
   public function welcome()
   {
     $data = Link::all();
     $lomba = Lomba::all();
-    return view('welcome', ['data' => $data, 'lomba'=> $lomba]);
-
+    $total = 0;
+    foreach ($lomba as $item) {
+      $total += $item->jumlah;
+    }
+    return view('welcome', ['data' => $data, 'lomba' => $lomba, 'total' => $total]);
   }
 
   public function checkScore(Request $request)

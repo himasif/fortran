@@ -45,5 +45,9 @@ Route::middleware('auth')->group(function () {
   Route::get('/admin/lomba', 'AdminController@lomba')->name('lomba');
   Route::get('/admin/edit-jumlah/{id}', 'AdminController@editLomba')->name('editlomba');
   Route::put('/admin/edit-jumlah/update-jumlah/{id}', 'AdminController@updateLomba')->name('updatelomba');
+  Route::get('/admin/add-jumlah', 'AdminController@addLomba')->name('addlomba');
+  Route::post('/admin/add-jumlah', 'AdminController@simpanLomba')->name('simpanlomba');
+  Route::get('/admin/hapus-jumlah/{id}', 'AdminController@hapusLomba')->name('hapuslomba');
+
 });
 Route::post('nilai', 'HomeController@checkScore')->name('nilai');

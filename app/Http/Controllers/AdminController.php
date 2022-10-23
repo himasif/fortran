@@ -109,7 +109,7 @@ class AdminController extends Controller
       ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       ->where('kelompoks.idAngkatan', '=', $id_angkatan)
-      ->groupBy(['tanggal','kategoris.idKategori','kelompoks.idKelompok'])
+      ->groupBy(['tanggal', 'kategoris.idKategori', 'kelompoks.idKelompok'])
       ->get();
     return view('admin.input_kelompok', ['kategori' => $kategori, 'data' => $data, 'kelompok' => $kelompok]);
   }
@@ -173,7 +173,7 @@ class AdminController extends Controller
       ->join('mahasiswas', 'nilais.nim', '=', 'mahasiswas.nim')
       ->join('kelompoks', 'mahasiswas.idKelompok', '=', 'kelompoks.idKelompok')
       ->join('angkatans', 'kelompoks.idAngkatan', '=', 'angkatans.idAngkatan')
-      ->groupBy(['tanggal','kategoris.idKategori'])
+      ->groupBy(['tanggal', 'kategoris.idKategori'])
       ->get();
     return view('admin.input_angkatan', ['kategori' => $kategori, 'data' => $data]);
   }
@@ -385,7 +385,7 @@ class AdminController extends Controller
     if ($request->isMethod('post')) {
       $data = new Link;
       $data->name = $request->name;
-      $data->url= $request->url;
+      $data->url = $request->url;
       $data->color = $request->color;
       $is_success = true;
       if ($is_success) {
@@ -405,13 +405,13 @@ class AdminController extends Controller
     }
     return redirect()->back();
   }
-  
+
   //lomba
   public function lomba()
   {
     $lomba = Lomba::all();
-    return view("admin.jumlah_pendaftar", compact('lomba'),[
-        'title'=>'home',
+    return view("admin.jumlah_pendaftar", compact('lomba'), [
+      'title' => 'home',
 
     ]);
   }
@@ -419,15 +419,34 @@ class AdminController extends Controller
   public function editLomba($id)
   {
     $lomba = Lomba::find($id);
-        return view('admin.edit_jumlah', compact('lomba'),[
-        ]);
+    return view('admin.edit_jumlah', compact('lomba'), []);
   }
 
   public function updateLomba(Request $request, $id)
   {
-        $lomba = Lomba::find($id);
-        $lomba->jumlah = $request->input('jumlah'); 
-        $lomba->update();
-        return redirect()->action('AdminController@lomba')->with('alert_message', 'jumlah Updated Successfully');
+    $lomba = Lomba::find($id);
+    $lomba->jumlah = $request->input('jumlah');
+    $lomba->update();
+    return redirect()->action('AdminController@lomba')->with('alert_message', 'jumlah Updated Successfully');
+  }
+  public function addLomba(Request $request)
+  {
+    return view('admin.input_jumlah');
+  }
+  public function simpanLomba(Request $request)
+  {
+    $lomba = new Lomba;
+    $lomba->nama = $request->input('nama');
+    $lomba->jumlah = $request->input('jumlah');
+    $lomba->max = $request->input('max');
+    $lomba->save();
+    return redirect()->action('AdminController@lomba')->with('alert_message', 'tambah jumlah Successfully');;
+  }
+
+  public function hapusLomba($id)
+  {
+    $lomba = Lomba::find($id);
+    $lomba->delete();
+    return redirect()->action('AdminController@lomba')->with('alert_message', 'hapus jumlah Successfully');;
   }
 }

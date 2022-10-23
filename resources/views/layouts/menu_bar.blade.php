@@ -12,7 +12,7 @@
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('get_input_angkatan') }}" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Input Nilai Angkatan</span></a></li>
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('get_input_batch') }}" aria-expanded="false"><i class="mdi mdi-buffer"></i><span class="hide-menu">Input Batch</span></a></li>
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('get_resign') }}" aria-expanded="false"><i class="mdi mdi-exit-to-app"></i><span class="hide-menu">Resign</span></a></li>
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('lomba') }}" aria-expanded="false"><i class="mdi mdi-exit-to-app"></i><span class="hide-menu">Lomba</span></a></li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('lomba') }}" aria-expanded="false"><i class="mdi mdi-drawing"></i><span class="hide-menu">Lomba</span></a></li>
       </ul>
     </nav>
     <!-- End Sidebar navigation -->
