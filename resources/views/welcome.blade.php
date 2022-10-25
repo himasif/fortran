@@ -169,11 +169,11 @@
       <h2 style="color: #231f20">Gemastik</h2>
         <div class="row justify-content-center" style="justify-content: center">
           @foreach ($lomba as $item)
-            <div class="card col col-sm-3">
-                <div class="card-header">
-                  <h4 style="color: #231f20"> <b>{{ $item->nama }}</b></h4>
+            <div class="card col col-sm-2" id="bidang">
+                <div class="card-header" id="head-bidang">
+                  <h4 style="color: #ffff"> <b>{{ $item->nama }}</b></h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body" id="body-bidang">
                   <h5 style="color: #231f20">{{ $item->jumlah }}<b style="color: #7b18ca">/{{ $item->max }}</b></h5>
                 </div>
                 <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
@@ -208,12 +208,29 @@
       .row{
         /* padding-top: 50px; */
       }
-      .card{
+      #bidang{
         padding: 0px;
-        margin: 0 auto;
+        margin-left:13px;
+        margin-right: 84px;
         border-color: black;
+        color: #fff
+      }
+      
+      #head-bidang{
+        background-color: #ac9fb9;
+        padding:1px;
+        
+      }
+      #body-bidang{
+        background-color :#f2f2f2;
+        padding-top:3px;
+        padding-bottom:3px;
+        
       }
       .card-header{
+        
+      }
+      .card-body{
         
       }
       .card-header h4{
