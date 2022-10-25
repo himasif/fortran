@@ -1,107 +1,108 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis|Fira+Sans:500');
+@import url("https://fonts.googleapis.com/css?family=Dosis|Fira+Sans:500");
 
-body, html{
-  height: 100%;
+body,
+html {
+    height: 100%;
 }
 
-.card-red-nilai{
-  background-color: #ff5e5e;
-  color: #fff;
+.card-red-nilai {
+    background-color: #ff5e5e;
+    color: #fff;
 }
 
-.card-yellow-nilai{
-  background-color: #f4ec58;
-  color: #333;
+.card-yellow-nilai {
+    background-color: #f4ec58;
+    color: #333;
 }
 
-.card-blue-nilai{
-  background-color: #32b0ef;
-  color: #fff;
+.card-blue-nilai {
+    background-color: #32b0ef;
+    color: #fff;
 }
 
-.card-nilai{
-  font-family: 'Fira Sans', sans-serif;
-  width: 100%;
-  opacity: 0.9;
+.card-nilai {
+    font-family: "Fira Sans", sans-serif;
+    width: 100%;
+    opacity: 0.9;
 }
 
-.card-header-nilai{
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
+.card-header-nilai {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
 }
 
-.card-body-nilai{
-  padding-top: 15px;
-  padding-bottom: 15px;
-  color: #fff;
-  background-color: #333;
-  padding-left: 10%;
-  padding-right: 10%;
+.card-body-nilai {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #fff;
+    background-color: #333;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-ul{
-  padding: 0;
-  list-style: none;
+ul {
+    padding: 0;
+    list-style: none;
 }
 
-li{
-  margin-bottom: 10px;
-  border-bottom: 2px solid white;
+li {
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
 }
 
-.home{
-  color: #fff;
-  background: url(../img/bg-revisi.png) no-repeat center center;
-  left: 0;
-  right: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-position: center;
-  background-size: cover;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
+.home {
+    color: #fff;
+    background: url(../img/bg-revisi.png) no-repeat center center;
+    left: 0;
+    right: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-position: center;
+    background-size: cover;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
 }
 
-.home-bg-black{
-  background-color: #000;
-  opacity: 0.5;
-  width: 100%;
-  background-position: center;
-  height: 100%;
-  margin-right: auto;
-  overflow: hidden;
-  background-size: cover;
+.home-bg-black {
+    background-color: #000;
+    opacity: 0.5;
+    width: 100%;
+    background-position: center;
+    height: 100%;
+    margin-right: auto;
+    overflow: hidden;
+    background-size: cover;
 }
 
 .content {
-  margin-left: 10%;
-  margin-right: 10%;
-  position: relative;
-  display: block;
-  z-index: 2;
+    margin-left: 10%;
+    margin-right: 10%;
+    position: relative;
+    display: block;
+    z-index: 2;
 }
 
-.nilai-home-head{
-  padding-top: 5px;
-  padding-bottom: 2.5%;
-  text-align: center;
-  color: #fff;
-  font-family: 'Fira Sans', sans-serif;
-  font-weight: bold;
+.nilai-home-head {
+    padding-top: 5px;
+    padding-bottom: 2.5%;
+    text-align: center;
+    color: #fff;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: bold;
 }
 
-.list-nilai{
-  padding-top: 10%;
+.list-nilai {
+    padding-top: 10%;
 }
 
-.footer{
-  padding-bottom: 5%;
+.footer {
+    padding-bottom: 5%;
 }
