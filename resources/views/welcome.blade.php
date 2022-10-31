@@ -68,9 +68,9 @@
               <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.2s">
                 <a href="#invite" class="btn btn-primary btn-lg scroll">Check Score</a>
               </div>
-              <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.2s">
+              {{-- <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.2s">
                 <a href="#lomba" class="btn btn-primary btn-lg scroll">Check Lomba</a>
-              </div>
+              </div> --}}
               <div class="col-lg-2 wow fadeInUp" data-wow-delay="1.4s">
                 <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#exampleModalScrollable">Links</button>
 
@@ -161,7 +161,7 @@
       </div>
     </section>
 
-    <section id="lomba" class="lomba">
+    {{-- <section id="lomba" class="lomba">
       
       <div class="page-wrapper"></div>
    <div class="container-fluid">
@@ -258,7 +258,7 @@
         color: darkorchid;
       }
     </style>
-    </section>
+    </section> --}}
 
 
     <section id="press" class="pad-sm">
@@ -285,7 +285,8 @@
         </div>
 <style>
   #press{
-    background: #f2f2f2;
+    /* background: #f2f2f2; */
+    background: #ffffff;
   }
 </style>
       </div>

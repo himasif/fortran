@@ -504,7 +504,9 @@ hr.line {
 }
 
 footer {
-    background: #f2f2f2;
+    /* background: #f2f2f2; */
+    background: #ffffff;
+    
     padding: 40px 0px;
 }
 
