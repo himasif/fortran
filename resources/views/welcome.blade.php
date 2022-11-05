@@ -169,7 +169,7 @@
       <h2 style="color: #231f20">Competition</h2>
         <div class="row justify-content-center" style="justify-content: center">
           @foreach ($lomba as $item)
-            <div class="card col col-sm-2" id="bidang">
+            <div class="card col col-sm-3" id="bidang">
                 <div class="card-header" id="head-bidang">
                   <h4 style="color: #ffff"> <b>{{ $item->nama }}</b></h4>
                 </div>
