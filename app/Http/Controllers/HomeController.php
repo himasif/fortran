@@ -62,7 +62,7 @@ class HomeController extends Controller
         return redirect()->to('#invite')->with('message', 'NIM Tidak Ditemukan');
       }
 
-      $nilai_kategori = array_fill(0, 42, 0);
+      $nilai_kategori = array_fill(1, 42, 0);
       foreach ($result['data'] as $nilai) {
         $nilai_kategori[$nilai->idKategori]++;
       }
